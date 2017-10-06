@@ -1,0 +1,1 @@
+go build Compiler/compiler.go

@@ -1,47 +1,36 @@
 # Language Syntax
 this file contains the syntax reference for the language
 
-## variable
-```
-var <var_name> : [<type>] [= <expression>];
-```
-	
-## constant
-```
-const [export] <var_name> : [<type>] : <expression>;
-```
+## Name (Identifier)
 
-if the export is defined then the constant will be exported and can be accessed
-from the outside
-	
-## function
+regex = `[a-zA-Z_][a-zA-Z0-9_]*`
 
-a function can be defined inside a module or part of a class
-when it is a part of a class it will be a static method, meaning
-it is not a method and does not require you to use it on
-an object, but it can not access `this`
+these are used to identify variables, constants functions and more
 
-```
-func [export] [native] ([<arg_name>: <type>...]) [-> <type>] { ... }
-```
+# Literals
 
-if the native is defined then there will be no need for function body,
-it will search for the implementation as a C external function
-	
-if the export is defined then the function will be exported and can be accessed
-from the outside
-	
-## module
+## Integers
 
-a module is a container for functions and classes
+regex = `[0-9_]+`
 
-```
-module <module_name> { ... }
-```
+integers are whole numbers, like 10, -56, 1546, -79
 
-# expressions
+you can also use `_` for reading the number easily
+like `10_000_000` instead of `10000000`
 
-## expression precedence
+integer literals will return a primitive int
+
+## Strings
+
+regex = `"[^"]"`
+
+*note that strings can be multilined
+
+strings literals will return a string class
+
+# Expressions
+
+## Expression Precedence
 
 | Precedence | Operator | Description |
 |:----------:|------------------------------|--------------------------------------------------------------------------------|
@@ -55,30 +44,107 @@ module <module_name> { ... }
 
 ### Function call
 ```
-<function_name>([[<name>=]<value>...])
+<function_name>([<expression>[, <expression>]*])
+``` 
+
+# Statements
+
+## variable
+```
+var [nullable] <name> : [<type>] [= <expression>];
 ```
 
-args can be named, so you can do either `new(Object)` or `new(class=Object)` for example
- 
-# example
+* if nullable is defined then the variable can be left uninited, otherwise you have to initialize it.
+	
+## constant
 ```
-// everything under module lang is staticly imported by default
-module lang {
+const [export] <name> : [<type>] : <expression>;
+```
+
+if the export is defined then the constant will be exported and can be accessed
+from the outside
+
+# Functions
+
+a function can be defined inside a module or part of a class
+when it is a part of a class it will be a class method, meaning
+it can only be accessed when from the class instance
+
+```
+func [export] [native] <name>([[<name>=]<expression>[, [<name>=]<expression>]*]) [-> <type>] { <statment>* }
+```
+
+* if the native is defined then there will be no need for function body, it will search for the implementation as a C external function
+* if the export is defined then the function will be exported and can be accessed from the outside
+* if the method getts overrided by the a derived class, the function will be dynamically linked, otherwise it will be staticly linked
+
+# Modules
+
+a module is a container for functions and classes
+
+```
+module <name> { <statment>* }
+```
+
+# Type definitions
+
+primitive types are already pre-defined
+these include i8, i16, i32, i64
+unsigned version of these also exists as u8, u16, u32, u64
+there is also int and uint (size is based on OS)
+
+## Class
+
+this allows you to define a class
+
+```
+class [export] <name> [extends <super>] { <statment>* }
+```
+
+**Example**<br>
+```
+class export SomeClass {
+	var someInt : int = 0;
 	
-	// Class and Object are already defined in AuroraBootstrap.h
-	// since they can not be represented using normal stuff
-	// the compiler just knows them by default
-	
-	func export native new(class: Class&) -> Object*
-	func export native gcnew(class: Class&) -> Object^
-	func export native delete(obj: Object&)
-	
-	func export native ClassOf(object: Object&) -> Class*
-	
-	func export SizeOf(object: Any&) -> Int {
-		var class := ClassOf(object);
-		return class.size;
+	func export init(someInt: int) {
+		this.someInt = someInt;
 	}
 	
+	func export getSomeInt() -> int {
+		return this.someInt;
+	}
+}
+```
+
+## Extend
+
+extend allows to extend an existing type and add more features to it like new functions.
+these functions can not be overrided since they are staticly linked
+
+```
+extend <name> { <statement>* }
+```
+
+**Examples**<br>
+add function to int
+```
+extend int {
+	func max() -> int64 {
+		// calculate the max based on size
+		return maxNum
+	}
+}
+```
+
+add function to a class
+```
+class SomeClass {
+	// ...
+}
+
+extend SomeClass {
+	func saveToFile(path: string) {
+		// save to file
+	}
 }
 ```

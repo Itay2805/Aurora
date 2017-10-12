@@ -3,11 +3,8 @@ this file contains the syntax reference for the language
 
 ## variable
 ```
-var [export] <var_name> : [<type>] [= <expression>];
+var <var_name> : [<type>] [= <expression>];
 ```
-
-if the export is defined then the variable will be exported and can be accessed
-from the outside
 	
 ## constant
 ```
@@ -42,6 +39,27 @@ a module is a container for functions and classes
 module <module_name> { ... }
 ```
 
+# expressions
+
+## expression precedence
+
+| Precedence | Operator | Description |
+|:----------:|------------------------------|--------------------------------------------------------------------------------|
+| 1 | ()<br>[]<br>. | Function call<br> Array subscripting<br> member access | Left-to-right |
+| 2 | + -<br> ! <br> * <br> & <br> | Unary plus and minus<br>Logical NOT<br>Indirection (dereference)<br>Address-of |
+| 3 | * / % | multiplication, division, and remainder |
+| 4 | + - | Addition and subtraction |
+| 5 | && | Logical AND |
+| 6 | \|\| | Logical OR |
+| 7 | = | Simple assignment |
+
+### Function call
+```
+<function_name>([[<name>=]<value>...])
+```
+
+args can be named, so you can do either `new(Object)` or `new(class=Object)` for example
+ 
 # example
 ```
 // everything under module lang is staticly imported by default

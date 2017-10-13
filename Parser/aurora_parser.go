@@ -1,4 +1,4 @@
-// Generated from c:\Users\Itay Almog\Desktop\GoWorkspace\src\Aurora\Parser\Aurora.g4 by ANTLR 4.7.
+// Generated from d:\Itay\Documents\Coding\Go\src\Aurora\Parser\Aurora.g4 by ANTLR 4.7.
 
 package parser // Aurora
 
@@ -16,47 +16,46 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 15, 65, 4,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 12, 63, 4,
 	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7, 4,
-	8, 9, 8, 3, 2, 3, 2, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 5, 3, 24, 10, 3, 3,
-	3, 3, 3, 3, 3, 5, 3, 29, 10, 3, 3, 3, 5, 3, 32, 10, 3, 3, 4, 3, 4, 3, 4,
-	3, 4, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 7, 5, 44, 10, 5, 12, 5, 14, 5,
-	47, 11, 5, 3, 6, 3, 6, 3, 6, 3, 6, 3, 7, 7, 7, 54, 10, 7, 12, 7, 14, 7,
-	57, 11, 7, 3, 8, 3, 8, 3, 8, 3, 8, 5, 8, 63, 10, 8, 3, 8, 2, 3, 8, 9, 2,
-	4, 6, 8, 10, 12, 14, 2, 2, 2, 64, 2, 16, 3, 2, 2, 2, 4, 19, 3, 2, 2, 2,
-	6, 33, 3, 2, 2, 2, 8, 37, 3, 2, 2, 2, 10, 48, 3, 2, 2, 2, 12, 55, 3, 2,
-	2, 2, 14, 62, 3, 2, 2, 2, 16, 17, 5, 12, 7, 2, 17, 18, 7, 2, 2, 3, 18,
-	3, 3, 2, 2, 2, 19, 20, 7, 3, 2, 2, 20, 21, 7, 11, 2, 2, 21, 23, 7, 4, 2,
-	2, 22, 24, 5, 8, 5, 2, 23, 22, 3, 2, 2, 2, 23, 24, 3, 2, 2, 2, 24, 25,
-	3, 2, 2, 2, 25, 28, 7, 5, 2, 2, 26, 27, 7, 6, 2, 2, 27, 29, 7, 11, 2, 2,
-	28, 26, 3, 2, 2, 2, 28, 29, 3, 2, 2, 2, 29, 31, 3, 2, 2, 2, 30, 32, 5,
-	10, 6, 2, 31, 30, 3, 2, 2, 2, 31, 32, 3, 2, 2, 2, 32, 5, 3, 2, 2, 2, 33,
-	34, 7, 11, 2, 2, 34, 35, 7, 6, 2, 2, 35, 36, 7, 11, 2, 2, 36, 7, 3, 2,
-	2, 2, 37, 38, 8, 5, 1, 2, 38, 39, 5, 6, 4, 2, 39, 45, 3, 2, 2, 2, 40, 41,
-	12, 3, 2, 2, 41, 42, 7, 7, 2, 2, 42, 44, 5, 6, 4, 2, 43, 40, 3, 2, 2, 2,
-	44, 47, 3, 2, 2, 2, 45, 43, 3, 2, 2, 2, 45, 46, 3, 2, 2, 2, 46, 9, 3, 2,
-	2, 2, 47, 45, 3, 2, 2, 2, 48, 49, 7, 8, 2, 2, 49, 50, 5, 12, 7, 2, 50,
-	51, 7, 9, 2, 2, 51, 11, 3, 2, 2, 2, 52, 54, 5, 14, 8, 2, 53, 52, 3, 2,
-	2, 2, 54, 57, 3, 2, 2, 2, 55, 53, 3, 2, 2, 2, 55, 56, 3, 2, 2, 2, 56, 13,
-	3, 2, 2, 2, 57, 55, 3, 2, 2, 2, 58, 63, 5, 10, 6, 2, 59, 63, 5, 4, 3, 2,
-	60, 61, 3, 2, 2, 2, 61, 63, 7, 10, 2, 2, 62, 58, 3, 2, 2, 2, 62, 59, 3,
-	2, 2, 2, 62, 60, 3, 2, 2, 2, 63, 15, 3, 2, 2, 2, 8, 23, 28, 31, 45, 55,
-	62,
+	8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 3, 2, 3, 2, 3, 2, 3, 3, 3, 3, 7, 3,
+	26, 10, 3, 12, 3, 14, 3, 29, 11, 3, 3, 4, 3, 4, 3, 4, 3, 4, 5, 4, 35, 10,
+	4, 3, 5, 3, 5, 5, 5, 39, 10, 5, 3, 6, 3, 6, 5, 6, 43, 10, 6, 3, 7, 3, 7,
+	5, 7, 47, 10, 7, 3, 8, 3, 8, 5, 8, 51, 10, 8, 3, 9, 3, 9, 3, 9, 5, 9, 56,
+	10, 9, 3, 10, 3, 10, 3, 10, 5, 10, 61, 10, 10, 3, 10, 2, 2, 11, 2, 4, 6,
+	8, 10, 12, 14, 16, 18, 2, 2, 2, 63, 2, 20, 3, 2, 2, 2, 4, 23, 3, 2, 2,
+	2, 6, 34, 3, 2, 2, 2, 8, 36, 3, 2, 2, 2, 10, 40, 3, 2, 2, 2, 12, 44, 3,
+	2, 2, 2, 14, 50, 3, 2, 2, 2, 16, 52, 3, 2, 2, 2, 18, 57, 3, 2, 2, 2, 20,
+	21, 5, 4, 3, 2, 21, 22, 7, 2, 2, 3, 22, 3, 3, 2, 2, 2, 23, 27, 5, 6, 4,
+	2, 24, 26, 5, 6, 4, 2, 25, 24, 3, 2, 2, 2, 26, 29, 3, 2, 2, 2, 27, 25,
+	3, 2, 2, 2, 27, 28, 3, 2, 2, 2, 28, 5, 3, 2, 2, 2, 29, 27, 3, 2, 2, 2,
+	30, 35, 5, 8, 5, 2, 31, 35, 5, 12, 7, 2, 32, 35, 5, 10, 6, 2, 33, 35, 5,
+	14, 8, 2, 34, 30, 3, 2, 2, 2, 34, 31, 3, 2, 2, 2, 34, 32, 3, 2, 2, 2, 34,
+	33, 3, 2, 2, 2, 35, 7, 3, 2, 2, 2, 36, 38, 7, 7, 2, 2, 37, 39, 5, 6, 4,
+	2, 38, 37, 3, 2, 2, 2, 38, 39, 3, 2, 2, 2, 39, 9, 3, 2, 2, 2, 40, 42, 7,
+	8, 2, 2, 41, 43, 5, 6, 4, 2, 42, 41, 3, 2, 2, 2, 42, 43, 3, 2, 2, 2, 43,
+	11, 3, 2, 2, 2, 44, 46, 7, 6, 2, 2, 45, 47, 5, 6, 4, 2, 46, 45, 3, 2, 2,
+	2, 46, 47, 3, 2, 2, 2, 47, 13, 3, 2, 2, 2, 48, 51, 5, 18, 10, 2, 49, 51,
+	5, 16, 9, 2, 50, 48, 3, 2, 2, 2, 50, 49, 3, 2, 2, 2, 51, 15, 3, 2, 2, 2,
+	52, 53, 7, 3, 2, 2, 53, 55, 7, 8, 2, 2, 54, 56, 5, 14, 8, 2, 55, 54, 3,
+	2, 2, 2, 55, 56, 3, 2, 2, 2, 56, 17, 3, 2, 2, 2, 57, 58, 7, 4, 2, 2, 58,
+	60, 7, 5, 2, 2, 59, 61, 5, 14, 8, 2, 60, 59, 3, 2, 2, 2, 60, 61, 3, 2,
+	2, 2, 61, 19, 3, 2, 2, 2, 10, 27, 34, 38, 42, 46, 50, 55, 60,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
 
 var literalNames = []string{
-	"", "'func'", "'('", "')'", "':'", "','", "'{'", "'}'", "';'",
+	"", "'.'", "'('", "')'",
 }
 var symbolicNames = []string{
-	"", "", "", "", "", "", "", "", "", "Identifier", "Whitespace", "Newline",
-	"BlockComment", "LineComment",
+	"", "", "", "", "IntegerLiteral", "StringLiteral", "Identifier", "Whitespace",
+	"Newline", "BlockComment", "LineComment",
 }
 
 var ruleNames = []string{
-	"program", "functionDeclaration", "functionParam", "functionParamList",
-	"codeBlock", "expr_list", "expr",
+	"program", "expressionList", "expr0", "stringImmidiate", "variableImmidiate",
+	"integerImmidiate", "expr1", "memberAccess", "functionCall",
 }
 var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
 
@@ -86,31 +85,30 @@ func NewAuroraParser(input antlr.TokenStream) *AuroraParser {
 
 // AuroraParser tokens.
 const (
-	AuroraParserEOF          = antlr.TokenEOF
-	AuroraParserT__0         = 1
-	AuroraParserT__1         = 2
-	AuroraParserT__2         = 3
-	AuroraParserT__3         = 4
-	AuroraParserT__4         = 5
-	AuroraParserT__5         = 6
-	AuroraParserT__6         = 7
-	AuroraParserT__7         = 8
-	AuroraParserIdentifier   = 9
-	AuroraParserWhitespace   = 10
-	AuroraParserNewline      = 11
-	AuroraParserBlockComment = 12
-	AuroraParserLineComment  = 13
+	AuroraParserEOF            = antlr.TokenEOF
+	AuroraParserT__0           = 1
+	AuroraParserT__1           = 2
+	AuroraParserT__2           = 3
+	AuroraParserIntegerLiteral = 4
+	AuroraParserStringLiteral  = 5
+	AuroraParserIdentifier     = 6
+	AuroraParserWhitespace     = 7
+	AuroraParserNewline        = 8
+	AuroraParserBlockComment   = 9
+	AuroraParserLineComment    = 10
 )
 
 // AuroraParser rules.
 const (
-	AuroraParserRULE_program             = 0
-	AuroraParserRULE_functionDeclaration = 1
-	AuroraParserRULE_functionParam       = 2
-	AuroraParserRULE_functionParamList   = 3
-	AuroraParserRULE_codeBlock           = 4
-	AuroraParserRULE_expr_list           = 5
-	AuroraParserRULE_expr                = 6
+	AuroraParserRULE_program           = 0
+	AuroraParserRULE_expressionList    = 1
+	AuroraParserRULE_expr0             = 2
+	AuroraParserRULE_stringImmidiate   = 3
+	AuroraParserRULE_variableImmidiate = 4
+	AuroraParserRULE_integerImmidiate  = 5
+	AuroraParserRULE_expr1             = 6
+	AuroraParserRULE_memberAccess      = 7
+	AuroraParserRULE_functionCall      = 8
 )
 
 // IProgramContext is an interface to support dynamic dispatch.
@@ -151,14 +149,14 @@ func NewProgramContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 
 func (s *ProgramContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ProgramContext) Expr_list() IExpr_listContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpr_listContext)(nil)).Elem(), 0)
+func (s *ProgramContext) ExpressionList() IExpressionListContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpressionListContext)(nil)).Elem(), 0)
 
 	if t == nil {
 		return nil
 	}
 
-	return t.(IExpr_listContext)
+	return t.(IExpressionListContext)
 }
 
 func (s *ProgramContext) EOF() antlr.TerminalNode {
@@ -207,680 +205,101 @@ func (p *AuroraParser) Program() (localctx IProgramContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(14)
-		p.Expr_list()
+		p.SetState(18)
+		p.ExpressionList()
 	}
 	{
-		p.SetState(15)
+		p.SetState(19)
 		p.Match(AuroraParserEOF)
 	}
 
 	return localctx
 }
 
-// IFunctionDeclarationContext is an interface to support dynamic dispatch.
-type IFunctionDeclarationContext interface {
+// IExpressionListContext is an interface to support dynamic dispatch.
+type IExpressionListContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
-	// GetName returns the Name token.
-	GetName() antlr.Token
-
-	// GetReturnType returns the ReturnType token.
-	GetReturnType() antlr.Token
-
-	// SetName sets the Name token.
-	SetName(antlr.Token)
-
-	// SetReturnType sets the ReturnType token.
-	SetReturnType(antlr.Token)
-
-	// IsFunctionDeclarationContext differentiates from other interfaces.
-	IsFunctionDeclarationContext()
+	// IsExpressionListContext differentiates from other interfaces.
+	IsExpressionListContext()
 }
 
-type FunctionDeclarationContext struct {
-	*antlr.BaseParserRuleContext
-	parser     antlr.Parser
-	Name       antlr.Token
-	ReturnType antlr.Token
-}
-
-func NewEmptyFunctionDeclarationContext() *FunctionDeclarationContext {
-	var p = new(FunctionDeclarationContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = AuroraParserRULE_functionDeclaration
-	return p
-}
-
-func (*FunctionDeclarationContext) IsFunctionDeclarationContext() {}
-
-func NewFunctionDeclarationContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FunctionDeclarationContext {
-	var p = new(FunctionDeclarationContext)
-
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = AuroraParserRULE_functionDeclaration
-
-	return p
-}
-
-func (s *FunctionDeclarationContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *FunctionDeclarationContext) GetName() antlr.Token { return s.Name }
-
-func (s *FunctionDeclarationContext) GetReturnType() antlr.Token { return s.ReturnType }
-
-func (s *FunctionDeclarationContext) SetName(v antlr.Token) { s.Name = v }
-
-func (s *FunctionDeclarationContext) SetReturnType(v antlr.Token) { s.ReturnType = v }
-
-func (s *FunctionDeclarationContext) AllIdentifier() []antlr.TerminalNode {
-	return s.GetTokens(AuroraParserIdentifier)
-}
-
-func (s *FunctionDeclarationContext) Identifier(i int) antlr.TerminalNode {
-	return s.GetToken(AuroraParserIdentifier, i)
-}
-
-func (s *FunctionDeclarationContext) FunctionParamList() IFunctionParamListContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IFunctionParamListContext)(nil)).Elem(), 0)
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IFunctionParamListContext)
-}
-
-func (s *FunctionDeclarationContext) CodeBlock() ICodeBlockContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*ICodeBlockContext)(nil)).Elem(), 0)
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(ICodeBlockContext)
-}
-
-func (s *FunctionDeclarationContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *FunctionDeclarationContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *FunctionDeclarationContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(AuroraListener); ok {
-		listenerT.EnterFunctionDeclaration(s)
-	}
-}
-
-func (s *FunctionDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(AuroraListener); ok {
-		listenerT.ExitFunctionDeclaration(s)
-	}
-}
-
-func (p *AuroraParser) FunctionDeclaration() (localctx IFunctionDeclarationContext) {
-	localctx = NewFunctionDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 2, AuroraParserRULE_functionDeclaration)
-	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(17)
-		p.Match(AuroraParserT__0)
-	}
-	{
-		p.SetState(18)
-
-		var _m = p.Match(AuroraParserIdentifier)
-
-		localctx.(*FunctionDeclarationContext).Name = _m
-	}
-	{
-		p.SetState(19)
-		p.Match(AuroraParserT__1)
-	}
-	p.SetState(21)
-	p.GetErrorHandler().Sync(p)
-	_la = p.GetTokenStream().LA(1)
-
-	if _la == AuroraParserIdentifier {
-		{
-			p.SetState(20)
-			p.functionParamList(0)
-		}
-
-	}
-	{
-		p.SetState(23)
-		p.Match(AuroraParserT__2)
-	}
-	p.SetState(26)
-	p.GetErrorHandler().Sync(p)
-	_la = p.GetTokenStream().LA(1)
-
-	if _la == AuroraParserT__3 {
-		{
-			p.SetState(24)
-			p.Match(AuroraParserT__3)
-		}
-		{
-			p.SetState(25)
-
-			var _m = p.Match(AuroraParserIdentifier)
-
-			localctx.(*FunctionDeclarationContext).ReturnType = _m
-		}
-
-	}
-	p.SetState(29)
-	p.GetErrorHandler().Sync(p)
-
-	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 2, p.GetParserRuleContext()) == 1 {
-		{
-			p.SetState(28)
-			p.CodeBlock()
-		}
-
-	}
-
-	return localctx
-}
-
-// IFunctionParamContext is an interface to support dynamic dispatch.
-type IFunctionParamContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// GetParamName returns the ParamName token.
-	GetParamName() antlr.Token
-
-	// GetParamType returns the ParamType token.
-	GetParamType() antlr.Token
-
-	// SetParamName sets the ParamName token.
-	SetParamName(antlr.Token)
-
-	// SetParamType sets the ParamType token.
-	SetParamType(antlr.Token)
-
-	// IsFunctionParamContext differentiates from other interfaces.
-	IsFunctionParamContext()
-}
-
-type FunctionParamContext struct {
-	*antlr.BaseParserRuleContext
-	parser    antlr.Parser
-	ParamName antlr.Token
-	ParamType antlr.Token
-}
-
-func NewEmptyFunctionParamContext() *FunctionParamContext {
-	var p = new(FunctionParamContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = AuroraParserRULE_functionParam
-	return p
-}
-
-func (*FunctionParamContext) IsFunctionParamContext() {}
-
-func NewFunctionParamContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FunctionParamContext {
-	var p = new(FunctionParamContext)
-
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = AuroraParserRULE_functionParam
-
-	return p
-}
-
-func (s *FunctionParamContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *FunctionParamContext) GetParamName() antlr.Token { return s.ParamName }
-
-func (s *FunctionParamContext) GetParamType() antlr.Token { return s.ParamType }
-
-func (s *FunctionParamContext) SetParamName(v antlr.Token) { s.ParamName = v }
-
-func (s *FunctionParamContext) SetParamType(v antlr.Token) { s.ParamType = v }
-
-func (s *FunctionParamContext) AllIdentifier() []antlr.TerminalNode {
-	return s.GetTokens(AuroraParserIdentifier)
-}
-
-func (s *FunctionParamContext) Identifier(i int) antlr.TerminalNode {
-	return s.GetToken(AuroraParserIdentifier, i)
-}
-
-func (s *FunctionParamContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *FunctionParamContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *FunctionParamContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(AuroraListener); ok {
-		listenerT.EnterFunctionParam(s)
-	}
-}
-
-func (s *FunctionParamContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(AuroraListener); ok {
-		listenerT.ExitFunctionParam(s)
-	}
-}
-
-func (p *AuroraParser) FunctionParam() (localctx IFunctionParamContext) {
-	localctx = NewFunctionParamContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 4, AuroraParserRULE_functionParam)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(31)
-
-		var _m = p.Match(AuroraParserIdentifier)
-
-		localctx.(*FunctionParamContext).ParamName = _m
-	}
-	{
-		p.SetState(32)
-		p.Match(AuroraParserT__3)
-	}
-	{
-		p.SetState(33)
-
-		var _m = p.Match(AuroraParserIdentifier)
-
-		localctx.(*FunctionParamContext).ParamType = _m
-	}
-
-	return localctx
-}
-
-// IFunctionParamListContext is an interface to support dynamic dispatch.
-type IFunctionParamListContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// IsFunctionParamListContext differentiates from other interfaces.
-	IsFunctionParamListContext()
-}
-
-type FunctionParamListContext struct {
+type ExpressionListContext struct {
 	*antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyFunctionParamListContext() *FunctionParamListContext {
-	var p = new(FunctionParamListContext)
+func NewEmptyExpressionListContext() *ExpressionListContext {
+	var p = new(ExpressionListContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = AuroraParserRULE_functionParamList
+	p.RuleIndex = AuroraParserRULE_expressionList
 	return p
 }
 
-func (*FunctionParamListContext) IsFunctionParamListContext() {}
+func (*ExpressionListContext) IsExpressionListContext() {}
 
-func NewFunctionParamListContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FunctionParamListContext {
-	var p = new(FunctionParamListContext)
+func NewExpressionListContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ExpressionListContext {
+	var p = new(ExpressionListContext)
 
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = AuroraParserRULE_functionParamList
+	p.RuleIndex = AuroraParserRULE_expressionList
 
 	return p
 }
 
-func (s *FunctionParamListContext) GetParser() antlr.Parser { return s.parser }
+func (s *ExpressionListContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *FunctionParamListContext) FunctionParam() IFunctionParamContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IFunctionParamContext)(nil)).Elem(), 0)
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IFunctionParamContext)
-}
-
-func (s *FunctionParamListContext) FunctionParamList() IFunctionParamListContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IFunctionParamListContext)(nil)).Elem(), 0)
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IFunctionParamListContext)
-}
-
-func (s *FunctionParamListContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *FunctionParamListContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *FunctionParamListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(AuroraListener); ok {
-		listenerT.EnterFunctionParamList(s)
-	}
-}
-
-func (s *FunctionParamListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(AuroraListener); ok {
-		listenerT.ExitFunctionParamList(s)
-	}
-}
-
-func (p *AuroraParser) FunctionParamList() (localctx IFunctionParamListContext) {
-	return p.functionParamList(0)
-}
-
-func (p *AuroraParser) functionParamList(_p int) (localctx IFunctionParamListContext) {
-	var _parentctx antlr.ParserRuleContext = p.GetParserRuleContext()
-	_parentState := p.GetState()
-	localctx = NewFunctionParamListContext(p, p.GetParserRuleContext(), _parentState)
-	var _prevctx IFunctionParamListContext = localctx
-	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
-	_startState := 6
-	p.EnterRecursionRule(localctx, 6, AuroraParserRULE_functionParamList, _p)
-
-	defer func() {
-		p.UnrollRecursionContexts(_parentctx)
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
-	var _alt int
-
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(36)
-		p.FunctionParam()
-	}
-
-	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(43)
-	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 3, p.GetParserRuleContext())
-
-	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
-		if _alt == 1 {
-			if p.GetParseListeners() != nil {
-				p.TriggerExitRuleEvent()
-			}
-			_prevctx = localctx
-			localctx = NewFunctionParamListContext(p, _parentctx, _parentState)
-			p.PushNewRecursionContext(localctx, _startState, AuroraParserRULE_functionParamList)
-			p.SetState(38)
-
-			if !(p.Precpred(p.GetParserRuleContext(), 1)) {
-				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 1)", ""))
-			}
-			{
-				p.SetState(39)
-				p.Match(AuroraParserT__4)
-			}
-			{
-				p.SetState(40)
-				p.FunctionParam()
-			}
-
-		}
-		p.SetState(45)
-		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 3, p.GetParserRuleContext())
-	}
-
-	return localctx
-}
-
-// ICodeBlockContext is an interface to support dynamic dispatch.
-type ICodeBlockContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// IsCodeBlockContext differentiates from other interfaces.
-	IsCodeBlockContext()
-}
-
-type CodeBlockContext struct {
-	*antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyCodeBlockContext() *CodeBlockContext {
-	var p = new(CodeBlockContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = AuroraParserRULE_codeBlock
-	return p
-}
-
-func (*CodeBlockContext) IsCodeBlockContext() {}
-
-func NewCodeBlockContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *CodeBlockContext {
-	var p = new(CodeBlockContext)
-
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = AuroraParserRULE_codeBlock
-
-	return p
-}
-
-func (s *CodeBlockContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *CodeBlockContext) Expr_list() IExpr_listContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpr_listContext)(nil)).Elem(), 0)
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpr_listContext)
-}
-
-func (s *CodeBlockContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *CodeBlockContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *CodeBlockContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(AuroraListener); ok {
-		listenerT.EnterCodeBlock(s)
-	}
-}
-
-func (s *CodeBlockContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(AuroraListener); ok {
-		listenerT.ExitCodeBlock(s)
-	}
-}
-
-func (p *AuroraParser) CodeBlock() (localctx ICodeBlockContext) {
-	localctx = NewCodeBlockContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 8, AuroraParserRULE_codeBlock)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(46)
-		p.Match(AuroraParserT__5)
-	}
-	{
-		p.SetState(47)
-		p.Expr_list()
-	}
-	{
-		p.SetState(48)
-		p.Match(AuroraParserT__6)
-	}
-
-	return localctx
-}
-
-// IExpr_listContext is an interface to support dynamic dispatch.
-type IExpr_listContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// IsExpr_listContext differentiates from other interfaces.
-	IsExpr_listContext()
-}
-
-type Expr_listContext struct {
-	*antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyExpr_listContext() *Expr_listContext {
-	var p = new(Expr_listContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = AuroraParserRULE_expr_list
-	return p
-}
-
-func (*Expr_listContext) IsExpr_listContext() {}
-
-func NewExpr_listContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *Expr_listContext {
-	var p = new(Expr_listContext)
-
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = AuroraParserRULE_expr_list
-
-	return p
-}
-
-func (s *Expr_listContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *Expr_listContext) AllExpr() []IExprContext {
-	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IExprContext)(nil)).Elem())
-	var tst = make([]IExprContext, len(ts))
+func (s *ExpressionListContext) AllExpr0() []IExpr0Context {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IExpr0Context)(nil)).Elem())
+	var tst = make([]IExpr0Context, len(ts))
 
 	for i, t := range ts {
 		if t != nil {
-			tst[i] = t.(IExprContext)
+			tst[i] = t.(IExpr0Context)
 		}
 	}
 
 	return tst
 }
 
-func (s *Expr_listContext) Expr(i int) IExprContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExprContext)(nil)).Elem(), i)
+func (s *ExpressionListContext) Expr0(i int) IExpr0Context {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpr0Context)(nil)).Elem(), i)
 
 	if t == nil {
 		return nil
 	}
 
-	return t.(IExprContext)
+	return t.(IExpr0Context)
 }
 
-func (s *Expr_listContext) GetRuleContext() antlr.RuleContext {
+func (s *ExpressionListContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *Expr_listContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *ExpressionListContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *Expr_listContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *ExpressionListContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(AuroraListener); ok {
-		listenerT.EnterExpr_list(s)
+		listenerT.EnterExpressionList(s)
 	}
 }
 
-func (s *Expr_listContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *ExpressionListContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(AuroraListener); ok {
-		listenerT.ExitExpr_list(s)
+		listenerT.ExitExpressionList(s)
 	}
 }
 
-func (p *AuroraParser) Expr_list() (localctx IExpr_listContext) {
-	localctx = NewExpr_listContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 10, AuroraParserRULE_expr_list)
+func (p *AuroraParser) ExpressionList() (localctx IExpressionListContext) {
+	localctx = NewExpressionListContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 2, AuroraParserRULE_expressionList)
 	var _la int
 
 	defer func() {
@@ -900,17 +319,21 @@ func (p *AuroraParser) Expr_list() (localctx IExpr_listContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(53)
+	{
+		p.SetState(21)
+		p.Expr0()
+	}
+	p.SetState(25)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	for ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__0)|(1<<AuroraParserT__5)|(1<<AuroraParserT__7))) != 0 {
+	for ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__0)|(1<<AuroraParserT__1)|(1<<AuroraParserIntegerLiteral)|(1<<AuroraParserStringLiteral)|(1<<AuroraParserIdentifier))) != 0 {
 		{
-			p.SetState(50)
-			p.Expr()
+			p.SetState(22)
+			p.Expr0()
 		}
 
-		p.SetState(55)
+		p.SetState(27)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -918,87 +341,107 @@ func (p *AuroraParser) Expr_list() (localctx IExpr_listContext) {
 	return localctx
 }
 
-// IExprContext is an interface to support dynamic dispatch.
-type IExprContext interface {
+// IExpr0Context is an interface to support dynamic dispatch.
+type IExpr0Context interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
-	// IsExprContext differentiates from other interfaces.
-	IsExprContext()
+	// IsExpr0Context differentiates from other interfaces.
+	IsExpr0Context()
 }
 
-type ExprContext struct {
+type Expr0Context struct {
 	*antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyExprContext() *ExprContext {
-	var p = new(ExprContext)
+func NewEmptyExpr0Context() *Expr0Context {
+	var p = new(Expr0Context)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = AuroraParserRULE_expr
+	p.RuleIndex = AuroraParserRULE_expr0
 	return p
 }
 
-func (*ExprContext) IsExprContext() {}
+func (*Expr0Context) IsExpr0Context() {}
 
-func NewExprContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ExprContext {
-	var p = new(ExprContext)
+func NewExpr0Context(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *Expr0Context {
+	var p = new(Expr0Context)
 
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = AuroraParserRULE_expr
+	p.RuleIndex = AuroraParserRULE_expr0
 
 	return p
 }
 
-func (s *ExprContext) GetParser() antlr.Parser { return s.parser }
+func (s *Expr0Context) GetParser() antlr.Parser { return s.parser }
 
-func (s *ExprContext) CodeBlock() ICodeBlockContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*ICodeBlockContext)(nil)).Elem(), 0)
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(ICodeBlockContext)
-}
-
-func (s *ExprContext) FunctionDeclaration() IFunctionDeclarationContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IFunctionDeclarationContext)(nil)).Elem(), 0)
+func (s *Expr0Context) StringImmidiate() IStringImmidiateContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IStringImmidiateContext)(nil)).Elem(), 0)
 
 	if t == nil {
 		return nil
 	}
 
-	return t.(IFunctionDeclarationContext)
+	return t.(IStringImmidiateContext)
 }
 
-func (s *ExprContext) GetRuleContext() antlr.RuleContext {
+func (s *Expr0Context) IntegerImmidiate() IIntegerImmidiateContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IIntegerImmidiateContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IIntegerImmidiateContext)
+}
+
+func (s *Expr0Context) VariableImmidiate() IVariableImmidiateContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IVariableImmidiateContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IVariableImmidiateContext)
+}
+
+func (s *Expr0Context) Expr1() IExpr1Context {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpr1Context)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExpr1Context)
+}
+
+func (s *Expr0Context) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *ExprContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *Expr0Context) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *ExprContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *Expr0Context) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(AuroraListener); ok {
-		listenerT.EnterExpr(s)
+		listenerT.EnterExpr0(s)
 	}
 }
 
-func (s *ExprContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *Expr0Context) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(AuroraListener); ok {
-		listenerT.ExitExpr(s)
+		listenerT.ExitExpr0(s)
 	}
 }
 
-func (p *AuroraParser) Expr() (localctx IExprContext) {
-	localctx = NewExprContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 12, AuroraParserRULE_expr)
+func (p *AuroraParser) Expr0() (localctx IExpr0Context) {
+	localctx = NewExpr0Context(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 4, AuroraParserRULE_expr0)
 
 	defer func() {
 		p.ExitRule()
@@ -1016,29 +459,36 @@ func (p *AuroraParser) Expr() (localctx IExprContext) {
 		}
 	}()
 
-	p.SetState(60)
+	p.SetState(32)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
-	case AuroraParserT__5:
+	case AuroraParserStringLiteral:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(56)
-			p.CodeBlock()
+			p.SetState(28)
+			p.StringImmidiate()
 		}
 
-	case AuroraParserT__0:
+	case AuroraParserIntegerLiteral:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(57)
-			p.FunctionDeclaration()
+			p.SetState(29)
+			p.IntegerImmidiate()
 		}
 
-	case AuroraParserT__7:
+	case AuroraParserIdentifier:
 		p.EnterOuterAlt(localctx, 3)
 		{
-			p.SetState(59)
-			p.Match(AuroraParserT__7)
+			p.SetState(30)
+			p.VariableImmidiate()
+		}
+
+	case AuroraParserT__0, AuroraParserT__1:
+		p.EnterOuterAlt(localctx, 4)
+		{
+			p.SetState(31)
+			p.Expr1()
 		}
 
 	default:
@@ -1048,26 +498,740 @@ func (p *AuroraParser) Expr() (localctx IExprContext) {
 	return localctx
 }
 
-func (p *AuroraParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex int) bool {
-	switch ruleIndex {
-	case 3:
-		var t *FunctionParamListContext = nil
-		if localctx != nil {
-			t = localctx.(*FunctionParamListContext)
-		}
-		return p.FunctionParamList_Sempred(t, predIndex)
+// IStringImmidiateContext is an interface to support dynamic dispatch.
+type IStringImmidiateContext interface {
+	antlr.ParserRuleContext
 
-	default:
-		panic("No predicate with index: " + fmt.Sprint(ruleIndex))
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// GetStringVal returns the StringVal token.
+	GetStringVal() antlr.Token
+
+	// SetStringVal sets the StringVal token.
+	SetStringVal(antlr.Token)
+
+	// IsStringImmidiateContext differentiates from other interfaces.
+	IsStringImmidiateContext()
+}
+
+type StringImmidiateContext struct {
+	*antlr.BaseParserRuleContext
+	parser    antlr.Parser
+	StringVal antlr.Token
+}
+
+func NewEmptyStringImmidiateContext() *StringImmidiateContext {
+	var p = new(StringImmidiateContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = AuroraParserRULE_stringImmidiate
+	return p
+}
+
+func (*StringImmidiateContext) IsStringImmidiateContext() {}
+
+func NewStringImmidiateContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *StringImmidiateContext {
+	var p = new(StringImmidiateContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = AuroraParserRULE_stringImmidiate
+
+	return p
+}
+
+func (s *StringImmidiateContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *StringImmidiateContext) GetStringVal() antlr.Token { return s.StringVal }
+
+func (s *StringImmidiateContext) SetStringVal(v antlr.Token) { s.StringVal = v }
+
+func (s *StringImmidiateContext) StringLiteral() antlr.TerminalNode {
+	return s.GetToken(AuroraParserStringLiteral, 0)
+}
+
+func (s *StringImmidiateContext) Expr0() IExpr0Context {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpr0Context)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExpr0Context)
+}
+
+func (s *StringImmidiateContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *StringImmidiateContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *StringImmidiateContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.EnterStringImmidiate(s)
 	}
 }
 
-func (p *AuroraParser) FunctionParamList_Sempred(localctx antlr.RuleContext, predIndex int) bool {
-	switch predIndex {
-	case 0:
-		return p.Precpred(p.GetParserRuleContext(), 1)
+func (s *StringImmidiateContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.ExitStringImmidiate(s)
+	}
+}
+
+func (p *AuroraParser) StringImmidiate() (localctx IStringImmidiateContext) {
+	localctx = NewStringImmidiateContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 6, AuroraParserRULE_stringImmidiate)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(34)
+
+		var _m = p.Match(AuroraParserStringLiteral)
+
+		localctx.(*StringImmidiateContext).StringVal = _m
+	}
+	p.SetState(36)
+	p.GetErrorHandler().Sync(p)
+
+	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 2, p.GetParserRuleContext()) == 1 {
+		{
+			p.SetState(35)
+			p.Expr0()
+		}
+
+	}
+
+	return localctx
+}
+
+// IVariableImmidiateContext is an interface to support dynamic dispatch.
+type IVariableImmidiateContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// GetName returns the Name token.
+	GetName() antlr.Token
+
+	// SetName sets the Name token.
+	SetName(antlr.Token)
+
+	// IsVariableImmidiateContext differentiates from other interfaces.
+	IsVariableImmidiateContext()
+}
+
+type VariableImmidiateContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+	Name   antlr.Token
+}
+
+func NewEmptyVariableImmidiateContext() *VariableImmidiateContext {
+	var p = new(VariableImmidiateContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = AuroraParserRULE_variableImmidiate
+	return p
+}
+
+func (*VariableImmidiateContext) IsVariableImmidiateContext() {}
+
+func NewVariableImmidiateContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *VariableImmidiateContext {
+	var p = new(VariableImmidiateContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = AuroraParserRULE_variableImmidiate
+
+	return p
+}
+
+func (s *VariableImmidiateContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *VariableImmidiateContext) GetName() antlr.Token { return s.Name }
+
+func (s *VariableImmidiateContext) SetName(v antlr.Token) { s.Name = v }
+
+func (s *VariableImmidiateContext) Identifier() antlr.TerminalNode {
+	return s.GetToken(AuroraParserIdentifier, 0)
+}
+
+func (s *VariableImmidiateContext) Expr0() IExpr0Context {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpr0Context)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExpr0Context)
+}
+
+func (s *VariableImmidiateContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *VariableImmidiateContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *VariableImmidiateContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.EnterVariableImmidiate(s)
+	}
+}
+
+func (s *VariableImmidiateContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.ExitVariableImmidiate(s)
+	}
+}
+
+func (p *AuroraParser) VariableImmidiate() (localctx IVariableImmidiateContext) {
+	localctx = NewVariableImmidiateContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 8, AuroraParserRULE_variableImmidiate)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(38)
+
+		var _m = p.Match(AuroraParserIdentifier)
+
+		localctx.(*VariableImmidiateContext).Name = _m
+	}
+	p.SetState(40)
+	p.GetErrorHandler().Sync(p)
+
+	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 3, p.GetParserRuleContext()) == 1 {
+		{
+			p.SetState(39)
+			p.Expr0()
+		}
+
+	}
+
+	return localctx
+}
+
+// IIntegerImmidiateContext is an interface to support dynamic dispatch.
+type IIntegerImmidiateContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// GetNumberVal returns the NumberVal token.
+	GetNumberVal() antlr.Token
+
+	// SetNumberVal sets the NumberVal token.
+	SetNumberVal(antlr.Token)
+
+	// IsIntegerImmidiateContext differentiates from other interfaces.
+	IsIntegerImmidiateContext()
+}
+
+type IntegerImmidiateContext struct {
+	*antlr.BaseParserRuleContext
+	parser    antlr.Parser
+	NumberVal antlr.Token
+}
+
+func NewEmptyIntegerImmidiateContext() *IntegerImmidiateContext {
+	var p = new(IntegerImmidiateContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = AuroraParserRULE_integerImmidiate
+	return p
+}
+
+func (*IntegerImmidiateContext) IsIntegerImmidiateContext() {}
+
+func NewIntegerImmidiateContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *IntegerImmidiateContext {
+	var p = new(IntegerImmidiateContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = AuroraParserRULE_integerImmidiate
+
+	return p
+}
+
+func (s *IntegerImmidiateContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *IntegerImmidiateContext) GetNumberVal() antlr.Token { return s.NumberVal }
+
+func (s *IntegerImmidiateContext) SetNumberVal(v antlr.Token) { s.NumberVal = v }
+
+func (s *IntegerImmidiateContext) IntegerLiteral() antlr.TerminalNode {
+	return s.GetToken(AuroraParserIntegerLiteral, 0)
+}
+
+func (s *IntegerImmidiateContext) Expr0() IExpr0Context {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpr0Context)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExpr0Context)
+}
+
+func (s *IntegerImmidiateContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *IntegerImmidiateContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *IntegerImmidiateContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.EnterIntegerImmidiate(s)
+	}
+}
+
+func (s *IntegerImmidiateContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.ExitIntegerImmidiate(s)
+	}
+}
+
+func (p *AuroraParser) IntegerImmidiate() (localctx IIntegerImmidiateContext) {
+	localctx = NewIntegerImmidiateContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 10, AuroraParserRULE_integerImmidiate)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(42)
+
+		var _m = p.Match(AuroraParserIntegerLiteral)
+
+		localctx.(*IntegerImmidiateContext).NumberVal = _m
+	}
+	p.SetState(44)
+	p.GetErrorHandler().Sync(p)
+
+	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 4, p.GetParserRuleContext()) == 1 {
+		{
+			p.SetState(43)
+			p.Expr0()
+		}
+
+	}
+
+	return localctx
+}
+
+// IExpr1Context is an interface to support dynamic dispatch.
+type IExpr1Context interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsExpr1Context differentiates from other interfaces.
+	IsExpr1Context()
+}
+
+type Expr1Context struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyExpr1Context() *Expr1Context {
+	var p = new(Expr1Context)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = AuroraParserRULE_expr1
+	return p
+}
+
+func (*Expr1Context) IsExpr1Context() {}
+
+func NewExpr1Context(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *Expr1Context {
+	var p = new(Expr1Context)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = AuroraParserRULE_expr1
+
+	return p
+}
+
+func (s *Expr1Context) GetParser() antlr.Parser { return s.parser }
+
+func (s *Expr1Context) FunctionCall() IFunctionCallContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IFunctionCallContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IFunctionCallContext)
+}
+
+func (s *Expr1Context) MemberAccess() IMemberAccessContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IMemberAccessContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IMemberAccessContext)
+}
+
+func (s *Expr1Context) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *Expr1Context) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *Expr1Context) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.EnterExpr1(s)
+	}
+}
+
+func (s *Expr1Context) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.ExitExpr1(s)
+	}
+}
+
+func (p *AuroraParser) Expr1() (localctx IExpr1Context) {
+	localctx = NewExpr1Context(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 12, AuroraParserRULE_expr1)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.SetState(48)
+	p.GetErrorHandler().Sync(p)
+
+	switch p.GetTokenStream().LA(1) {
+	case AuroraParserT__1:
+		p.EnterOuterAlt(localctx, 1)
+		{
+			p.SetState(46)
+			p.FunctionCall()
+		}
+
+	case AuroraParserT__0:
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(47)
+			p.MemberAccess()
+		}
 
 	default:
-		panic("No predicate with index: " + fmt.Sprint(predIndex))
+		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 	}
+
+	return localctx
+}
+
+// IMemberAccessContext is an interface to support dynamic dispatch.
+type IMemberAccessContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// GetMember returns the Member token.
+	GetMember() antlr.Token
+
+	// SetMember sets the Member token.
+	SetMember(antlr.Token)
+
+	// IsMemberAccessContext differentiates from other interfaces.
+	IsMemberAccessContext()
+}
+
+type MemberAccessContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+	Member antlr.Token
+}
+
+func NewEmptyMemberAccessContext() *MemberAccessContext {
+	var p = new(MemberAccessContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = AuroraParserRULE_memberAccess
+	return p
+}
+
+func (*MemberAccessContext) IsMemberAccessContext() {}
+
+func NewMemberAccessContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *MemberAccessContext {
+	var p = new(MemberAccessContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = AuroraParserRULE_memberAccess
+
+	return p
+}
+
+func (s *MemberAccessContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *MemberAccessContext) GetMember() antlr.Token { return s.Member }
+
+func (s *MemberAccessContext) SetMember(v antlr.Token) { s.Member = v }
+
+func (s *MemberAccessContext) Identifier() antlr.TerminalNode {
+	return s.GetToken(AuroraParserIdentifier, 0)
+}
+
+func (s *MemberAccessContext) Expr1() IExpr1Context {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpr1Context)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExpr1Context)
+}
+
+func (s *MemberAccessContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *MemberAccessContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *MemberAccessContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.EnterMemberAccess(s)
+	}
+}
+
+func (s *MemberAccessContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.ExitMemberAccess(s)
+	}
+}
+
+func (p *AuroraParser) MemberAccess() (localctx IMemberAccessContext) {
+	localctx = NewMemberAccessContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 14, AuroraParserRULE_memberAccess)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(50)
+		p.Match(AuroraParserT__0)
+	}
+	{
+		p.SetState(51)
+
+		var _m = p.Match(AuroraParserIdentifier)
+
+		localctx.(*MemberAccessContext).Member = _m
+	}
+	p.SetState(53)
+	p.GetErrorHandler().Sync(p)
+
+	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 6, p.GetParserRuleContext()) == 1 {
+		{
+			p.SetState(52)
+			p.Expr1()
+		}
+
+	}
+
+	return localctx
+}
+
+// IFunctionCallContext is an interface to support dynamic dispatch.
+type IFunctionCallContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsFunctionCallContext differentiates from other interfaces.
+	IsFunctionCallContext()
+}
+
+type FunctionCallContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyFunctionCallContext() *FunctionCallContext {
+	var p = new(FunctionCallContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = AuroraParserRULE_functionCall
+	return p
+}
+
+func (*FunctionCallContext) IsFunctionCallContext() {}
+
+func NewFunctionCallContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FunctionCallContext {
+	var p = new(FunctionCallContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = AuroraParserRULE_functionCall
+
+	return p
+}
+
+func (s *FunctionCallContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *FunctionCallContext) Expr1() IExpr1Context {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpr1Context)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExpr1Context)
+}
+
+func (s *FunctionCallContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *FunctionCallContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *FunctionCallContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.EnterFunctionCall(s)
+	}
+}
+
+func (s *FunctionCallContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.ExitFunctionCall(s)
+	}
+}
+
+func (p *AuroraParser) FunctionCall() (localctx IFunctionCallContext) {
+	localctx = NewFunctionCallContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 16, AuroraParserRULE_functionCall)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(55)
+		p.Match(AuroraParserT__1)
+	}
+	{
+		p.SetState(56)
+		p.Match(AuroraParserT__2)
+	}
+	p.SetState(58)
+	p.GetErrorHandler().Sync(p)
+
+	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 7, p.GetParserRuleContext()) == 1 {
+		{
+			p.SetState(57)
+			p.Expr1()
+		}
+
+	}
+
+	return localctx
 }

@@ -4,52 +4,76 @@ import (
 	"Aurora/Parser"
 	"fmt"
 	"os"
+	"strconv"
 
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
-type FunctionParam struct {
-	Name string
-	Type string
+type Expr interface {
+	expr()
 }
 
-type Function struct {
-	Name   string
-	Params []FunctionParam
+type IntImmidiateExpr struct {
+	Value int
 }
 
-type TreeShapeListener struct {
+type MemberAccessExpr struct {
+	AccessFrom Expr
+	MemberName string
+}
+
+type FunctionCallExpr struct {
+	Function Expr
+}
+
+func (f IntImmidiateExpr) expr() {}
+func (f MemberAccessExpr) expr() {}
+func (f FunctionCallExpr) expr() {}
+
+type CompilerContext struct {
 	*parser.BaseAuroraListener
 
-	Functions []Function
+	Expressions []Expr
+	Current     Expr
 }
 
-func NewTreeShapeListener() *TreeShapeListener {
-	return new(TreeShapeListener)
-}
-
-func (s *TreeShapeListener) EnterProgram(ctx *parser.ProgramContext) {
-	s.Functions = make([]Function, 0)
-}
-
-func (s *TreeShapeListener) EnterFunctionDeclaration(ctx *parser.FunctionDeclarationContext) {
-	functionName := ctx.Name.GetText()
-
-	functionDecl := Function{
-		Name:   functionName,
-		Params: make([]FunctionParam, 0),
+// once we exited the expression we can continue onward
+func (s *CompilerContext) ExitExpr0(ctx *parser.Expr0Context) {
+	if s.Current != nil {
+		s.Expressions = append(s.Expressions, s.Current)
+		s.Current = nil
 	}
-
-	s.Functions = append(s.Functions, functionDecl)
 }
 
-func (s *TreeShapeListener) EnterFunctionParam(ctx *parser.FunctionParamContext) {
-	lastFunction := len(s.Functions) - 1
+/* Precedence 0 */
 
-	s.Functions[lastFunction].Params = append(s.Functions[lastFunction].Params, FunctionParam{
-		Name: ctx.ParamName.GetText(),
-		Type: ctx.ParamType.GetText(),
-	})
+func (s *CompilerContext) EnterIntegerImmidiate(ctx *parser.IntegerImmidiateContext) {
+	num, _ := strconv.Atoi(ctx.NumberVal.GetText())
+	s.Current = IntImmidiateExpr{
+		Value: num,
+	}
+}
+
+/* Precedence 1 */
+
+func (s *CompilerContext) EnterMemberAccess(ctx *parser.MemberAccessContext) {
+	s.Current = MemberAccessExpr{
+		AccessFrom: s.Current,
+		MemberName: ctx.Member.GetText(),
+	}
+}
+
+func (s *CompilerContext) EnterFunctionCall(ctx *parser.FunctionCallContext) {
+	s.Current = FunctionCallExpr{
+		Function: s.Current,
+	}
+}
+
+func NewCompilerContext() *CompilerContext {
+	return &CompilerContext{
+		Expressions: make([]Expr, 0),
+		Current:     nil,
+	}
 }
 
 func main() {
@@ -60,7 +84,7 @@ func main() {
 	p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
 	p.BuildParseTrees = true
 	tree := p.Program()
-	listener := NewTreeShapeListener()
+	listener := NewCompilerContext()
 	antlr.ParseTreeWalkerDefault.Walk(listener, tree)
-	fmt.Printf("%+v", listener.Functions)
+	fmt.Printf("%+v", listener)
 }

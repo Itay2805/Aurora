@@ -1,4 +1,4 @@
-// Generated from c:\Users\Itay Almog\Desktop\GoWorkspace\src\Aurora\Parser\Aurora.g4 by ANTLR 4.7.
+// Generated from d:\Itay\Documents\Coding\Go\src\Aurora\Parser\Aurora.g4 by ANTLR 4.7.
 
 package parser // Aurora
 
@@ -11,42 +11,54 @@ type AuroraListener interface {
 	// EnterProgram is called when entering the program production.
 	EnterProgram(c *ProgramContext)
 
-	// EnterFunctionDeclaration is called when entering the functionDeclaration production.
-	EnterFunctionDeclaration(c *FunctionDeclarationContext)
+	// EnterExpressionList is called when entering the expressionList production.
+	EnterExpressionList(c *ExpressionListContext)
 
-	// EnterFunctionParam is called when entering the functionParam production.
-	EnterFunctionParam(c *FunctionParamContext)
+	// EnterExpr0 is called when entering the expr0 production.
+	EnterExpr0(c *Expr0Context)
 
-	// EnterFunctionParamList is called when entering the functionParamList production.
-	EnterFunctionParamList(c *FunctionParamListContext)
+	// EnterStringImmidiate is called when entering the stringImmidiate production.
+	EnterStringImmidiate(c *StringImmidiateContext)
 
-	// EnterCodeBlock is called when entering the codeBlock production.
-	EnterCodeBlock(c *CodeBlockContext)
+	// EnterVariableImmidiate is called when entering the variableImmidiate production.
+	EnterVariableImmidiate(c *VariableImmidiateContext)
 
-	// EnterExpr_list is called when entering the expr_list production.
-	EnterExpr_list(c *Expr_listContext)
+	// EnterIntegerImmidiate is called when entering the integerImmidiate production.
+	EnterIntegerImmidiate(c *IntegerImmidiateContext)
 
-	// EnterExpr is called when entering the expr production.
-	EnterExpr(c *ExprContext)
+	// EnterExpr1 is called when entering the expr1 production.
+	EnterExpr1(c *Expr1Context)
+
+	// EnterMemberAccess is called when entering the memberAccess production.
+	EnterMemberAccess(c *MemberAccessContext)
+
+	// EnterFunctionCall is called when entering the functionCall production.
+	EnterFunctionCall(c *FunctionCallContext)
 
 	// ExitProgram is called when exiting the program production.
 	ExitProgram(c *ProgramContext)
 
-	// ExitFunctionDeclaration is called when exiting the functionDeclaration production.
-	ExitFunctionDeclaration(c *FunctionDeclarationContext)
+	// ExitExpressionList is called when exiting the expressionList production.
+	ExitExpressionList(c *ExpressionListContext)
 
-	// ExitFunctionParam is called when exiting the functionParam production.
-	ExitFunctionParam(c *FunctionParamContext)
+	// ExitExpr0 is called when exiting the expr0 production.
+	ExitExpr0(c *Expr0Context)
 
-	// ExitFunctionParamList is called when exiting the functionParamList production.
-	ExitFunctionParamList(c *FunctionParamListContext)
+	// ExitStringImmidiate is called when exiting the stringImmidiate production.
+	ExitStringImmidiate(c *StringImmidiateContext)
 
-	// ExitCodeBlock is called when exiting the codeBlock production.
-	ExitCodeBlock(c *CodeBlockContext)
+	// ExitVariableImmidiate is called when exiting the variableImmidiate production.
+	ExitVariableImmidiate(c *VariableImmidiateContext)
 
-	// ExitExpr_list is called when exiting the expr_list production.
-	ExitExpr_list(c *Expr_listContext)
+	// ExitIntegerImmidiate is called when exiting the integerImmidiate production.
+	ExitIntegerImmidiate(c *IntegerImmidiateContext)
 
-	// ExitExpr is called when exiting the expr production.
-	ExitExpr(c *ExprContext)
+	// ExitExpr1 is called when exiting the expr1 production.
+	ExitExpr1(c *Expr1Context)
+
+	// ExitMemberAccess is called when exiting the memberAccess production.
+	ExitMemberAccess(c *MemberAccessContext)
+
+	// ExitFunctionCall is called when exiting the functionCall production.
+	ExitFunctionCall(c *FunctionCallContext)
 }

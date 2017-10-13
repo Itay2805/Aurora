@@ -1,52 +1,57 @@
 grammar Aurora;
 
 program
-    : expr_list EOF
+    : expressionList EOF
     ;
 
-functionDeclaration
-    : 'func' Name=Identifier 
-        '(' 
-        
-        functionParamList?
-        
-        ')' 
-        
-        (
-            ':'
-            ReturnType=Identifier
-        )?
-
-        codeBlock?
+expressionList
+    : expr0 expr0*
     ;
 
-functionParam
-    : 
-        ParamName=Identifier 
-        ':' 
-        ParamType=Identifier
+/* Precedence 0 (immidiate values) */
+
+expr0
+    : stringImmidiate
+    | integerImmidiate
+    | variableImmidiate
+    | expr1
     ;
 
-functionParamList
-    : functionParam
-    | functionParamList ',' functionParam
+stringImmidiate
+    : StringVal=StringLiteral expr0?
     ;
 
-codeBlock
-    : '{' expr_list '}'
+variableImmidiate
+    : Name=Identifier expr0?
     ;
 
-expr_list
-    : expr*
+integerImmidiate
+    : NumberVal=IntegerLiteral expr0?
     ;
 
-expr
-    : codeBlock
-    | functionDeclaration
-    |
-        ( 
-        )
-        ';'
+/* Precedence 1 */
+
+expr1
+    : functionCall
+    | memberAccess
+    ;
+
+memberAccess
+    : '.' Member=Identifier expr1?
+    ;
+
+functionCall
+    : '(' ')' expr1?
+    ;
+
+/* Literals */
+
+IntegerLiteral
+    : (Digit | '_')+
+    ;
+
+StringLiteral
+    : '"' [^"]* '"'
     ;
 
 Identifier

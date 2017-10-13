@@ -1,4 +1,4 @@
-// Generated from c:\Users\Itay Almog\Desktop\GoWorkspace\src\Aurora\Parser\Aurora.g4 by ANTLR 4.7.
+// Generated from d:\Itay\Documents\Coding\Go\src\Aurora\Parser\Aurora.g4 by ANTLR 4.7.
 
 package parser // Aurora
 
@@ -27,38 +27,50 @@ func (s *BaseAuroraListener) EnterProgram(ctx *ProgramContext) {}
 // ExitProgram is called when production program is exited.
 func (s *BaseAuroraListener) ExitProgram(ctx *ProgramContext) {}
 
-// EnterFunctionDeclaration is called when production functionDeclaration is entered.
-func (s *BaseAuroraListener) EnterFunctionDeclaration(ctx *FunctionDeclarationContext) {}
+// EnterExpressionList is called when production expressionList is entered.
+func (s *BaseAuroraListener) EnterExpressionList(ctx *ExpressionListContext) {}
 
-// ExitFunctionDeclaration is called when production functionDeclaration is exited.
-func (s *BaseAuroraListener) ExitFunctionDeclaration(ctx *FunctionDeclarationContext) {}
+// ExitExpressionList is called when production expressionList is exited.
+func (s *BaseAuroraListener) ExitExpressionList(ctx *ExpressionListContext) {}
 
-// EnterFunctionParam is called when production functionParam is entered.
-func (s *BaseAuroraListener) EnterFunctionParam(ctx *FunctionParamContext) {}
+// EnterExpr0 is called when production expr0 is entered.
+func (s *BaseAuroraListener) EnterExpr0(ctx *Expr0Context) {}
 
-// ExitFunctionParam is called when production functionParam is exited.
-func (s *BaseAuroraListener) ExitFunctionParam(ctx *FunctionParamContext) {}
+// ExitExpr0 is called when production expr0 is exited.
+func (s *BaseAuroraListener) ExitExpr0(ctx *Expr0Context) {}
 
-// EnterFunctionParamList is called when production functionParamList is entered.
-func (s *BaseAuroraListener) EnterFunctionParamList(ctx *FunctionParamListContext) {}
+// EnterStringImmidiate is called when production stringImmidiate is entered.
+func (s *BaseAuroraListener) EnterStringImmidiate(ctx *StringImmidiateContext) {}
 
-// ExitFunctionParamList is called when production functionParamList is exited.
-func (s *BaseAuroraListener) ExitFunctionParamList(ctx *FunctionParamListContext) {}
+// ExitStringImmidiate is called when production stringImmidiate is exited.
+func (s *BaseAuroraListener) ExitStringImmidiate(ctx *StringImmidiateContext) {}
 
-// EnterCodeBlock is called when production codeBlock is entered.
-func (s *BaseAuroraListener) EnterCodeBlock(ctx *CodeBlockContext) {}
+// EnterVariableImmidiate is called when production variableImmidiate is entered.
+func (s *BaseAuroraListener) EnterVariableImmidiate(ctx *VariableImmidiateContext) {}
 
-// ExitCodeBlock is called when production codeBlock is exited.
-func (s *BaseAuroraListener) ExitCodeBlock(ctx *CodeBlockContext) {}
+// ExitVariableImmidiate is called when production variableImmidiate is exited.
+func (s *BaseAuroraListener) ExitVariableImmidiate(ctx *VariableImmidiateContext) {}
 
-// EnterExpr_list is called when production expr_list is entered.
-func (s *BaseAuroraListener) EnterExpr_list(ctx *Expr_listContext) {}
+// EnterIntegerImmidiate is called when production integerImmidiate is entered.
+func (s *BaseAuroraListener) EnterIntegerImmidiate(ctx *IntegerImmidiateContext) {}
 
-// ExitExpr_list is called when production expr_list is exited.
-func (s *BaseAuroraListener) ExitExpr_list(ctx *Expr_listContext) {}
+// ExitIntegerImmidiate is called when production integerImmidiate is exited.
+func (s *BaseAuroraListener) ExitIntegerImmidiate(ctx *IntegerImmidiateContext) {}
 
-// EnterExpr is called when production expr is entered.
-func (s *BaseAuroraListener) EnterExpr(ctx *ExprContext) {}
+// EnterExpr1 is called when production expr1 is entered.
+func (s *BaseAuroraListener) EnterExpr1(ctx *Expr1Context) {}
 
-// ExitExpr is called when production expr is exited.
-func (s *BaseAuroraListener) ExitExpr(ctx *ExprContext) {}
+// ExitExpr1 is called when production expr1 is exited.
+func (s *BaseAuroraListener) ExitExpr1(ctx *Expr1Context) {}
+
+// EnterMemberAccess is called when production memberAccess is entered.
+func (s *BaseAuroraListener) EnterMemberAccess(ctx *MemberAccessContext) {}
+
+// ExitMemberAccess is called when production memberAccess is exited.
+func (s *BaseAuroraListener) ExitMemberAccess(ctx *MemberAccessContext) {}
+
+// EnterFunctionCall is called when production functionCall is entered.
+func (s *BaseAuroraListener) EnterFunctionCall(ctx *FunctionCallContext) {}
+
+// ExitFunctionCall is called when production functionCall is exited.
+func (s *BaseAuroraListener) ExitFunctionCall(ctx *FunctionCallContext) {}

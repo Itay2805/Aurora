@@ -7,6 +7,13 @@ regex = `[a-zA-Z_][a-zA-Z0-9_]*`
 
 these are used to identify variables, constants functions and more
 
+## Optionals
+the language has built in support for optionals.
+by default, you MUST initialize a value, either in the constructor of a class or right away, otherwise it will not compile.
+when you define a variable as optional, if it is not initialized right away or in the constructor, it will initialize to a `nil`
+
+you can check an optional against a nil to find if the optional is `some` or `none`
+
 # Literals
 
 ## Integers
@@ -51,7 +58,7 @@ strings literals will return a string class
 
 ## variable
 ```
-var [nullable] <name> : [<type>] [= <expression>];
+var [optional] <name> : [<type>] [= <expression>];
 ```
 
 * if nullable is defined then the variable can be left uninited, otherwise you have to initialize it.
@@ -71,12 +78,13 @@ when it is a part of a class it will be a class method, meaning
 it can only be accessed when from the class instance
 
 ```
-func [export] [native] <name>([[<name>=]<expression>[, [<name>=]<expression>]*]) [-> <type>] { <statment>* }
+func [export] [native] <name>([[optional] [<name>=]<expression>[, [optional] [<name>=]<expression>]*]) [-> <type>] { <statment>* }
 ```
 
 * if the native is defined then there will be no need for function body, it will search for the implementation as a C external function
 * if the export is defined then the function will be exported and can be accessed from the outside
 * if the method getts overrided by the a derived class, the function will be dynamically linked, otherwise it will be staticly linked
+* optional argument can either not be provided at all (and then it will be just a `nil`)
 
 # Modules
 

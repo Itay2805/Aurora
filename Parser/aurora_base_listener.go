@@ -74,3 +74,9 @@ func (s *BaseAuroraListener) EnterFunctionCall(ctx *FunctionCallContext) {}
 
 // ExitFunctionCall is called when production functionCall is exited.
 func (s *BaseAuroraListener) ExitFunctionCall(ctx *FunctionCallContext) {}
+
+// EnterFunctionCallParam is called when production functionCallParam is entered.
+func (s *BaseAuroraListener) EnterFunctionCallParam(ctx *FunctionCallParamContext) {}
+
+// ExitFunctionCallParam is called when production functionCallParam is exited.
+func (s *BaseAuroraListener) ExitFunctionCallParam(ctx *FunctionCallParamContext) {}

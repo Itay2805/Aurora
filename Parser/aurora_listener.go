@@ -35,6 +35,9 @@ type AuroraListener interface {
 	// EnterFunctionCall is called when entering the functionCall production.
 	EnterFunctionCall(c *FunctionCallContext)
 
+	// EnterFunctionCallParam is called when entering the functionCallParam production.
+	EnterFunctionCallParam(c *FunctionCallParamContext)
+
 	// ExitProgram is called when exiting the program production.
 	ExitProgram(c *ProgramContext)
 
@@ -61,4 +64,7 @@ type AuroraListener interface {
 
 	// ExitFunctionCall is called when exiting the functionCall production.
 	ExitFunctionCall(c *FunctionCallContext)
+
+	// ExitFunctionCallParam is called when exiting the functionCallParam production.
+	ExitFunctionCallParam(c *FunctionCallParamContext)
 }

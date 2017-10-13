@@ -1,1 +1,1 @@
-1.getAsObject().value
+1.getAsObject(1, 2.test, 3.test())

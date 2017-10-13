@@ -41,7 +41,11 @@ memberAccess
     ;
 
 functionCall
-    : '(' ')' expr1?
+    : '(' functionCallParam? (',' functionCallParam)* ')' expr1?
+    ;
+
+functionCallParam
+    : ParamExpr=expr0
     ;
 
 /* Literals */

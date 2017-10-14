@@ -49,11 +49,6 @@ strings literals will return a string class
 | 6 | \|\| | Logical OR |
 | 7 | = | Simple assignment |
 
-### Function call
-```
-<function_name>([<expression>[, <expression>]*])
-``` 
-
 # Statements
 
 ## variable

@@ -5,7 +5,7 @@ var IdSeen bool = false
  }
 
 program
-    : expressionList EOF?
+    : expressionList? EOF?
     ;
 
 expressionList
@@ -13,25 +13,26 @@ expressionList
     ;
 
 expression
-    : expr0 (Newline | ';' | EOF)
+    : expr (Newline | ';' | EOF)
     ;
+
+expr
+    : expr1
+    ;
+
 
 /* Precedence 0 (immidiate values) */
 
 expr0
-    :   (
-            ( brackets
-            | stringImmidiate
-            | integerImmidiate
-            | identifierImmidiate
-            | expr1
-            )
-            expr0?
+    :   ( brackets
+        | stringImmidiate
+        | integerImmidiate
+        | identifierImmidiate
         )
     ;
 
 brackets
-    : '(' ParamExpr=expr0 ')'
+    : '(' ParamExpr=expr ')'
     ;
 
 stringImmidiate
@@ -49,12 +50,11 @@ integerImmidiate
 /* Precedence 1 */
 
 expr1
-    : 
-        ( functionCall
-        | memberAccess
-        | expr2
-        )
-        expr1?
+    : expr1 
+    ( memberAccess
+    | functionCall
+    )
+    | expr0
     ;
 
 memberAccess
@@ -66,21 +66,7 @@ functionCall
     ;
 
 functionCallParam
-    : ParamExpr=expr0
-    ;
-
-/* Precedence 2 */
-
-expr2
-    : 
-        Op=( '-'
-        | '+'
-        | '!'
-        | '*'
-        | '&'
-        )
-        Expr=expr0
-        expr2?
+    : ParamExpr=expr
     ;
 
 /* Literals */

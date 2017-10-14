@@ -43,7 +43,7 @@ strings literals will return a string class
 |:----------:|------------------------------|--------------------------------------------------------------------------------|
 | 1 | ()<br>[]<br>. | Function call<br> Array subscripting<br> member access | Left-to-right |
 | 2 | + -<br> ! <br> * <br> & <br> | Unary plus and minus<br>Logical NOT<br>Indirection (dereference)<br>Address-of |
-| 3 | * / % | multiplication, division, and remainder |
+| 3 | * \/ % | multiplication, division, and remainder |
 | 4 | + - | Addition and subtraction |
 | 5 | && | Logical AND |
 | 6 | \|\| | Logical OR |

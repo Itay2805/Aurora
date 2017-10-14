@@ -39,6 +39,12 @@ func (s *BaseAuroraListener) EnterExpression(ctx *ExpressionContext) {}
 // ExitExpression is called when production expression is exited.
 func (s *BaseAuroraListener) ExitExpression(ctx *ExpressionContext) {}
 
+// EnterExpr is called when production expr is entered.
+func (s *BaseAuroraListener) EnterExpr(ctx *ExprContext) {}
+
+// ExitExpr is called when production expr is exited.
+func (s *BaseAuroraListener) ExitExpr(ctx *ExprContext) {}
+
 // EnterExpr0 is called when production expr0 is entered.
 func (s *BaseAuroraListener) EnterExpr0(ctx *Expr0Context) {}
 
@@ -92,9 +98,3 @@ func (s *BaseAuroraListener) EnterFunctionCallParam(ctx *FunctionCallParamContex
 
 // ExitFunctionCallParam is called when production functionCallParam is exited.
 func (s *BaseAuroraListener) ExitFunctionCallParam(ctx *FunctionCallParamContext) {}
-
-// EnterExpr2 is called when production expr2 is entered.
-func (s *BaseAuroraListener) EnterExpr2(ctx *Expr2Context) {}
-
-// ExitExpr2 is called when production expr2 is exited.
-func (s *BaseAuroraListener) ExitExpr2(ctx *Expr2Context) {}

@@ -1,9 +1,7 @@
-package main
+package compiler
 
 import (
 	"Aurora/Parser"
-	"fmt"
-	"os"
 	"strconv"
 
 	"github.com/antlr/antlr4/runtime/Go/antlr"
@@ -47,12 +45,21 @@ type LHSOperatorExpr struct {
 	On       Expr
 }
 
+// LROperatorExpr is AST node for representing an operator which has both Left and Right expression
+type LROperatorExpr struct {
+	Expr
+	Operator string
+	Left     Expr
+	Right    Expr
+}
+
 func (f IntImmidiateExpr) expr()   {}
 func (f IdentImmidiateExpr) expr() {}
 func (f StringImmidateExpr) expr() {}
 func (f MemberAccessExpr) expr()   {}
 func (f FunctionCallExpr) expr()   {}
 func (f LHSOperatorExpr) expr()    {}
+func (f LROperatorExpr) expr()     {}
 
 // CompilerContext contains the AST
 type CompilerContext struct {
@@ -122,7 +129,8 @@ func (s *CompilerContext) EnterMemberAccess(ctx *parser.MemberAccessContext) {
 // EnterFunctionCall is called when production functionCall is entered.
 func (s *CompilerContext) EnterFunctionCall(ctx *parser.FunctionCallContext) {
 	GetLast(s).Current = FunctionCallExpr{
-		Function: GetLast(s).Current,
+		Function:   GetLast(s).Current,
+		Parameters: make([]Expr, 0),
 	}
 	GetLast(s).ChildContext = NewCompilerContext()
 }
@@ -140,21 +148,43 @@ func (s *CompilerContext) ExitFunctionCallParam(ctx *parser.FunctionCallParamCon
 	GetLast(s).Current = nil
 }
 
-// EnterExpr2 is called when production expr2 is entered.
-func (s *CompilerContext) EnterExpr2(ctx *parser.Expr2Context) {
-	GetLast(s).Current = LHSOperatorExpr{
-		Operator: ctx.Op.GetText(),
-	}
-	GetLast(s).ChildContext = NewCompilerContext()
-}
+// /* Precedence 2 */
 
-// ExitExpr2 is called when production expr2 is exited.
-func (s *CompilerContext) ExitExpr2(ctx *parser.Expr2Context) {
-	lhso := GetBeforLast(s).Current.(LHSOperatorExpr)
-	lhso.On = GetLast(s).Current
-	GetBeforLast(s).Current = lhso
-	GetBeforLast(s).ChildContext = nil
-}
+// // EnterLhsOperator is called when production lhsOperator is entered.
+// func (s *CompilerContext) EnterLhsOperator(ctx *parser.LhsOperatorContext) {
+// 	// we need to make sure we do not confuse with multipication
+// 	GetLast(s).Current = LHSOperatorExpr{
+// 		Operator: ctx.Op.GetText(),
+// 	}
+// 	GetLast(s).ChildContext = NewCompilerContext()
+// }
+
+// // ExitLhsOperator is called when production lhsOperator is exited.
+// func (s *CompilerContext) ExitLhsOperator(ctx *parser.LhsOperatorContext) {
+// 	lhso := GetBeforLast(s).Current.(LHSOperatorExpr)
+// 	lhso.On = GetLast(s).Current
+// 	GetBeforLast(s).Current = lhso
+// 	GetBeforLast(s).ChildContext = nil
+// }
+
+// /* Precedence 3 */
+
+// // EnterDivMulOperator is called when production divMulOperator is entered.
+// func (s *CompilerContext) EnterDivMulOperator(ctx *parser.DivMulOperatorContext) {
+// 	GetLast(s).Current = LROperatorExpr{
+// 		Left:     GetLast(s).Current,
+// 		Operator: ctx.Op.GetText(),
+// 	}
+// 	GetLast(s).ChildContext = NewCompilerContext()
+// }
+
+// // ExitDivMulOperator is called when production divMulOperator is exited.
+// func (s *CompilerContext) ExitDivMulOperator(ctx *parser.DivMulOperatorContext) {
+// 	lr := GetBeforLast(s).Current.(LROperatorExpr)
+// 	lr.Right = GetLast(s).Current
+// 	GetBeforLast(s).Current = lr
+// 	GetBeforLast(s).ChildContext = nil
+// }
 
 // NewCompilerContext ...
 func NewCompilerContext() *CompilerContext {
@@ -165,8 +195,8 @@ func NewCompilerContext() *CompilerContext {
 	}
 }
 
-func main() {
-	input := antlr.NewFileStream(os.Args[1])
+func BuildAST(source string) *CompilerContext {
+	input := antlr.NewInputStream(source)
 	lexer := parser.NewAuroraLexer(input)
 	stream := antlr.NewCommonTokenStream(lexer, 0)
 	p := parser.NewAuroraParser(stream)
@@ -175,5 +205,5 @@ func main() {
 	tree := p.Program()
 	listener := NewCompilerContext()
 	antlr.ParseTreeWalkerDefault.Walk(listener, tree)
-	fmt.Printf("%+v", listener)
+	return listener
 }

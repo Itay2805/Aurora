@@ -17,6 +17,9 @@ type AuroraListener interface {
 	// EnterExpression is called when entering the expression production.
 	EnterExpression(c *ExpressionContext)
 
+	// EnterExpr is called when entering the expr production.
+	EnterExpr(c *ExprContext)
+
 	// EnterExpr0 is called when entering the expr0 production.
 	EnterExpr0(c *Expr0Context)
 
@@ -44,9 +47,6 @@ type AuroraListener interface {
 	// EnterFunctionCallParam is called when entering the functionCallParam production.
 	EnterFunctionCallParam(c *FunctionCallParamContext)
 
-	// EnterExpr2 is called when entering the expr2 production.
-	EnterExpr2(c *Expr2Context)
-
 	// ExitProgram is called when exiting the program production.
 	ExitProgram(c *ProgramContext)
 
@@ -55,6 +55,9 @@ type AuroraListener interface {
 
 	// ExitExpression is called when exiting the expression production.
 	ExitExpression(c *ExpressionContext)
+
+	// ExitExpr is called when exiting the expr production.
+	ExitExpr(c *ExprContext)
 
 	// ExitExpr0 is called when exiting the expr0 production.
 	ExitExpr0(c *Expr0Context)
@@ -82,7 +85,4 @@ type AuroraListener interface {
 
 	// ExitFunctionCallParam is called when exiting the functionCallParam production.
 	ExitFunctionCallParam(c *FunctionCallParamContext)
-
-	// ExitExpr2 is called when exiting the expr2 production.
-	ExitExpr2(c *Expr2Context)
 }

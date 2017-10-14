@@ -681,13 +681,20 @@ type IBracketsContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// GetParamExpr returns the ParamExpr rule contexts.
+	GetParamExpr() IExpr0Context
+
+	// SetParamExpr sets the ParamExpr rule contexts.
+	SetParamExpr(IExpr0Context)
+
 	// IsBracketsContext differentiates from other interfaces.
 	IsBracketsContext()
 }
 
 type BracketsContext struct {
 	*antlr.BaseParserRuleContext
-	parser antlr.Parser
+	parser    antlr.Parser
+	ParamExpr IExpr0Context
 }
 
 func NewEmptyBracketsContext() *BracketsContext {
@@ -711,6 +718,10 @@ func NewBracketsContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 }
 
 func (s *BracketsContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *BracketsContext) GetParamExpr() IExpr0Context { return s.ParamExpr }
+
+func (s *BracketsContext) SetParamExpr(v IExpr0Context) { s.ParamExpr = v }
 
 func (s *BracketsContext) Expr0() IExpr0Context {
 	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpr0Context)(nil)).Elem(), 0)
@@ -769,7 +780,10 @@ func (p *AuroraParser) Brackets() (localctx IBracketsContext) {
 	}
 	{
 		p.SetState(51)
-		p.Expr0()
+
+		var _x = p.Expr0()
+
+		localctx.(*BracketsContext).ParamExpr = _x
 	}
 	{
 		p.SetState(52)

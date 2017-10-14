@@ -1,5 +1,9 @@
 grammar Aurora;
 
+@lexer::members {
+var IdSeen bool = false
+ }
+
 program
     : expressionList EOF?
     ;
@@ -15,19 +19,19 @@ expression
 /* Precedence 0 (immidiate values) */
 
 expr0
-    : 
-        ( brackets
-        | stringImmidiate
-        | integerImmidiate
-        | identifierImmidiate
-        | expr1
+    :   (
+            ( brackets
+            | stringImmidiate
+            | integerImmidiate
+            | identifierImmidiate
+            | expr1
+            )
+            expr0?
         )
-
-        expr0?
     ;
 
 brackets
-    : '(' expr0 ')'
+    : '(' ParamExpr=expr0 ')'
     ;
 
 stringImmidiate
@@ -46,7 +50,7 @@ integerImmidiate
 
 expr1
     : 
-        (functionCall
+        ( functionCall
         | memberAccess
         | expr2
         )
@@ -86,7 +90,7 @@ IntegerLiteral
     ;
 
 StringLiteral
-    : '"' [^"]* '"'
+    : '"' ~["]* '"'
     ;
 
 Identifier

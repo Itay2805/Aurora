@@ -19,6 +19,11 @@ type IntImmidiateExpr struct {
 	Value int
 }
 
+// IdentImmidiateExpr is AST node for immidiate identifier
+type IdentImmidiateExpr struct {
+	Identifier string
+}
+
 // MemberAccessExpr is AST node for member access
 type MemberAccessExpr struct {
 	AccessFrom Expr
@@ -31,9 +36,17 @@ type FunctionCallExpr struct {
 	Parameters []Expr
 }
 
-func (f IntImmidiateExpr) expr() {}
-func (f MemberAccessExpr) expr() {}
-func (f FunctionCallExpr) expr() {}
+// UnaryOperatorExpr is AST node for representing a unary operator
+type UnaryOperatorExpr struct {
+	Operator string
+	On       Expr
+}
+
+func (f IntImmidiateExpr) expr()   {}
+func (f IdentImmidiateExpr) expr() {}
+func (f MemberAccessExpr) expr()   {}
+func (f FunctionCallExpr) expr()   {}
+func (f UnaryOperatorExpr) expr()  {}
 
 // CompilerContext contains the AST
 type CompilerContext struct {
@@ -43,12 +56,17 @@ type CompilerContext struct {
 	Current     []Expr
 }
 
-// ExitExpr0 is called when production expr0 is exited.
-func (s *CompilerContext) ExitExpr0(ctx *parser.Expr0Context) {
+// ExitExpression is called when production expression is exited.
+func (s *CompilerContext) ExitExpression(ctx *parser.ExpressionContext) {
 	if len(s.Current) == 1 {
 		s.Expressions = append(s.Expressions, s.Current[len(s.Current)-1])
 		s.Current[0] = nil
 	}
+}
+
+// ExitExpr0 is called when production expr0 is exited.
+func (s *CompilerContext) ExitExpr0(ctx *parser.Expr0Context) {
+
 }
 
 /* Precedence 0 */
@@ -58,6 +76,13 @@ func (s *CompilerContext) EnterIntegerImmidiate(ctx *parser.IntegerImmidiateCont
 	num, _ := strconv.Atoi(ctx.NumberVal.GetText())
 	s.Current[len(s.Current)-1] = IntImmidiateExpr{
 		Value: num,
+	}
+}
+
+// EnterIdentifierImmidiate is called when production identifierImmidiate is entered.
+func (s *CompilerContext) EnterIdentifierImmidiate(ctx *parser.IdentifierImmidiateContext) {
+	s.Current[len(s.Current)-1] = IdentImmidiateExpr{
+		Identifier: ctx.Name.GetText(),
 	}
 }
 
@@ -91,6 +116,24 @@ func (s *CompilerContext) ExitFunctionCallParam(ctx *parser.FunctionCallParamCon
 		x.Parameters = append(x.Parameters, param)
 		s.Current[len(s.Current)-2] = x
 	}
+}
+
+// EnterExpr2 is called when production expr2 is entered.
+func (s *CompilerContext) EnterExpr2(ctx *parser.Expr2Context) {
+	s.Current[len(s.Current)-1] = UnaryOperatorExpr{
+		Operator: ctx.Op.GetText(),
+	}
+	s.Current = append(s.Current, nil)
+}
+
+// ExitExpr2 is called when production expr2 is exited.
+func (s *CompilerContext) ExitExpr2(ctx *parser.Expr2Context) {
+	if x, ok := s.Current[len(s.Current)-2].(UnaryOperatorExpr); ok {
+		result := s.Current[len(s.Current)-1]
+		x.On = result
+		s.Current[len(s.Current)-2] = x
+	}
+	s.Current = s.Current[:len(s.Current)-1]
 }
 
 // NewCompilerContext ...

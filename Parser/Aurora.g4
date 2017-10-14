@@ -1,51 +1,82 @@
 grammar Aurora;
 
 program
-    : expressionList EOF
+    : expressionList EOF?
     ;
 
 expressionList
-    : expr0 expr0*
+    : expression expression*
+    ;
+
+expression
+    : expr0 (Newline | ';' | EOF)
     ;
 
 /* Precedence 0 (immidiate values) */
 
 expr0
-    : stringImmidiate
-    | integerImmidiate
-    | variableImmidiate
-    | expr1
+    : 
+        ( brackets
+        | stringImmidiate
+        | integerImmidiate
+        | identifierImmidiate
+        | expr1
+        )
+
+        expr0?
+    ;
+
+brackets
+    : '(' expr0 ')'
     ;
 
 stringImmidiate
-    : StringVal=StringLiteral expr0?
+    : StringVal=StringLiteral
     ;
 
-variableImmidiate
-    : Name=Identifier expr0?
+identifierImmidiate
+    : Name=Identifier
     ;
 
 integerImmidiate
-    : NumberVal=IntegerLiteral expr0?
+    : NumberVal=IntegerLiteral
     ;
 
 /* Precedence 1 */
 
 expr1
-    : functionCall
-    | memberAccess
+    : 
+        (functionCall
+        | memberAccess
+        | expr2
+        )
+        expr1?
     ;
 
 memberAccess
-    : '.' Member=Identifier expr1?
+    : '.' Member=Identifier
     ;
 
 functionCall
-    : '(' functionCallParam? (',' functionCallParam)* ')' expr1?
+    : '(' functionCallParam? (',' functionCallParam)* ')'
     ;
 
 functionCallParam
     : ParamExpr=expr0
+    ;
+
+/* Precedence 2 */
+
+expr2
+    : 
+        Op=( '-'
+        | '+'
+        | '!'
+        | '*'
+        | '&'
+        )
+        Expr=expr0
+        expr2?
     ;
 
 /* Literals */
@@ -87,8 +118,6 @@ Newline
     :   ( '\r' '\n'? 
         | '\n'
         )
-
-        -> skip
     ;
 
 BlockComment

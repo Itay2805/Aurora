@@ -33,11 +33,23 @@ func (s *BaseAuroraListener) EnterExpressionList(ctx *ExpressionListContext) {}
 // ExitExpressionList is called when production expressionList is exited.
 func (s *BaseAuroraListener) ExitExpressionList(ctx *ExpressionListContext) {}
 
+// EnterExpression is called when production expression is entered.
+func (s *BaseAuroraListener) EnterExpression(ctx *ExpressionContext) {}
+
+// ExitExpression is called when production expression is exited.
+func (s *BaseAuroraListener) ExitExpression(ctx *ExpressionContext) {}
+
 // EnterExpr0 is called when production expr0 is entered.
 func (s *BaseAuroraListener) EnterExpr0(ctx *Expr0Context) {}
 
 // ExitExpr0 is called when production expr0 is exited.
 func (s *BaseAuroraListener) ExitExpr0(ctx *Expr0Context) {}
+
+// EnterBrackets is called when production brackets is entered.
+func (s *BaseAuroraListener) EnterBrackets(ctx *BracketsContext) {}
+
+// ExitBrackets is called when production brackets is exited.
+func (s *BaseAuroraListener) ExitBrackets(ctx *BracketsContext) {}
 
 // EnterStringImmidiate is called when production stringImmidiate is entered.
 func (s *BaseAuroraListener) EnterStringImmidiate(ctx *StringImmidiateContext) {}
@@ -45,11 +57,11 @@ func (s *BaseAuroraListener) EnterStringImmidiate(ctx *StringImmidiateContext) {
 // ExitStringImmidiate is called when production stringImmidiate is exited.
 func (s *BaseAuroraListener) ExitStringImmidiate(ctx *StringImmidiateContext) {}
 
-// EnterVariableImmidiate is called when production variableImmidiate is entered.
-func (s *BaseAuroraListener) EnterVariableImmidiate(ctx *VariableImmidiateContext) {}
+// EnterIdentifierImmidiate is called when production identifierImmidiate is entered.
+func (s *BaseAuroraListener) EnterIdentifierImmidiate(ctx *IdentifierImmidiateContext) {}
 
-// ExitVariableImmidiate is called when production variableImmidiate is exited.
-func (s *BaseAuroraListener) ExitVariableImmidiate(ctx *VariableImmidiateContext) {}
+// ExitIdentifierImmidiate is called when production identifierImmidiate is exited.
+func (s *BaseAuroraListener) ExitIdentifierImmidiate(ctx *IdentifierImmidiateContext) {}
 
 // EnterIntegerImmidiate is called when production integerImmidiate is entered.
 func (s *BaseAuroraListener) EnterIntegerImmidiate(ctx *IntegerImmidiateContext) {}
@@ -80,3 +92,9 @@ func (s *BaseAuroraListener) EnterFunctionCallParam(ctx *FunctionCallParamContex
 
 // ExitFunctionCallParam is called when production functionCallParam is exited.
 func (s *BaseAuroraListener) ExitFunctionCallParam(ctx *FunctionCallParamContext) {}
+
+// EnterExpr2 is called when production expr2 is entered.
+func (s *BaseAuroraListener) EnterExpr2(ctx *Expr2Context) {}
+
+// ExitExpr2 is called when production expr2 is exited.
+func (s *BaseAuroraListener) ExitExpr2(ctx *Expr2Context) {}

@@ -53,6 +53,18 @@ type AuroraListener interface {
 	// EnterLhsOperator is called when entering the lhsOperator production.
 	EnterLhsOperator(c *LhsOperatorContext)
 
+	// EnterExpr3 is called when entering the expr3 production.
+	EnterExpr3(c *Expr3Context)
+
+	// EnterMulDivMod is called when entering the mulDivMod production.
+	EnterMulDivMod(c *MulDivModContext)
+
+	// EnterExpr4 is called when entering the expr4 production.
+	EnterExpr4(c *Expr4Context)
+
+	// EnterAddSub is called when entering the addSub production.
+	EnterAddSub(c *AddSubContext)
+
 	// ExitProgram is called when exiting the program production.
 	ExitProgram(c *ProgramContext)
 
@@ -97,4 +109,16 @@ type AuroraListener interface {
 
 	// ExitLhsOperator is called when exiting the lhsOperator production.
 	ExitLhsOperator(c *LhsOperatorContext)
+
+	// ExitExpr3 is called when exiting the expr3 production.
+	ExitExpr3(c *Expr3Context)
+
+	// ExitMulDivMod is called when exiting the mulDivMod production.
+	ExitMulDivMod(c *MulDivModContext)
+
+	// ExitExpr4 is called when exiting the expr4 production.
+	ExitExpr4(c *Expr4Context)
+
+	// ExitAddSub is called when exiting the addSub production.
+	ExitAddSub(c *AddSubContext)
 }

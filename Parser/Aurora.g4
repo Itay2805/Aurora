@@ -17,7 +17,7 @@ expression
     ;
 
 expr
-    : expr2
+    : expr4
     ;
 
 
@@ -70,7 +70,7 @@ functionCallParam
     ;
 
 
-/* Precedence 1 */
+/* Precedence 2 */
 
 expr2
     :  
@@ -88,6 +88,35 @@ lhsOperator
         | '&'
         )
         On=expr
+    ;
+
+/* Precedence 3 */
+
+expr3
+    : Left=expr3 mulDivMod
+    | expr2
+    ;
+
+mulDivMod
+    :   Op=( '*'
+        | '/'
+        | '%'
+        )
+        Right=expr3
+    ;
+
+/* Precedence 4 */
+
+expr4
+    : Left=expr4 addSub
+    | expr3
+    ;
+
+addSub
+    :   Op=( '-'
+        | '+'
+        )
+        Right=expr4
     ;
 
 /* Literals */

@@ -110,3 +110,27 @@ func (s *BaseAuroraListener) EnterLhsOperator(ctx *LhsOperatorContext) {}
 
 // ExitLhsOperator is called when production lhsOperator is exited.
 func (s *BaseAuroraListener) ExitLhsOperator(ctx *LhsOperatorContext) {}
+
+// EnterExpr3 is called when production expr3 is entered.
+func (s *BaseAuroraListener) EnterExpr3(ctx *Expr3Context) {}
+
+// ExitExpr3 is called when production expr3 is exited.
+func (s *BaseAuroraListener) ExitExpr3(ctx *Expr3Context) {}
+
+// EnterMulDivMod is called when production mulDivMod is entered.
+func (s *BaseAuroraListener) EnterMulDivMod(ctx *MulDivModContext) {}
+
+// ExitMulDivMod is called when production mulDivMod is exited.
+func (s *BaseAuroraListener) ExitMulDivMod(ctx *MulDivModContext) {}
+
+// EnterExpr4 is called when production expr4 is entered.
+func (s *BaseAuroraListener) EnterExpr4(ctx *Expr4Context) {}
+
+// ExitExpr4 is called when production expr4 is exited.
+func (s *BaseAuroraListener) ExitExpr4(ctx *Expr4Context) {}
+
+// EnterAddSub is called when production addSub is entered.
+func (s *BaseAuroraListener) EnterAddSub(ctx *AddSubContext) {}
+
+// ExitAddSub is called when production addSub is exited.
+func (s *BaseAuroraListener) ExitAddSub(ctx *AddSubContext) {}

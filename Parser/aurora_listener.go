@@ -47,6 +47,12 @@ type AuroraListener interface {
 	// EnterFunctionCallParam is called when entering the functionCallParam production.
 	EnterFunctionCallParam(c *FunctionCallParamContext)
 
+	// EnterExpr2 is called when entering the expr2 production.
+	EnterExpr2(c *Expr2Context)
+
+	// EnterLhsOperator is called when entering the lhsOperator production.
+	EnterLhsOperator(c *LhsOperatorContext)
+
 	// ExitProgram is called when exiting the program production.
 	ExitProgram(c *ProgramContext)
 
@@ -85,4 +91,10 @@ type AuroraListener interface {
 
 	// ExitFunctionCallParam is called when exiting the functionCallParam production.
 	ExitFunctionCallParam(c *FunctionCallParamContext)
+
+	// ExitExpr2 is called when exiting the expr2 production.
+	ExitExpr2(c *Expr2Context)
+
+	// ExitLhsOperator is called when exiting the lhsOperator production.
+	ExitLhsOperator(c *LhsOperatorContext)
 }

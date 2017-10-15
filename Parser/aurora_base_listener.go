@@ -98,3 +98,15 @@ func (s *BaseAuroraListener) EnterFunctionCallParam(ctx *FunctionCallParamContex
 
 // ExitFunctionCallParam is called when production functionCallParam is exited.
 func (s *BaseAuroraListener) ExitFunctionCallParam(ctx *FunctionCallParamContext) {}
+
+// EnterExpr2 is called when production expr2 is entered.
+func (s *BaseAuroraListener) EnterExpr2(ctx *Expr2Context) {}
+
+// ExitExpr2 is called when production expr2 is exited.
+func (s *BaseAuroraListener) ExitExpr2(ctx *Expr2Context) {}
+
+// EnterLhsOperator is called when production lhsOperator is entered.
+func (s *BaseAuroraListener) EnterLhsOperator(ctx *LhsOperatorContext) {}
+
+// ExitLhsOperator is called when production lhsOperator is exited.
+func (s *BaseAuroraListener) ExitLhsOperator(ctx *LhsOperatorContext) {}

@@ -150,22 +150,21 @@ func (s *CompilerContext) ExitFunctionCallParam(ctx *parser.FunctionCallParamCon
 
 // /* Precedence 2 */
 
-// // EnterLhsOperator is called when production lhsOperator is entered.
-// func (s *CompilerContext) EnterLhsOperator(ctx *parser.LhsOperatorContext) {
-// 	// we need to make sure we do not confuse with multipication
-// 	GetLast(s).Current = LHSOperatorExpr{
-// 		Operator: ctx.Op.GetText(),
-// 	}
-// 	GetLast(s).ChildContext = NewCompilerContext()
-// }
+// EnterLhsOperator is called when production lhsOperator is entered.
+func (s *CompilerContext) EnterLhsOperator(ctx *parser.LhsOperatorContext) {
+	GetLast(s).Current = LHSOperatorExpr{
+		Operator: ctx.Op.GetText(),
+	}
+	GetLast(s).ChildContext = NewCompilerContext()
+}
 
-// // ExitLhsOperator is called when production lhsOperator is exited.
-// func (s *CompilerContext) ExitLhsOperator(ctx *parser.LhsOperatorContext) {
-// 	lhso := GetBeforLast(s).Current.(LHSOperatorExpr)
-// 	lhso.On = GetLast(s).Current
-// 	GetBeforLast(s).Current = lhso
-// 	GetBeforLast(s).ChildContext = nil
-// }
+// ExitLhsOperator is called when production lhsOperator is exited.
+func (s *CompilerContext) ExitLhsOperator(ctx *parser.LhsOperatorContext) {
+	lhso := GetBeforLast(s).Current.(LHSOperatorExpr)
+	lhso.On = GetLast(s).Current
+	GetBeforLast(s).Current = lhso
+	GetBeforLast(s).ChildContext = nil
+}
 
 // /* Precedence 3 */
 

@@ -16,59 +16,63 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 14, 94, 4,
-	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7, 4,
-	8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 4, 12, 9, 12, 4, 13, 9,
-	13, 4, 14, 9, 14, 3, 2, 5, 2, 30, 10, 2, 3, 2, 5, 2, 33, 10, 2, 3, 3, 3,
-	3, 7, 3, 37, 10, 3, 12, 3, 14, 3, 40, 11, 3, 3, 4, 3, 4, 3, 4, 3, 5, 3,
-	5, 3, 6, 3, 6, 3, 6, 3, 6, 5, 6, 51, 10, 6, 3, 7, 3, 7, 3, 7, 3, 7, 3,
-	8, 3, 8, 3, 9, 3, 9, 3, 10, 3, 10, 3, 11, 3, 11, 3, 11, 3, 11, 3, 11, 3,
-	11, 5, 11, 69, 10, 11, 7, 11, 71, 10, 11, 12, 11, 14, 11, 74, 11, 11, 3,
-	12, 3, 12, 3, 12, 3, 13, 3, 13, 5, 13, 81, 10, 13, 3, 13, 3, 13, 7, 13,
-	85, 10, 13, 12, 13, 14, 13, 88, 11, 13, 3, 13, 3, 13, 3, 14, 3, 14, 3,
-	14, 2, 3, 20, 15, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 2, 3,
-	4, 3, 3, 3, 12, 12, 2, 90, 2, 29, 3, 2, 2, 2, 4, 34, 3, 2, 2, 2, 6, 41,
-	3, 2, 2, 2, 8, 44, 3, 2, 2, 2, 10, 50, 3, 2, 2, 2, 12, 52, 3, 2, 2, 2,
-	14, 56, 3, 2, 2, 2, 16, 58, 3, 2, 2, 2, 18, 60, 3, 2, 2, 2, 20, 62, 3,
-	2, 2, 2, 22, 75, 3, 2, 2, 2, 24, 78, 3, 2, 2, 2, 26, 91, 3, 2, 2, 2, 28,
-	30, 5, 4, 3, 2, 29, 28, 3, 2, 2, 2, 29, 30, 3, 2, 2, 2, 30, 32, 3, 2, 2,
-	2, 31, 33, 7, 2, 2, 3, 32, 31, 3, 2, 2, 2, 32, 33, 3, 2, 2, 2, 33, 3, 3,
-	2, 2, 2, 34, 38, 5, 6, 4, 2, 35, 37, 5, 6, 4, 2, 36, 35, 3, 2, 2, 2, 37,
-	40, 3, 2, 2, 2, 38, 36, 3, 2, 2, 2, 38, 39, 3, 2, 2, 2, 39, 5, 3, 2, 2,
-	2, 40, 38, 3, 2, 2, 2, 41, 42, 5, 8, 5, 2, 42, 43, 9, 2, 2, 2, 43, 7, 3,
-	2, 2, 2, 44, 45, 5, 20, 11, 2, 45, 9, 3, 2, 2, 2, 46, 51, 5, 12, 7, 2,
-	47, 51, 5, 14, 8, 2, 48, 51, 5, 18, 10, 2, 49, 51, 5, 16, 9, 2, 50, 46,
-	3, 2, 2, 2, 50, 47, 3, 2, 2, 2, 50, 48, 3, 2, 2, 2, 50, 49, 3, 2, 2, 2,
-	51, 11, 3, 2, 2, 2, 52, 53, 7, 4, 2, 2, 53, 54, 5, 8, 5, 2, 54, 55, 7,
-	5, 2, 2, 55, 13, 3, 2, 2, 2, 56, 57, 7, 9, 2, 2, 57, 15, 3, 2, 2, 2, 58,
-	59, 7, 10, 2, 2, 59, 17, 3, 2, 2, 2, 60, 61, 7, 8, 2, 2, 61, 19, 3, 2,
-	2, 2, 62, 63, 8, 11, 1, 2, 63, 64, 5, 10, 6, 2, 64, 72, 3, 2, 2, 2, 65,
-	68, 12, 4, 2, 2, 66, 69, 5, 22, 12, 2, 67, 69, 5, 24, 13, 2, 68, 66, 3,
-	2, 2, 2, 68, 67, 3, 2, 2, 2, 69, 71, 3, 2, 2, 2, 70, 65, 3, 2, 2, 2, 71,
-	74, 3, 2, 2, 2, 72, 70, 3, 2, 2, 2, 72, 73, 3, 2, 2, 2, 73, 21, 3, 2, 2,
-	2, 74, 72, 3, 2, 2, 2, 75, 76, 7, 6, 2, 2, 76, 77, 7, 10, 2, 2, 77, 23,
-	3, 2, 2, 2, 78, 80, 7, 4, 2, 2, 79, 81, 5, 26, 14, 2, 80, 79, 3, 2, 2,
-	2, 80, 81, 3, 2, 2, 2, 81, 86, 3, 2, 2, 2, 82, 83, 7, 7, 2, 2, 83, 85,
-	5, 26, 14, 2, 84, 82, 3, 2, 2, 2, 85, 88, 3, 2, 2, 2, 86, 84, 3, 2, 2,
-	2, 86, 87, 3, 2, 2, 2, 87, 89, 3, 2, 2, 2, 88, 86, 3, 2, 2, 2, 89, 90,
-	7, 5, 2, 2, 90, 25, 3, 2, 2, 2, 91, 92, 5, 8, 5, 2, 92, 27, 3, 2, 2, 2,
-	10, 29, 32, 38, 50, 68, 72, 80, 86,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 19, 105,
+	4, 2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7,
+	4, 8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 4, 12, 9, 12, 4, 13,
+	9, 13, 4, 14, 9, 14, 4, 15, 9, 15, 4, 16, 9, 16, 3, 2, 5, 2, 34, 10, 2,
+	3, 2, 5, 2, 37, 10, 2, 3, 3, 3, 3, 7, 3, 41, 10, 3, 12, 3, 14, 3, 44, 11,
+	3, 3, 4, 3, 4, 3, 4, 3, 5, 3, 5, 3, 6, 3, 6, 3, 6, 3, 6, 5, 6, 55, 10,
+	6, 3, 7, 3, 7, 3, 7, 3, 7, 3, 8, 3, 8, 3, 9, 3, 9, 3, 10, 3, 10, 3, 11,
+	3, 11, 3, 11, 3, 11, 3, 11, 3, 11, 5, 11, 73, 10, 11, 7, 11, 75, 10, 11,
+	12, 11, 14, 11, 78, 11, 11, 3, 12, 3, 12, 3, 12, 3, 13, 3, 13, 5, 13, 85,
+	10, 13, 3, 13, 3, 13, 7, 13, 89, 10, 13, 12, 13, 14, 13, 92, 11, 13, 3,
+	13, 3, 13, 3, 14, 3, 14, 3, 15, 3, 15, 5, 15, 100, 10, 15, 3, 16, 3, 16,
+	3, 16, 3, 16, 2, 3, 20, 17, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24,
+	26, 28, 30, 2, 4, 4, 3, 3, 3, 17, 17, 3, 2, 8, 12, 2, 100, 2, 33, 3, 2,
+	2, 2, 4, 38, 3, 2, 2, 2, 6, 45, 3, 2, 2, 2, 8, 48, 3, 2, 2, 2, 10, 54,
+	3, 2, 2, 2, 12, 56, 3, 2, 2, 2, 14, 60, 3, 2, 2, 2, 16, 62, 3, 2, 2, 2,
+	18, 64, 3, 2, 2, 2, 20, 66, 3, 2, 2, 2, 22, 79, 3, 2, 2, 2, 24, 82, 3,
+	2, 2, 2, 26, 95, 3, 2, 2, 2, 28, 99, 3, 2, 2, 2, 30, 101, 3, 2, 2, 2, 32,
+	34, 5, 4, 3, 2, 33, 32, 3, 2, 2, 2, 33, 34, 3, 2, 2, 2, 34, 36, 3, 2, 2,
+	2, 35, 37, 7, 2, 2, 3, 36, 35, 3, 2, 2, 2, 36, 37, 3, 2, 2, 2, 37, 3, 3,
+	2, 2, 2, 38, 42, 5, 6, 4, 2, 39, 41, 5, 6, 4, 2, 40, 39, 3, 2, 2, 2, 41,
+	44, 3, 2, 2, 2, 42, 40, 3, 2, 2, 2, 42, 43, 3, 2, 2, 2, 43, 5, 3, 2, 2,
+	2, 44, 42, 3, 2, 2, 2, 45, 46, 5, 8, 5, 2, 46, 47, 9, 2, 2, 2, 47, 7, 3,
+	2, 2, 2, 48, 49, 5, 28, 15, 2, 49, 9, 3, 2, 2, 2, 50, 55, 5, 12, 7, 2,
+	51, 55, 5, 14, 8, 2, 52, 55, 5, 18, 10, 2, 53, 55, 5, 16, 9, 2, 54, 50,
+	3, 2, 2, 2, 54, 51, 3, 2, 2, 2, 54, 52, 3, 2, 2, 2, 54, 53, 3, 2, 2, 2,
+	55, 11, 3, 2, 2, 2, 56, 57, 7, 4, 2, 2, 57, 58, 5, 8, 5, 2, 58, 59, 7,
+	5, 2, 2, 59, 13, 3, 2, 2, 2, 60, 61, 7, 14, 2, 2, 61, 15, 3, 2, 2, 2, 62,
+	63, 7, 15, 2, 2, 63, 17, 3, 2, 2, 2, 64, 65, 7, 13, 2, 2, 65, 19, 3, 2,
+	2, 2, 66, 67, 8, 11, 1, 2, 67, 68, 5, 10, 6, 2, 68, 76, 3, 2, 2, 2, 69,
+	72, 12, 4, 2, 2, 70, 73, 5, 22, 12, 2, 71, 73, 5, 24, 13, 2, 72, 70, 3,
+	2, 2, 2, 72, 71, 3, 2, 2, 2, 73, 75, 3, 2, 2, 2, 74, 69, 3, 2, 2, 2, 75,
+	78, 3, 2, 2, 2, 76, 74, 3, 2, 2, 2, 76, 77, 3, 2, 2, 2, 77, 21, 3, 2, 2,
+	2, 78, 76, 3, 2, 2, 2, 79, 80, 7, 6, 2, 2, 80, 81, 7, 15, 2, 2, 81, 23,
+	3, 2, 2, 2, 82, 84, 7, 4, 2, 2, 83, 85, 5, 26, 14, 2, 84, 83, 3, 2, 2,
+	2, 84, 85, 3, 2, 2, 2, 85, 90, 3, 2, 2, 2, 86, 87, 7, 7, 2, 2, 87, 89,
+	5, 26, 14, 2, 88, 86, 3, 2, 2, 2, 89, 92, 3, 2, 2, 2, 90, 88, 3, 2, 2,
+	2, 90, 91, 3, 2, 2, 2, 91, 93, 3, 2, 2, 2, 92, 90, 3, 2, 2, 2, 93, 94,
+	7, 5, 2, 2, 94, 25, 3, 2, 2, 2, 95, 96, 5, 8, 5, 2, 96, 27, 3, 2, 2, 2,
+	97, 100, 5, 30, 16, 2, 98, 100, 5, 20, 11, 2, 99, 97, 3, 2, 2, 2, 99, 98,
+	3, 2, 2, 2, 100, 29, 3, 2, 2, 2, 101, 102, 9, 3, 2, 2, 102, 103, 5, 8,
+	5, 2, 103, 31, 3, 2, 2, 2, 11, 33, 36, 42, 54, 72, 76, 84, 90, 99,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
 
 var literalNames = []string{
-	"", "';'", "'('", "')'", "'.'", "','",
+	"", "';'", "'('", "')'", "'.'", "','", "'-'", "'+'", "'!'", "'*'", "'&'",
 }
 var symbolicNames = []string{
-	"", "", "", "", "", "", "IntegerLiteral", "StringLiteral", "Identifier",
-	"Whitespace", "Newline", "BlockComment", "LineComment",
+	"", "", "", "", "", "", "", "", "", "", "", "IntegerLiteral", "StringLiteral",
+	"Identifier", "Whitespace", "Newline", "BlockComment", "LineComment",
 }
 
 var ruleNames = []string{
 	"program", "expressionList", "expression", "expr", "expr0", "brackets",
 	"stringImmidiate", "identifierImmidiate", "integerImmidiate", "expr1",
-	"memberAccess", "functionCall", "functionCallParam",
+	"memberAccess", "functionCall", "functionCallParam", "expr2", "lhsOperator",
 }
 var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
 
@@ -104,13 +108,18 @@ const (
 	AuroraParserT__2           = 3
 	AuroraParserT__3           = 4
 	AuroraParserT__4           = 5
-	AuroraParserIntegerLiteral = 6
-	AuroraParserStringLiteral  = 7
-	AuroraParserIdentifier     = 8
-	AuroraParserWhitespace     = 9
-	AuroraParserNewline        = 10
-	AuroraParserBlockComment   = 11
-	AuroraParserLineComment    = 12
+	AuroraParserT__5           = 6
+	AuroraParserT__6           = 7
+	AuroraParserT__7           = 8
+	AuroraParserT__8           = 9
+	AuroraParserT__9           = 10
+	AuroraParserIntegerLiteral = 11
+	AuroraParserStringLiteral  = 12
+	AuroraParserIdentifier     = 13
+	AuroraParserWhitespace     = 14
+	AuroraParserNewline        = 15
+	AuroraParserBlockComment   = 16
+	AuroraParserLineComment    = 17
 )
 
 // AuroraParser rules.
@@ -128,6 +137,8 @@ const (
 	AuroraParserRULE_memberAccess        = 10
 	AuroraParserRULE_functionCall        = 11
 	AuroraParserRULE_functionCallParam   = 12
+	AuroraParserRULE_expr2               = 13
+	AuroraParserRULE_lhsOperator         = 14
 )
 
 // IProgramContext is an interface to support dynamic dispatch.
@@ -224,23 +235,23 @@ func (p *AuroraParser) Program() (localctx IProgramContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(27)
+	p.SetState(31)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	if ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__1)|(1<<AuroraParserIntegerLiteral)|(1<<AuroraParserStringLiteral)|(1<<AuroraParserIdentifier))) != 0 {
+	if ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__1)|(1<<AuroraParserT__5)|(1<<AuroraParserT__6)|(1<<AuroraParserT__7)|(1<<AuroraParserT__8)|(1<<AuroraParserT__9)|(1<<AuroraParserIntegerLiteral)|(1<<AuroraParserStringLiteral)|(1<<AuroraParserIdentifier))) != 0 {
 		{
-			p.SetState(26)
+			p.SetState(30)
 			p.ExpressionList()
 		}
 
 	}
-	p.SetState(30)
+	p.SetState(34)
 	p.GetErrorHandler().Sync(p)
 
 	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 1, p.GetParserRuleContext()) == 1 {
 		{
-			p.SetState(29)
+			p.SetState(33)
 			p.Match(AuroraParserEOF)
 		}
 
@@ -353,20 +364,20 @@ func (p *AuroraParser) ExpressionList() (localctx IExpressionListContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(32)
+		p.SetState(36)
 		p.Expression()
 	}
-	p.SetState(36)
+	p.SetState(40)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	for ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__1)|(1<<AuroraParserIntegerLiteral)|(1<<AuroraParserStringLiteral)|(1<<AuroraParserIdentifier))) != 0 {
+	for ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__1)|(1<<AuroraParserT__5)|(1<<AuroraParserT__6)|(1<<AuroraParserT__7)|(1<<AuroraParserT__8)|(1<<AuroraParserT__9)|(1<<AuroraParserIntegerLiteral)|(1<<AuroraParserStringLiteral)|(1<<AuroraParserIdentifier))) != 0 {
 		{
-			p.SetState(33)
+			p.SetState(37)
 			p.Expression()
 		}
 
-		p.SetState(38)
+		p.SetState(42)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -473,10 +484,10 @@ func (p *AuroraParser) Expression() (localctx IExpressionContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(39)
+		p.SetState(43)
 		p.Expr()
 	}
-	p.SetState(40)
+	p.SetState(44)
 	_la = p.GetTokenStream().LA(1)
 
 	if !(((_la - -1)&-(0x1f+1)) == 0 && ((1<<uint((_la - -1)))&((1<<(AuroraParserEOF - -1))|(1<<(AuroraParserT__0 - -1))|(1<<(AuroraParserNewline - -1)))) != 0) {
@@ -527,14 +538,14 @@ func NewExprContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 
 func (s *ExprContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ExprContext) Expr1() IExpr1Context {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpr1Context)(nil)).Elem(), 0)
+func (s *ExprContext) Expr2() IExpr2Context {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpr2Context)(nil)).Elem(), 0)
 
 	if t == nil {
 		return nil
 	}
 
-	return t.(IExpr1Context)
+	return t.(IExpr2Context)
 }
 
 func (s *ExprContext) GetRuleContext() antlr.RuleContext {
@@ -579,8 +590,8 @@ func (p *AuroraParser) Expr() (localctx IExprContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(42)
-		p.expr1(0)
+		p.SetState(46)
+		p.Expr2()
 	}
 
 	return localctx
@@ -705,31 +716,31 @@ func (p *AuroraParser) Expr0() (localctx IExpr0Context) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(48)
+	p.SetState(52)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
 	case AuroraParserT__1:
 		{
-			p.SetState(44)
+			p.SetState(48)
 			p.Brackets()
 		}
 
 	case AuroraParserStringLiteral:
 		{
-			p.SetState(45)
+			p.SetState(49)
 			p.StringImmidiate()
 		}
 
 	case AuroraParserIntegerLiteral:
 		{
-			p.SetState(46)
+			p.SetState(50)
 			p.IntegerImmidiate()
 		}
 
 	case AuroraParserIdentifier:
 		{
-			p.SetState(47)
+			p.SetState(51)
 			p.IdentifierImmidiate()
 		}
 
@@ -841,18 +852,18 @@ func (p *AuroraParser) Brackets() (localctx IBracketsContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(50)
+		p.SetState(54)
 		p.Match(AuroraParserT__1)
 	}
 	{
-		p.SetState(51)
+		p.SetState(55)
 
 		var _x = p.Expr()
 
 		localctx.(*BracketsContext).ParamExpr = _x
 	}
 	{
-		p.SetState(52)
+		p.SetState(56)
 		p.Match(AuroraParserT__2)
 	}
 
@@ -954,7 +965,7 @@ func (p *AuroraParser) StringImmidiate() (localctx IStringImmidiateContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(54)
+		p.SetState(58)
 
 		var _m = p.Match(AuroraParserStringLiteral)
 
@@ -1059,7 +1070,7 @@ func (p *AuroraParser) IdentifierImmidiate() (localctx IIdentifierImmidiateConte
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(56)
+		p.SetState(60)
 
 		var _m = p.Match(AuroraParserIdentifier)
 
@@ -1164,7 +1175,7 @@ func (p *AuroraParser) IntegerImmidiate() (localctx IIntegerImmidiateContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(58)
+		p.SetState(62)
 
 		var _m = p.Match(AuroraParserIntegerLiteral)
 
@@ -1305,12 +1316,12 @@ func (p *AuroraParser) expr1(_p int) (localctx IExpr1Context) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(61)
+		p.SetState(65)
 		p.Expr0()
 	}
 
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(70)
+	p.SetState(74)
 	p.GetErrorHandler().Sync(p)
 	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 5, p.GetParserRuleContext())
 
@@ -1322,24 +1333,24 @@ func (p *AuroraParser) expr1(_p int) (localctx IExpr1Context) {
 			_prevctx = localctx
 			localctx = NewExpr1Context(p, _parentctx, _parentState)
 			p.PushNewRecursionContext(localctx, _startState, AuroraParserRULE_expr1)
-			p.SetState(63)
+			p.SetState(67)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 2)) {
 				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
 			}
-			p.SetState(66)
+			p.SetState(70)
 			p.GetErrorHandler().Sync(p)
 
 			switch p.GetTokenStream().LA(1) {
 			case AuroraParserT__3:
 				{
-					p.SetState(64)
+					p.SetState(68)
 					p.MemberAccess()
 				}
 
 			case AuroraParserT__1:
 				{
-					p.SetState(65)
+					p.SetState(69)
 					p.FunctionCall()
 				}
 
@@ -1348,7 +1359,7 @@ func (p *AuroraParser) expr1(_p int) (localctx IExpr1Context) {
 			}
 
 		}
-		p.SetState(72)
+		p.SetState(76)
 		p.GetErrorHandler().Sync(p)
 		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 5, p.GetParserRuleContext())
 	}
@@ -1451,11 +1462,11 @@ func (p *AuroraParser) MemberAccess() (localctx IMemberAccessContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(73)
+		p.SetState(77)
 		p.Match(AuroraParserT__3)
 	}
 	{
-		p.SetState(74)
+		p.SetState(78)
 
 		var _m = p.Match(AuroraParserIdentifier)
 
@@ -1569,40 +1580,40 @@ func (p *AuroraParser) FunctionCall() (localctx IFunctionCallContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(76)
+		p.SetState(80)
 		p.Match(AuroraParserT__1)
 	}
-	p.SetState(78)
+	p.SetState(82)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	if ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__1)|(1<<AuroraParserIntegerLiteral)|(1<<AuroraParserStringLiteral)|(1<<AuroraParserIdentifier))) != 0 {
-		{
-			p.SetState(77)
-			p.FunctionCallParam()
-		}
-
-	}
-	p.SetState(84)
-	p.GetErrorHandler().Sync(p)
-	_la = p.GetTokenStream().LA(1)
-
-	for _la == AuroraParserT__4 {
-		{
-			p.SetState(80)
-			p.Match(AuroraParserT__4)
-		}
+	if ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__1)|(1<<AuroraParserT__5)|(1<<AuroraParserT__6)|(1<<AuroraParserT__7)|(1<<AuroraParserT__8)|(1<<AuroraParserT__9)|(1<<AuroraParserIntegerLiteral)|(1<<AuroraParserStringLiteral)|(1<<AuroraParserIdentifier))) != 0 {
 		{
 			p.SetState(81)
 			p.FunctionCallParam()
 		}
 
-		p.SetState(86)
+	}
+	p.SetState(88)
+	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
+
+	for _la == AuroraParserT__4 {
+		{
+			p.SetState(84)
+			p.Match(AuroraParserT__4)
+		}
+		{
+			p.SetState(85)
+			p.FunctionCallParam()
+		}
+
+		p.SetState(90)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(87)
+		p.SetState(91)
 		p.Match(AuroraParserT__2)
 	}
 
@@ -1710,11 +1721,273 @@ func (p *AuroraParser) FunctionCallParam() (localctx IFunctionCallParamContext) 
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(89)
+		p.SetState(93)
 
 		var _x = p.Expr()
 
 		localctx.(*FunctionCallParamContext).ParamExpr = _x
+	}
+
+	return localctx
+}
+
+// IExpr2Context is an interface to support dynamic dispatch.
+type IExpr2Context interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsExpr2Context differentiates from other interfaces.
+	IsExpr2Context()
+}
+
+type Expr2Context struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyExpr2Context() *Expr2Context {
+	var p = new(Expr2Context)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = AuroraParserRULE_expr2
+	return p
+}
+
+func (*Expr2Context) IsExpr2Context() {}
+
+func NewExpr2Context(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *Expr2Context {
+	var p = new(Expr2Context)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = AuroraParserRULE_expr2
+
+	return p
+}
+
+func (s *Expr2Context) GetParser() antlr.Parser { return s.parser }
+
+func (s *Expr2Context) LhsOperator() ILhsOperatorContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*ILhsOperatorContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ILhsOperatorContext)
+}
+
+func (s *Expr2Context) Expr1() IExpr1Context {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpr1Context)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExpr1Context)
+}
+
+func (s *Expr2Context) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *Expr2Context) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *Expr2Context) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.EnterExpr2(s)
+	}
+}
+
+func (s *Expr2Context) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.ExitExpr2(s)
+	}
+}
+
+func (p *AuroraParser) Expr2() (localctx IExpr2Context) {
+	localctx = NewExpr2Context(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 26, AuroraParserRULE_expr2)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.SetState(97)
+	p.GetErrorHandler().Sync(p)
+
+	switch p.GetTokenStream().LA(1) {
+	case AuroraParserT__5, AuroraParserT__6, AuroraParserT__7, AuroraParserT__8, AuroraParserT__9:
+		p.EnterOuterAlt(localctx, 1)
+		{
+			p.SetState(95)
+			p.LhsOperator()
+		}
+
+	case AuroraParserT__1, AuroraParserIntegerLiteral, AuroraParserStringLiteral, AuroraParserIdentifier:
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(96)
+			p.expr1(0)
+		}
+
+	default:
+		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+	}
+
+	return localctx
+}
+
+// ILhsOperatorContext is an interface to support dynamic dispatch.
+type ILhsOperatorContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// GetOp returns the Op token.
+	GetOp() antlr.Token
+
+	// SetOp sets the Op token.
+	SetOp(antlr.Token)
+
+	// GetOn returns the On rule contexts.
+	GetOn() IExprContext
+
+	// SetOn sets the On rule contexts.
+	SetOn(IExprContext)
+
+	// IsLhsOperatorContext differentiates from other interfaces.
+	IsLhsOperatorContext()
+}
+
+type LhsOperatorContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+	Op     antlr.Token
+	On     IExprContext
+}
+
+func NewEmptyLhsOperatorContext() *LhsOperatorContext {
+	var p = new(LhsOperatorContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = AuroraParserRULE_lhsOperator
+	return p
+}
+
+func (*LhsOperatorContext) IsLhsOperatorContext() {}
+
+func NewLhsOperatorContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *LhsOperatorContext {
+	var p = new(LhsOperatorContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = AuroraParserRULE_lhsOperator
+
+	return p
+}
+
+func (s *LhsOperatorContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *LhsOperatorContext) GetOp() antlr.Token { return s.Op }
+
+func (s *LhsOperatorContext) SetOp(v antlr.Token) { s.Op = v }
+
+func (s *LhsOperatorContext) GetOn() IExprContext { return s.On }
+
+func (s *LhsOperatorContext) SetOn(v IExprContext) { s.On = v }
+
+func (s *LhsOperatorContext) Expr() IExprContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExprContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExprContext)
+}
+
+func (s *LhsOperatorContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *LhsOperatorContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *LhsOperatorContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.EnterLhsOperator(s)
+	}
+}
+
+func (s *LhsOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.ExitLhsOperator(s)
+	}
+}
+
+func (p *AuroraParser) LhsOperator() (localctx ILhsOperatorContext) {
+	localctx = NewLhsOperatorContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 28, AuroraParserRULE_lhsOperator)
+	var _la int
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	p.SetState(99)
+
+	var _lt = p.GetTokenStream().LT(1)
+
+	localctx.(*LhsOperatorContext).Op = _lt
+
+	_la = p.GetTokenStream().LA(1)
+
+	if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__5)|(1<<AuroraParserT__6)|(1<<AuroraParserT__7)|(1<<AuroraParserT__8)|(1<<AuroraParserT__9))) != 0) {
+		var _ri = p.GetErrorHandler().RecoverInline(p)
+
+		localctx.(*LhsOperatorContext).Op = _ri
+	} else {
+		p.GetErrorHandler().ReportMatch(p)
+		p.Consume()
+	}
+	{
+		p.SetState(100)
+
+		var _x = p.Expr()
+
+		localctx.(*LhsOperatorContext).On = _x
 	}
 
 	return localctx

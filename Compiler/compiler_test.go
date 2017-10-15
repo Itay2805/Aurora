@@ -1,8 +1,6 @@
 package compiler
 
 import (
-	"encoding/json"
-	"fmt"
 	"reflect"
 	"testing"
 )
@@ -81,21 +79,52 @@ func TestFunctionCallsAndMemberAccesses(t *testing.T) {
 			},
 		},
 	}
-	{
-		b, err := json.Marshal(ast)
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-		fmt.Println(string(b))
+	if !reflect.DeepEqual(ast, expectedAST) {
+		t.Errorf("Got:\n%+v\n Expected:\n%+v\n", ast, expectedAST)
 	}
-	{
-		b, err := json.Marshal(expectedAST)
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-		fmt.Println(string(b))
+}
+
+func TestLHSOperators(t *testing.T) {
+	ast := BuildAST(
+		`-test
+		+test
+		!test
+		*test
+		&test`)
+
+	expectedAST := &CompilerContext{
+		Expressions: []Expr{
+			LHSOperatorExpr{
+				On: IdentImmidiateExpr{
+					Identifier: "test",
+				},
+				Operator: "-",
+			},
+			LHSOperatorExpr{
+				On: IdentImmidiateExpr{
+					Identifier: "test",
+				},
+				Operator: "+",
+			},
+			LHSOperatorExpr{
+				On: IdentImmidiateExpr{
+					Identifier: "test",
+				},
+				Operator: "!",
+			},
+			LHSOperatorExpr{
+				On: IdentImmidiateExpr{
+					Identifier: "test",
+				},
+				Operator: "*",
+			},
+			LHSOperatorExpr{
+				On: IdentImmidiateExpr{
+					Identifier: "test",
+				},
+				Operator: "&",
+			},
+		},
 	}
 	if !reflect.DeepEqual(ast, expectedAST) {
 		t.Errorf("Got:\n%+v\n Expected:\n%+v\n", ast, expectedAST)

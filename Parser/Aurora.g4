@@ -17,7 +17,7 @@ expression
     ;
 
 expr
-    : expr1
+    : expr2
     ;
 
 
@@ -67,6 +67,27 @@ functionCall
 
 functionCallParam
     : ParamExpr=expr
+    ;
+
+
+/* Precedence 1 */
+
+expr2
+    :  
+    ( lhsOperator
+    )
+    | expr1
+    ;
+
+lhsOperator
+    :
+        Op=( '-'
+        | '+'
+        | '!'
+        | '*'
+        | '&'
+        )
+        On=expr
     ;
 
 /* Literals */

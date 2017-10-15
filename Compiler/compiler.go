@@ -47,7 +47,6 @@ type LHSOperatorExpr struct {
 
 // LROperatorExpr is AST node for representing an operator which has both Left and Right expression
 type LROperatorExpr struct {
-	Expr
 	Operator string
 	Left     Expr
 	Right    Expr
@@ -168,22 +167,41 @@ func (s *CompilerContext) ExitLhsOperator(ctx *parser.LhsOperatorContext) {
 
 // /* Precedence 3 */
 
-// // EnterDivMulOperator is called when production divMulOperator is entered.
-// func (s *CompilerContext) EnterDivMulOperator(ctx *parser.DivMulOperatorContext) {
-// 	GetLast(s).Current = LROperatorExpr{
-// 		Left:     GetLast(s).Current,
-// 		Operator: ctx.Op.GetText(),
-// 	}
-// 	GetLast(s).ChildContext = NewCompilerContext()
-// }
+// EnterMulDivMod is called when production mulDivMod is entered.
+func (s *CompilerContext) EnterMulDivMod(ctx *parser.MulDivModContext) {
+	GetLast(s).Current = LROperatorExpr{
+		Left:     GetLast(s).Current,
+		Operator: ctx.Op.GetText(),
+	}
+	GetLast(s).ChildContext = NewCompilerContext()
+}
 
-// // ExitDivMulOperator is called when production divMulOperator is exited.
-// func (s *CompilerContext) ExitDivMulOperator(ctx *parser.DivMulOperatorContext) {
-// 	lr := GetBeforLast(s).Current.(LROperatorExpr)
-// 	lr.Right = GetLast(s).Current
-// 	GetBeforLast(s).Current = lr
-// 	GetBeforLast(s).ChildContext = nil
-// }
+// ExitMulDivMod is called when production mulDivMod is exited.
+func (s *CompilerContext) ExitMulDivMod(ctx *parser.MulDivModContext) {
+	lr := GetBeforLast(s).Current.(LROperatorExpr)
+	lr.Right = GetLast(s).Current
+	GetBeforLast(s).Current = lr
+	GetBeforLast(s).ChildContext = nil
+}
+
+/* Precedence 4 */
+
+// EnterAddSub is called when production addSub is entered.
+func (s *CompilerContext) EnterAddSub(ctx *parser.AddSubContext) {
+	GetLast(s).Current = LROperatorExpr{
+		Left:     GetLast(s).Current,
+		Operator: ctx.Op.GetText(),
+	}
+	GetLast(s).ChildContext = NewCompilerContext()
+}
+
+// ExitAddSub is called when production addSub is exited.
+func (s *CompilerContext) ExitAddSub(ctx *parser.AddSubContext) {
+	lr := GetBeforLast(s).Current.(LROperatorExpr)
+	lr.Right = GetLast(s).Current
+	GetBeforLast(s).Current = lr
+	GetBeforLast(s).ChildContext = nil
+}
 
 // NewCompilerContext ...
 func NewCompilerContext() *CompilerContext {

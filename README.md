@@ -1,7 +1,5 @@
 # Aurora
 
-[![Coverage Status](https://coveralls.io/repos/github/Itay2805/Aurora/badge.svg?branch=master)](https://coveralls.io/github/Itay2805/Aurora?branch=master)
-
 This is a compiler for the Aurora language.
 
 Right now the compiler is written in Go.

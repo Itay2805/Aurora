@@ -52,6 +52,11 @@ type LROperatorExpr struct {
 	Right    Expr
 }
 
+type AssignExpr struct {
+	Target Expr
+	Source Expr
+}
+
 func (f IntImmidiateExpr) expr()   {}
 func (f IdentImmidiateExpr) expr() {}
 func (f StringImmidateExpr) expr() {}
@@ -59,6 +64,7 @@ func (f MemberAccessExpr) expr()   {}
 func (f FunctionCallExpr) expr()   {}
 func (f LHSOperatorExpr) expr()    {}
 func (f LROperatorExpr) expr()     {}
+func (f AssignExpr) expr()         {}
 
 // CompilerContext contains the AST
 type CompilerContext struct {
@@ -200,6 +206,62 @@ func (s *CompilerContext) ExitAddSub(ctx *parser.AddSubContext) {
 	lr := GetBeforLast(s).Current.(LROperatorExpr)
 	lr.Right = GetLast(s).Current
 	GetBeforLast(s).Current = lr
+	GetBeforLast(s).ChildContext = nil
+}
+
+/* Precedence 5 */
+
+// EnterLogicalAnd is called when production logicalAnd is entered.
+func (s *CompilerContext) EnterLogicalAnd(ctx *parser.LogicalAndContext) {
+	GetLast(s).Current = LROperatorExpr{
+		Left:     GetLast(s).Current,
+		Operator: "&&",
+	}
+	GetLast(s).ChildContext = NewCompilerContext()
+}
+
+// ExitLogicalAnd is called when production logicalAnd is exited.
+func (s *CompilerContext) ExitLogicalAnd(ctx *parser.LogicalAndContext) {
+	lr := GetBeforLast(s).Current.(LROperatorExpr)
+	lr.Right = GetLast(s).Current
+	GetBeforLast(s).Current = lr
+	GetBeforLast(s).ChildContext = nil
+}
+
+/* Precedence 6 */
+
+// EnterLogicalOr is called when production logicalOr is entered.
+func (s *CompilerContext) EnterLogicalOr(ctx *parser.LogicalOrContext) {
+	GetLast(s).Current = LROperatorExpr{
+		Left:     GetLast(s).Current,
+		Operator: "||",
+	}
+	GetLast(s).ChildContext = NewCompilerContext()
+}
+
+// ExitLogicalOr is called when production logicalOr is exited.
+func (s *CompilerContext) ExitLogicalOr(ctx *parser.LogicalOrContext) {
+	lr := GetBeforLast(s).Current.(LROperatorExpr)
+	lr.Right = GetLast(s).Current
+	GetBeforLast(s).Current = lr
+	GetBeforLast(s).ChildContext = nil
+}
+
+/* Precedence 7 */
+
+// EnterAssign is called when production assign is entered.
+func (s *CompilerContext) EnterAssign(ctx *parser.AssignContext) {
+	GetLast(s).Current = AssignExpr{
+		Target: GetLast(s).Current,
+	}
+	GetLast(s).ChildContext = NewCompilerContext()
+}
+
+// ExitAssign is called when production assign is exited.
+func (s *CompilerContext) ExitAssign(ctx *parser.AssignContext) {
+	assign := GetBeforLast(s).Current.(AssignExpr)
+	assign.Source = GetLast(s).Current
+	GetBeforLast(s).Current = assign
 	GetBeforLast(s).ChildContext = nil
 }
 

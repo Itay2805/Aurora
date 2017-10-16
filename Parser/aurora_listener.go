@@ -65,6 +65,24 @@ type AuroraListener interface {
 	// EnterAddSub is called when entering the addSub production.
 	EnterAddSub(c *AddSubContext)
 
+	// EnterExpr5 is called when entering the expr5 production.
+	EnterExpr5(c *Expr5Context)
+
+	// EnterLogicalAnd is called when entering the logicalAnd production.
+	EnterLogicalAnd(c *LogicalAndContext)
+
+	// EnterExpr6 is called when entering the expr6 production.
+	EnterExpr6(c *Expr6Context)
+
+	// EnterLogicalOr is called when entering the logicalOr production.
+	EnterLogicalOr(c *LogicalOrContext)
+
+	// EnterExpr7 is called when entering the expr7 production.
+	EnterExpr7(c *Expr7Context)
+
+	// EnterAssign is called when entering the assign production.
+	EnterAssign(c *AssignContext)
+
 	// ExitProgram is called when exiting the program production.
 	ExitProgram(c *ProgramContext)
 
@@ -121,4 +139,22 @@ type AuroraListener interface {
 
 	// ExitAddSub is called when exiting the addSub production.
 	ExitAddSub(c *AddSubContext)
+
+	// ExitExpr5 is called when exiting the expr5 production.
+	ExitExpr5(c *Expr5Context)
+
+	// ExitLogicalAnd is called when exiting the logicalAnd production.
+	ExitLogicalAnd(c *LogicalAndContext)
+
+	// ExitExpr6 is called when exiting the expr6 production.
+	ExitExpr6(c *Expr6Context)
+
+	// ExitLogicalOr is called when exiting the logicalOr production.
+	ExitLogicalOr(c *LogicalOrContext)
+
+	// ExitExpr7 is called when exiting the expr7 production.
+	ExitExpr7(c *Expr7Context)
+
+	// ExitAssign is called when exiting the assign production.
+	ExitAssign(c *AssignContext)
 }

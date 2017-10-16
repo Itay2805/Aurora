@@ -1,9 +1,5 @@
 grammar Aurora;
 
-@lexer::members {
-var IdSeen bool = false
- }
-
 program
     : expressionList? EOF?
     ;
@@ -17,7 +13,7 @@ expression
     ;
 
 expr
-    : expr4
+    : expr7
     ;
 
 
@@ -117,6 +113,45 @@ addSub
         | '+'
         )
         Right=expr4
+    ;
+
+/* Precedence 5 */
+
+expr5
+    : Left=expr5 logicalAnd
+    | expr4
+    ;
+
+logicalAnd
+    :   '&&' Right=expr5
+    ;
+
+/* Precedence 6 */
+
+expr6
+    : Left=expr6 logicalOr
+    | expr5
+    ;
+
+logicalOr
+    :   '||' Right=expr6
+    ;
+
+/* Precedence 7 */
+expr7
+    :(
+        ( memberAccess
+        | identifierImmidiate
+        )
+        assign
+    )
+    | expr6
+    ;
+
+assign
+    :
+    '='
+    Right=expr
     ;
 
 /* Literals */

@@ -134,3 +134,39 @@ func (s *BaseAuroraListener) EnterAddSub(ctx *AddSubContext) {}
 
 // ExitAddSub is called when production addSub is exited.
 func (s *BaseAuroraListener) ExitAddSub(ctx *AddSubContext) {}
+
+// EnterExpr5 is called when production expr5 is entered.
+func (s *BaseAuroraListener) EnterExpr5(ctx *Expr5Context) {}
+
+// ExitExpr5 is called when production expr5 is exited.
+func (s *BaseAuroraListener) ExitExpr5(ctx *Expr5Context) {}
+
+// EnterLogicalAnd is called when production logicalAnd is entered.
+func (s *BaseAuroraListener) EnterLogicalAnd(ctx *LogicalAndContext) {}
+
+// ExitLogicalAnd is called when production logicalAnd is exited.
+func (s *BaseAuroraListener) ExitLogicalAnd(ctx *LogicalAndContext) {}
+
+// EnterExpr6 is called when production expr6 is entered.
+func (s *BaseAuroraListener) EnterExpr6(ctx *Expr6Context) {}
+
+// ExitExpr6 is called when production expr6 is exited.
+func (s *BaseAuroraListener) ExitExpr6(ctx *Expr6Context) {}
+
+// EnterLogicalOr is called when production logicalOr is entered.
+func (s *BaseAuroraListener) EnterLogicalOr(ctx *LogicalOrContext) {}
+
+// ExitLogicalOr is called when production logicalOr is exited.
+func (s *BaseAuroraListener) ExitLogicalOr(ctx *LogicalOrContext) {}
+
+// EnterExpr7 is called when production expr7 is entered.
+func (s *BaseAuroraListener) EnterExpr7(ctx *Expr7Context) {}
+
+// ExitExpr7 is called when production expr7 is exited.
+func (s *BaseAuroraListener) ExitExpr7(ctx *Expr7Context) {}
+
+// EnterAssign is called when production assign is entered.
+func (s *BaseAuroraListener) EnterAssign(ctx *AssignContext) {}
+
+// ExitAssign is called when production assign is exited.
+func (s *BaseAuroraListener) ExitAssign(ctx *AssignContext) {}

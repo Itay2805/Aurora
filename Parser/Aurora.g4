@@ -8,16 +8,23 @@ statementList
     : stmt stmt*
     ;
 
+codeBlock
+    : '{' statementList? '}'
+    ;
+
 variableStmt
     : 'var' name=Identifier ('=' expr)?
     ;
 
 stmt
-    :   
-        ( expressionStmt
-        | variableStmt
+    :   (
+            ( variableStmt
+            | expressionStmt
+            )
+            (Newline | ';' | EOF)
+
+        | codeBlock
         )
-        (Newline | ';' | EOF)
     ;
 
 expressionStmt

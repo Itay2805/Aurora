@@ -33,6 +33,12 @@ func (s *BaseAuroraListener) EnterStatementList(ctx *StatementListContext) {}
 // ExitStatementList is called when production statementList is exited.
 func (s *BaseAuroraListener) ExitStatementList(ctx *StatementListContext) {}
 
+// EnterCodeBlock is called when production codeBlock is entered.
+func (s *BaseAuroraListener) EnterCodeBlock(ctx *CodeBlockContext) {}
+
+// ExitCodeBlock is called when production codeBlock is exited.
+func (s *BaseAuroraListener) ExitCodeBlock(ctx *CodeBlockContext) {}
+
 // EnterVariableStmt is called when production variableStmt is entered.
 func (s *BaseAuroraListener) EnterVariableStmt(ctx *VariableStmtContext) {}
 

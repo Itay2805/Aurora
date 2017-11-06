@@ -14,6 +14,9 @@ type AuroraListener interface {
 	// EnterStatementList is called when entering the statementList production.
 	EnterStatementList(c *StatementListContext)
 
+	// EnterCodeBlock is called when entering the codeBlock production.
+	EnterCodeBlock(c *CodeBlockContext)
+
 	// EnterVariableStmt is called when entering the variableStmt production.
 	EnterVariableStmt(c *VariableStmtContext)
 
@@ -94,6 +97,9 @@ type AuroraListener interface {
 
 	// ExitStatementList is called when exiting the statementList production.
 	ExitStatementList(c *StatementListContext)
+
+	// ExitCodeBlock is called when exiting the codeBlock production.
+	ExitCodeBlock(c *CodeBlockContext)
 
 	// ExitVariableStmt is called when exiting the variableStmt production.
 	ExitVariableStmt(c *VariableStmtContext)

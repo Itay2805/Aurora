@@ -73,6 +73,10 @@ type VariableStmt struct {
 	Value Expr
 }
 
+type CodeBlockStmt struct {
+	Statements []Stmt
+}
+
 func (f IntImmidiateExpr) expr()   {}
 func (f IdentImmidiateExpr) expr() {}
 func (f StringImmidateExpr) expr() {}
@@ -82,8 +86,9 @@ func (f LHSOperatorExpr) expr()    {}
 func (f LROperatorExpr) expr()     {}
 func (f AssignExpr) expr()         {}
 
-func (f ExprStmt) stmt()     {}
-func (f VariableStmt) stmt() {}
+func (f ExprStmt) stmt()      {}
+func (f VariableStmt) stmt()  {}
+func (f CodeBlockStmt) stmt() {}
 
 // CompilerContext contains the AST
 type CompilerContext struct {
@@ -115,24 +120,41 @@ func GetBeforLast(ctx *CompilerContext) *CompilerContext {
 
 // ExitStmt is called when production stmt is exited.
 func (s *CompilerContext) ExitStmt(ctx *parser.StmtContext) {
-	s.Statements = append(s.Statements, s.CurrentStmt)
-	s.CurrentStmt = nil
-	s.CurrentExpr = nil
+	GetLast(s).Statements = append(GetLast(s).Statements, GetLast(s).CurrentStmt)
+	GetLast(s).CurrentStmt = nil
+	GetLast(s).CurrentExpr = nil
 }
 
 // ExitExpressionStmt is called when production expressionStmt is exited.
 func (s *CompilerContext) ExitExpressionStmt(ctx *parser.ExpressionStmtContext) {
-	s.CurrentStmt = ExprStmt{
-		Expr: s.CurrentExpr,
+	GetLast(s).CurrentStmt = ExprStmt{
+		Expr: GetLast(s).CurrentExpr,
 	}
 }
 
 // ExitVariableStmt is called when production variableStmt is exited.
 func (s *CompilerContext) ExitVariableStmt(ctx *parser.VariableStmtContext) {
-	s.CurrentStmt = VariableStmt{
+	GetLast(s).CurrentStmt = VariableStmt{
 		Name:  ctx.GetName().GetText(),
-		Value: s.CurrentExpr,
+		Value: GetLast(s).CurrentExpr,
 	}
+}
+
+// EnterCodeBlock is called when production codeBlock is entered.
+func (s *CompilerContext) EnterCodeBlock(ctx *parser.CodeBlockContext) {
+	GetLast(s).CurrentStmt = CodeBlockStmt{
+		Statements: nil,
+	}
+	GetLast(s).ChildContext = NewCompilerContext()
+}
+
+// ExitCodeBlock is called when production codeBlock is exited.
+func (s *CompilerContext) ExitCodeBlock(ctx *parser.CodeBlockContext) {
+	cb := GetBeforLast(s).CurrentStmt.(CodeBlockStmt)
+	cb.Statements = GetLast(s).Statements
+	GetBeforLast(s).CurrentStmt = cb
+	GetBeforLast(s).CurrentExpr = nil
+	GetBeforLast(s).ChildContext = nil
 }
 
 /* Precedence 0 */

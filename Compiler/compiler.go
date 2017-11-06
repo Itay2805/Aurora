@@ -69,8 +69,12 @@ type ExprStmt struct {
 }
 
 type VariableStmt struct {
-	Name  string
-	Value Expr
+	Name     string
+	Type     string
+	Value    Expr
+	Optional bool
+	Ptr      int
+	GCPtr    bool
 }
 
 type CodeBlockStmt struct {
@@ -134,9 +138,17 @@ func (s *CompilerContext) ExitExpressionStmt(ctx *parser.ExpressionStmtContext) 
 
 // ExitVariableStmt is called when production variableStmt is exited.
 func (s *CompilerContext) ExitVariableStmt(ctx *parser.VariableStmtContext) {
+	ptrCount := 0
+	if ctx.GetPtr() != nil {
+		ptrCount = len(ctx.GetPtr().GetText())
+	}
 	GetLast(s).CurrentStmt = VariableStmt{
-		Name:  ctx.GetName().GetText(),
-		Value: GetLast(s).CurrentExpr,
+		Name:     ctx.GetName().GetText(),
+		Type:     ctx.GetVariableType().GetText(),
+		Value:    GetLast(s).CurrentExpr,
+		Optional: ctx.GetOptional() != nil,
+		Ptr:      ptrCount,
+		GCPtr:    ctx.GetGcptr() != nil,
 	}
 }
 

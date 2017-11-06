@@ -20,6 +20,9 @@ type AuroraListener interface {
 	// EnterVariableStmt is called when entering the variableStmt production.
 	EnterVariableStmt(c *VariableStmtContext)
 
+	// EnterPointer is called when entering the pointer production.
+	EnterPointer(c *PointerContext)
+
 	// EnterStmt is called when entering the stmt production.
 	EnterStmt(c *StmtContext)
 
@@ -103,6 +106,9 @@ type AuroraListener interface {
 
 	// ExitVariableStmt is called when exiting the variableStmt production.
 	ExitVariableStmt(c *VariableStmtContext)
+
+	// ExitPointer is called when exiting the pointer production.
+	ExitPointer(c *PointerContext)
 
 	// ExitStmt is called when exiting the stmt production.
 	ExitStmt(c *StmtContext)

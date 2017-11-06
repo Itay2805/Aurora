@@ -45,6 +45,12 @@ func (s *BaseAuroraListener) EnterVariableStmt(ctx *VariableStmtContext) {}
 // ExitVariableStmt is called when production variableStmt is exited.
 func (s *BaseAuroraListener) ExitVariableStmt(ctx *VariableStmtContext) {}
 
+// EnterPointer is called when production pointer is entered.
+func (s *BaseAuroraListener) EnterPointer(ctx *PointerContext) {}
+
+// ExitPointer is called when production pointer is exited.
+func (s *BaseAuroraListener) ExitPointer(ctx *PointerContext) {}
+
 // EnterStmt is called when production stmt is entered.
 func (s *BaseAuroraListener) EnterStmt(ctx *StmtContext) {}
 

@@ -12,6 +12,11 @@ type Expr interface {
 	expr()
 }
 
+// Stmt is the super type for AST statement node
+type Stmt interface {
+	stmt()
+}
+
 // IntImmidiateExpr is AST node for immidiate int value
 type IntImmidiateExpr struct {
 	Value int
@@ -57,6 +62,17 @@ type AssignExpr struct {
 	Source Expr
 }
 
+// Statements
+
+type ExprStmt struct {
+	Expr Expr
+}
+
+type VariableStmt struct {
+	Name  string
+	Value Expr
+}
+
 func (f IntImmidiateExpr) expr()   {}
 func (f IdentImmidiateExpr) expr() {}
 func (f StringImmidateExpr) expr() {}
@@ -66,12 +82,16 @@ func (f LHSOperatorExpr) expr()    {}
 func (f LROperatorExpr) expr()     {}
 func (f AssignExpr) expr()         {}
 
+func (f ExprStmt) stmt()     {}
+func (f VariableStmt) stmt() {}
+
 // CompilerContext contains the AST
 type CompilerContext struct {
 	*parser.BaseAuroraListener
 
-	Expressions  []Expr
-	Current      Expr
+	Statements   []Stmt
+	CurrentStmt  Stmt
+	CurrentExpr  Expr
 	ChildContext *CompilerContext
 }
 
@@ -91,33 +111,51 @@ func GetBeforLast(ctx *CompilerContext) *CompilerContext {
 	return temp
 }
 
-// ExitExpression is called when production expression is exited.
-func (s *CompilerContext) ExitExpression(ctx *parser.ExpressionContext) {
-	s.Expressions = append(GetLast(s).Expressions, GetLast(s).Current)
-	s.Current = nil
+/* Statements */
+
+// ExitStmt is called when production stmt is exited.
+func (s *CompilerContext) ExitStmt(ctx *parser.StmtContext) {
+	s.Statements = append(s.Statements, s.CurrentStmt)
+	s.CurrentStmt = nil
+	s.CurrentExpr = nil
+}
+
+// ExitExpressionStmt is called when production expressionStmt is exited.
+func (s *CompilerContext) ExitExpressionStmt(ctx *parser.ExpressionStmtContext) {
+	s.CurrentStmt = ExprStmt{
+		Expr: s.CurrentExpr,
+	}
+}
+
+// ExitVariableStmt is called when production variableStmt is exited.
+func (s *CompilerContext) ExitVariableStmt(ctx *parser.VariableStmtContext) {
+	s.CurrentStmt = VariableStmt{
+		Name:  ctx.GetName().GetText(),
+		Value: s.CurrentExpr,
+	}
 }
 
 /* Precedence 0 */
 
 // EnterIntegerImmidiate is called when production integerImmidiate is entered.
 func (s *CompilerContext) EnterIntegerImmidiate(ctx *parser.IntegerImmidiateContext) {
-	num, _ := strconv.Atoi(ctx.NumberVal.GetText())
-	GetLast(s).Current = IntImmidiateExpr{
+	num, _ := strconv.Atoi(ctx.GetNumberVal().GetText())
+	GetLast(s).CurrentExpr = IntImmidiateExpr{
 		Value: num,
 	}
 }
 
 // EnterIdentifierImmidiate is called when production identifierImmidiate is entered.
 func (s *CompilerContext) EnterIdentifierImmidiate(ctx *parser.IdentifierImmidiateContext) {
-	GetLast(s).Current = IdentImmidiateExpr{
-		Identifier: ctx.Name.GetText(),
+	GetLast(s).CurrentExpr = IdentImmidiateExpr{
+		Identifier: ctx.GetName().GetText(),
 	}
 }
 
 // EnterStringImmidiate is called when production stringImmidiate is entered.
 func (s *CompilerContext) EnterStringImmidiate(ctx *parser.StringImmidiateContext) {
-	GetLast(s).Current = StringImmidateExpr{
-		Value: ctx.StringVal.GetText()[1 : len(ctx.StringVal.GetText())-1],
+	GetLast(s).CurrentExpr = StringImmidateExpr{
+		Value: ctx.GetStringVal().GetText()[1 : len(ctx.GetStringVal().GetText())-1],
 	}
 }
 
@@ -125,16 +163,16 @@ func (s *CompilerContext) EnterStringImmidiate(ctx *parser.StringImmidiateContex
 
 // EnterMemberAccess is called when production memberAccess is entered.
 func (s *CompilerContext) EnterMemberAccess(ctx *parser.MemberAccessContext) {
-	GetLast(s).Current = MemberAccessExpr{
-		AccessFrom: GetLast(s).Current,
-		MemberName: ctx.Member.GetText(),
+	GetLast(s).CurrentExpr = MemberAccessExpr{
+		AccessFrom: GetLast(s).CurrentExpr,
+		MemberName: ctx.GetMember().GetText(),
 	}
 }
 
 // EnterFunctionCall is called when production functionCall is entered.
 func (s *CompilerContext) EnterFunctionCall(ctx *parser.FunctionCallContext) {
-	GetLast(s).Current = FunctionCallExpr{
-		Function:   GetLast(s).Current,
+	GetLast(s).CurrentExpr = FunctionCallExpr{
+		Function:   GetLast(s).CurrentExpr,
 		Parameters: make([]Expr, 0),
 	}
 	GetLast(s).ChildContext = NewCompilerContext()
@@ -147,27 +185,27 @@ func (s *CompilerContext) ExitFunctionCall(ctx *parser.FunctionCallContext) {
 
 // ExitFunctionCallParam is called when production functionCallParam is exited.
 func (s *CompilerContext) ExitFunctionCallParam(ctx *parser.FunctionCallParamContext) {
-	fc := GetBeforLast(s).Current.(FunctionCallExpr)
-	fc.Parameters = append(fc.Parameters, GetLast(s).Current)
-	GetBeforLast(s).Current = fc
-	GetLast(s).Current = nil
+	fc := GetBeforLast(s).CurrentExpr.(FunctionCallExpr)
+	fc.Parameters = append(fc.Parameters, GetLast(s).CurrentExpr)
+	GetBeforLast(s).CurrentExpr = fc
+	GetLast(s).CurrentExpr = nil
 }
 
 // /* Precedence 2 */
 
 // EnterLhsOperator is called when production lhsOperator is entered.
 func (s *CompilerContext) EnterLhsOperator(ctx *parser.LhsOperatorContext) {
-	GetLast(s).Current = LHSOperatorExpr{
-		Operator: ctx.Op.GetText(),
+	GetLast(s).CurrentExpr = LHSOperatorExpr{
+		Operator: ctx.GetOp().GetText(),
 	}
 	GetLast(s).ChildContext = NewCompilerContext()
 }
 
 // ExitLhsOperator is called when production lhsOperator is exited.
 func (s *CompilerContext) ExitLhsOperator(ctx *parser.LhsOperatorContext) {
-	lhso := GetBeforLast(s).Current.(LHSOperatorExpr)
-	lhso.On = GetLast(s).Current
-	GetBeforLast(s).Current = lhso
+	lhso := GetBeforLast(s).CurrentExpr.(LHSOperatorExpr)
+	lhso.On = GetLast(s).CurrentExpr
+	GetBeforLast(s).CurrentExpr = lhso
 	GetBeforLast(s).ChildContext = nil
 }
 
@@ -175,18 +213,18 @@ func (s *CompilerContext) ExitLhsOperator(ctx *parser.LhsOperatorContext) {
 
 // EnterMulDivMod is called when production mulDivMod is entered.
 func (s *CompilerContext) EnterMulDivMod(ctx *parser.MulDivModContext) {
-	GetLast(s).Current = LROperatorExpr{
-		Left:     GetLast(s).Current,
-		Operator: ctx.Op.GetText(),
+	GetLast(s).CurrentExpr = LROperatorExpr{
+		Left:     GetLast(s).CurrentExpr,
+		Operator: ctx.GetOp().GetText(),
 	}
 	GetLast(s).ChildContext = NewCompilerContext()
 }
 
 // ExitMulDivMod is called when production mulDivMod is exited.
 func (s *CompilerContext) ExitMulDivMod(ctx *parser.MulDivModContext) {
-	lr := GetBeforLast(s).Current.(LROperatorExpr)
-	lr.Right = GetLast(s).Current
-	GetBeforLast(s).Current = lr
+	lr := GetBeforLast(s).CurrentExpr.(LROperatorExpr)
+	lr.Right = GetLast(s).CurrentExpr
+	GetBeforLast(s).CurrentExpr = lr
 	GetBeforLast(s).ChildContext = nil
 }
 
@@ -194,18 +232,18 @@ func (s *CompilerContext) ExitMulDivMod(ctx *parser.MulDivModContext) {
 
 // EnterAddSub is called when production addSub is entered.
 func (s *CompilerContext) EnterAddSub(ctx *parser.AddSubContext) {
-	GetLast(s).Current = LROperatorExpr{
-		Left:     GetLast(s).Current,
-		Operator: ctx.Op.GetText(),
+	GetLast(s).CurrentExpr = LROperatorExpr{
+		Left:     GetLast(s).CurrentExpr,
+		Operator: ctx.GetOp().GetText(),
 	}
 	GetLast(s).ChildContext = NewCompilerContext()
 }
 
 // ExitAddSub is called when production addSub is exited.
 func (s *CompilerContext) ExitAddSub(ctx *parser.AddSubContext) {
-	lr := GetBeforLast(s).Current.(LROperatorExpr)
-	lr.Right = GetLast(s).Current
-	GetBeforLast(s).Current = lr
+	lr := GetBeforLast(s).CurrentExpr.(LROperatorExpr)
+	lr.Right = GetLast(s).CurrentExpr
+	GetBeforLast(s).CurrentExpr = lr
 	GetBeforLast(s).ChildContext = nil
 }
 
@@ -213,8 +251,8 @@ func (s *CompilerContext) ExitAddSub(ctx *parser.AddSubContext) {
 
 // EnterLogicalAnd is called when production logicalAnd is entered.
 func (s *CompilerContext) EnterLogicalAnd(ctx *parser.LogicalAndContext) {
-	GetLast(s).Current = LROperatorExpr{
-		Left:     GetLast(s).Current,
+	GetLast(s).CurrentExpr = LROperatorExpr{
+		Left:     GetLast(s).CurrentExpr,
 		Operator: "&&",
 	}
 	GetLast(s).ChildContext = NewCompilerContext()
@@ -222,9 +260,9 @@ func (s *CompilerContext) EnterLogicalAnd(ctx *parser.LogicalAndContext) {
 
 // ExitLogicalAnd is called when production logicalAnd is exited.
 func (s *CompilerContext) ExitLogicalAnd(ctx *parser.LogicalAndContext) {
-	lr := GetBeforLast(s).Current.(LROperatorExpr)
-	lr.Right = GetLast(s).Current
-	GetBeforLast(s).Current = lr
+	lr := GetBeforLast(s).CurrentExpr.(LROperatorExpr)
+	lr.Right = GetLast(s).CurrentExpr
+	GetBeforLast(s).CurrentExpr = lr
 	GetBeforLast(s).ChildContext = nil
 }
 
@@ -232,8 +270,8 @@ func (s *CompilerContext) ExitLogicalAnd(ctx *parser.LogicalAndContext) {
 
 // EnterLogicalOr is called when production logicalOr is entered.
 func (s *CompilerContext) EnterLogicalOr(ctx *parser.LogicalOrContext) {
-	GetLast(s).Current = LROperatorExpr{
-		Left:     GetLast(s).Current,
+	GetLast(s).CurrentExpr = LROperatorExpr{
+		Left:     GetLast(s).CurrentExpr,
 		Operator: "||",
 	}
 	GetLast(s).ChildContext = NewCompilerContext()
@@ -241,9 +279,9 @@ func (s *CompilerContext) EnterLogicalOr(ctx *parser.LogicalOrContext) {
 
 // ExitLogicalOr is called when production logicalOr is exited.
 func (s *CompilerContext) ExitLogicalOr(ctx *parser.LogicalOrContext) {
-	lr := GetBeforLast(s).Current.(LROperatorExpr)
-	lr.Right = GetLast(s).Current
-	GetBeforLast(s).Current = lr
+	lr := GetBeforLast(s).CurrentExpr.(LROperatorExpr)
+	lr.Right = GetLast(s).CurrentExpr
+	GetBeforLast(s).CurrentExpr = lr
 	GetBeforLast(s).ChildContext = nil
 }
 
@@ -251,25 +289,26 @@ func (s *CompilerContext) ExitLogicalOr(ctx *parser.LogicalOrContext) {
 
 // EnterAssign is called when production assign is entered.
 func (s *CompilerContext) EnterAssign(ctx *parser.AssignContext) {
-	GetLast(s).Current = AssignExpr{
-		Target: GetLast(s).Current,
+	GetLast(s).CurrentExpr = AssignExpr{
+		Target: GetLast(s).CurrentExpr,
 	}
 	GetLast(s).ChildContext = NewCompilerContext()
 }
 
 // ExitAssign is called when production assign is exited.
 func (s *CompilerContext) ExitAssign(ctx *parser.AssignContext) {
-	assign := GetBeforLast(s).Current.(AssignExpr)
-	assign.Source = GetLast(s).Current
-	GetBeforLast(s).Current = assign
+	assign := GetBeforLast(s).CurrentExpr.(AssignExpr)
+	assign.Source = GetLast(s).CurrentExpr
+	GetBeforLast(s).CurrentExpr = assign
 	GetBeforLast(s).ChildContext = nil
 }
 
 // NewCompilerContext ...
 func NewCompilerContext() *CompilerContext {
 	return &CompilerContext{
-		Expressions:  make([]Expr, 0),
-		Current:      nil,
+		Statements:   make([]Stmt, 0),
+		CurrentStmt:  nil,
+		CurrentExpr:  nil,
 		ChildContext: nil,
 	}
 }

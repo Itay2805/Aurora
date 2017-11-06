@@ -11,11 +11,17 @@ type AuroraListener interface {
 	// EnterProgram is called when entering the program production.
 	EnterProgram(c *ProgramContext)
 
-	// EnterExpressionList is called when entering the expressionList production.
-	EnterExpressionList(c *ExpressionListContext)
+	// EnterStatementList is called when entering the statementList production.
+	EnterStatementList(c *StatementListContext)
 
-	// EnterExpression is called when entering the expression production.
-	EnterExpression(c *ExpressionContext)
+	// EnterVariableStmt is called when entering the variableStmt production.
+	EnterVariableStmt(c *VariableStmtContext)
+
+	// EnterStmt is called when entering the stmt production.
+	EnterStmt(c *StmtContext)
+
+	// EnterExpressionStmt is called when entering the expressionStmt production.
+	EnterExpressionStmt(c *ExpressionStmtContext)
 
 	// EnterExpr is called when entering the expr production.
 	EnterExpr(c *ExprContext)
@@ -86,11 +92,17 @@ type AuroraListener interface {
 	// ExitProgram is called when exiting the program production.
 	ExitProgram(c *ProgramContext)
 
-	// ExitExpressionList is called when exiting the expressionList production.
-	ExitExpressionList(c *ExpressionListContext)
+	// ExitStatementList is called when exiting the statementList production.
+	ExitStatementList(c *StatementListContext)
 
-	// ExitExpression is called when exiting the expression production.
-	ExitExpression(c *ExpressionContext)
+	// ExitVariableStmt is called when exiting the variableStmt production.
+	ExitVariableStmt(c *VariableStmtContext)
+
+	// ExitStmt is called when exiting the stmt production.
+	ExitStmt(c *StmtContext)
+
+	// ExitExpressionStmt is called when exiting the expressionStmt production.
+	ExitExpressionStmt(c *ExpressionStmtContext)
 
 	// ExitExpr is called when exiting the expr production.
 	ExitExpr(c *ExprContext)

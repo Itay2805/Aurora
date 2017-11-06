@@ -1,23 +1,34 @@
 grammar Aurora;
 
 program
-    : expressionList? EOF?
+    : statementList? EOF?
     ;
 
-expressionList
-    : expression expression*
+statementList
+    : stmt stmt*
     ;
 
-expression
-    : expr (Newline | ';' | EOF)
+variableStmt
+    : 'var' name=Identifier ('=' expr)?
     ;
+
+stmt
+    :   
+        ( expressionStmt
+        | variableStmt
+        )
+        (Newline | ';' | EOF)
+    ;
+
+expressionStmt
+    : expr
+    ;
+
+/* Precedence 0 (immidiate values) */
 
 expr
     : expr7
     ;
-
-
-/* Precedence 0 (immidiate values) */
 
 expr0
     :   ( brackets
@@ -28,19 +39,19 @@ expr0
     ;
 
 brackets
-    : '(' ParamExpr=expr ')'
+    : '(' paramExpr=expr ')'
     ;
 
 stringImmidiate
-    : StringVal=StringLiteral
+    : stringVal=StringLiteral
     ;
 
 identifierImmidiate
-    : Name=Identifier
+    : name=Identifier
     ;
 
 integerImmidiate
-    : NumberVal=IntegerLiteral
+    : numberVal=IntegerLiteral
     ;
 
 /* Precedence 1 */
@@ -54,7 +65,7 @@ expr1
     ;
 
 memberAccess
-    : '.' Member=Identifier
+    : '.' member=Identifier
     ;
 
 functionCall
@@ -62,7 +73,7 @@ functionCall
     ;
 
 functionCallParam
-    : ParamExpr=expr
+    : paramExpr=expr
     ;
 
 
@@ -77,70 +88,70 @@ expr2
 
 lhsOperator
     :
-        Op=( '-'
+        op=( '-'
         | '+'
         | '!'
         | '*'
         | '&'
         )
-        On=expr
+        on=expr
     ;
 
 /* Precedence 3 */
 
 expr3
-    : Left=expr3 mulDivMod
+    : left=expr3 mulDivMod
     | expr2
     ;
 
 mulDivMod
-    :   Op=( '*'
+    :   op=( '*'
         | '/'
         | '%'
         )
-        Right=expr3
+        right=expr3
     ;
 
 /* Precedence 4 */
 
 expr4
-    : Left=expr4 addSub
+    : left=expr4 addSub
     | expr3
     ;
 
 addSub
-    :   Op=( '-'
+    :   op=( '-'
         | '+'
         )
-        Right=expr4
+        right=expr4
     ;
 
 /* Precedence 5 */
 
 expr5
-    : Left=expr5 logicalAnd
+    : left=expr5 logicalAnd
     | expr4
     ;
 
 logicalAnd
-    :   '&&' Right=expr5
+    :   '&&' right=expr5
     ;
 
 /* Precedence 6 */
 
 expr6
-    : Left=expr6 logicalOr
+    : left=expr6 logicalOr
     | expr5
     ;
 
 logicalOr
-    :   '||' Right=expr6
+    :   '||' right=expr6
     ;
 
 /* Precedence 7 */
 expr7
     :(
-        ( memberAccess
+        ( expr1 memberAccess
         | identifierImmidiate
         )
         assign
@@ -151,7 +162,7 @@ expr7
 assign
     :
     '='
-    Right=expr
+    right=expr
     ;
 
 /* Literals */

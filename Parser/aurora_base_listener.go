@@ -27,17 +27,29 @@ func (s *BaseAuroraListener) EnterProgram(ctx *ProgramContext) {}
 // ExitProgram is called when production program is exited.
 func (s *BaseAuroraListener) ExitProgram(ctx *ProgramContext) {}
 
-// EnterExpressionList is called when production expressionList is entered.
-func (s *BaseAuroraListener) EnterExpressionList(ctx *ExpressionListContext) {}
+// EnterStatementList is called when production statementList is entered.
+func (s *BaseAuroraListener) EnterStatementList(ctx *StatementListContext) {}
 
-// ExitExpressionList is called when production expressionList is exited.
-func (s *BaseAuroraListener) ExitExpressionList(ctx *ExpressionListContext) {}
+// ExitStatementList is called when production statementList is exited.
+func (s *BaseAuroraListener) ExitStatementList(ctx *StatementListContext) {}
 
-// EnterExpression is called when production expression is entered.
-func (s *BaseAuroraListener) EnterExpression(ctx *ExpressionContext) {}
+// EnterVariableStmt is called when production variableStmt is entered.
+func (s *BaseAuroraListener) EnterVariableStmt(ctx *VariableStmtContext) {}
 
-// ExitExpression is called when production expression is exited.
-func (s *BaseAuroraListener) ExitExpression(ctx *ExpressionContext) {}
+// ExitVariableStmt is called when production variableStmt is exited.
+func (s *BaseAuroraListener) ExitVariableStmt(ctx *VariableStmtContext) {}
+
+// EnterStmt is called when production stmt is entered.
+func (s *BaseAuroraListener) EnterStmt(ctx *StmtContext) {}
+
+// ExitStmt is called when production stmt is exited.
+func (s *BaseAuroraListener) ExitStmt(ctx *StmtContext) {}
+
+// EnterExpressionStmt is called when production expressionStmt is entered.
+func (s *BaseAuroraListener) EnterExpressionStmt(ctx *ExpressionStmtContext) {}
+
+// ExitExpressionStmt is called when production expressionStmt is exited.
+func (s *BaseAuroraListener) ExitExpressionStmt(ctx *ExpressionStmtContext) {}
 
 // EnterExpr is called when production expr is entered.
 func (s *BaseAuroraListener) EnterExpr(ctx *ExprContext) {}

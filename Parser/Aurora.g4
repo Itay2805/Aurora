@@ -13,7 +13,7 @@ codeBlock
     ;
 
 variableStmt
-    : 'var' optional='optional'? variableType=Identifier ptr=pointer? gcptr='^'?  name=Identifier ('=' expr)?
+    : 'var' optional='optional'?  name=Identifier ':' (variableType=Identifier ptr=pointer? gcptr='^'?)? ('=' expr)?
     ;
 
 pointer

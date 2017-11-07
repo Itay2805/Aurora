@@ -142,9 +142,13 @@ func (s *CompilerContext) ExitVariableStmt(ctx *parser.VariableStmtContext) {
 	if ctx.GetPtr() != nil {
 		ptrCount = len(ctx.GetPtr().GetText())
 	}
+	xtype := ""
+	if ctx.GetVariableType() != nil {
+		xtype = ctx.GetVariableType().GetText()
+	}
 	GetLast(s).CurrentStmt = VariableStmt{
 		Name:     ctx.GetName().GetText(),
-		Type:     ctx.GetVariableType().GetText(),
+		Type:     xtype,
 		Value:    GetLast(s).CurrentExpr,
 		Optional: ctx.GetOptional() != nil,
 		Ptr:      ptrCount,

@@ -27,6 +27,18 @@ func (s *BaseAuroraListener) EnterProgram(ctx *ProgramContext) {}
 // ExitProgram is called when production program is exited.
 func (s *BaseAuroraListener) ExitProgram(ctx *ProgramContext) {}
 
+// EnterDeclarationList is called when production declarationList is entered.
+func (s *BaseAuroraListener) EnterDeclarationList(ctx *DeclarationListContext) {}
+
+// ExitDeclarationList is called when production declarationList is exited.
+func (s *BaseAuroraListener) ExitDeclarationList(ctx *DeclarationListContext) {}
+
+// EnterDeclaration is called when production declaration is entered.
+func (s *BaseAuroraListener) EnterDeclaration(ctx *DeclarationContext) {}
+
+// ExitDeclaration is called when production declaration is exited.
+func (s *BaseAuroraListener) ExitDeclaration(ctx *DeclarationContext) {}
+
 // EnterStatementList is called when production statementList is entered.
 func (s *BaseAuroraListener) EnterStatementList(ctx *StatementListContext) {}
 
@@ -39,11 +51,35 @@ func (s *BaseAuroraListener) EnterCodeBlock(ctx *CodeBlockContext) {}
 // ExitCodeBlock is called when production codeBlock is exited.
 func (s *BaseAuroraListener) ExitCodeBlock(ctx *CodeBlockContext) {}
 
+// EnterVariableDeclaration is called when production variableDeclaration is entered.
+func (s *BaseAuroraListener) EnterVariableDeclaration(ctx *VariableDeclarationContext) {}
+
+// ExitVariableDeclaration is called when production variableDeclaration is exited.
+func (s *BaseAuroraListener) ExitVariableDeclaration(ctx *VariableDeclarationContext) {}
+
 // EnterVariableStmt is called when production variableStmt is entered.
 func (s *BaseAuroraListener) EnterVariableStmt(ctx *VariableStmtContext) {}
 
 // ExitVariableStmt is called when production variableStmt is exited.
 func (s *BaseAuroraListener) ExitVariableStmt(ctx *VariableStmtContext) {}
+
+// EnterFunctionDeclaration is called when production functionDeclaration is entered.
+func (s *BaseAuroraListener) EnterFunctionDeclaration(ctx *FunctionDeclarationContext) {}
+
+// ExitFunctionDeclaration is called when production functionDeclaration is exited.
+func (s *BaseAuroraListener) ExitFunctionDeclaration(ctx *FunctionDeclarationContext) {}
+
+// EnterFunctionParameter is called when production functionParameter is entered.
+func (s *BaseAuroraListener) EnterFunctionParameter(ctx *FunctionParameterContext) {}
+
+// ExitFunctionParameter is called when production functionParameter is exited.
+func (s *BaseAuroraListener) ExitFunctionParameter(ctx *FunctionParameterContext) {}
+
+// EnterFunctionParameterList is called when production functionParameterList is entered.
+func (s *BaseAuroraListener) EnterFunctionParameterList(ctx *FunctionParameterListContext) {}
+
+// ExitFunctionParameterList is called when production functionParameterList is exited.
+func (s *BaseAuroraListener) ExitFunctionParameterList(ctx *FunctionParameterListContext) {}
 
 // EnterPointer is called when production pointer is entered.
 func (s *BaseAuroraListener) EnterPointer(ctx *PointerContext) {}

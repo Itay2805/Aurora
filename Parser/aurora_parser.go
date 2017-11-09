@@ -16,127 +16,157 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 30, 237,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 33, 298,
 	4, 2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7,
 	4, 8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 4, 12, 9, 12, 4, 13,
 	9, 13, 4, 14, 9, 14, 4, 15, 9, 15, 4, 16, 9, 16, 4, 17, 9, 17, 4, 18, 9,
 	18, 4, 19, 9, 19, 4, 20, 9, 20, 4, 21, 9, 21, 4, 22, 9, 22, 4, 23, 9, 23,
 	4, 24, 9, 24, 4, 25, 9, 25, 4, 26, 9, 26, 4, 27, 9, 27, 4, 28, 9, 28, 4,
-	29, 9, 29, 4, 30, 9, 30, 3, 2, 5, 2, 62, 10, 2, 3, 2, 5, 2, 65, 10, 2,
-	3, 3, 3, 3, 7, 3, 69, 10, 3, 12, 3, 14, 3, 72, 11, 3, 3, 4, 3, 4, 5, 4,
-	76, 10, 4, 3, 4, 3, 4, 3, 5, 3, 5, 5, 5, 82, 10, 5, 3, 5, 3, 5, 3, 5, 3,
-	5, 5, 5, 88, 10, 5, 3, 5, 5, 5, 91, 10, 5, 5, 5, 93, 10, 5, 3, 5, 3, 5,
-	5, 5, 97, 10, 5, 3, 6, 6, 6, 100, 10, 6, 13, 6, 14, 6, 101, 3, 7, 3, 7,
-	5, 7, 106, 10, 7, 3, 7, 3, 7, 3, 7, 5, 7, 111, 10, 7, 3, 8, 3, 8, 3, 9,
-	3, 9, 3, 10, 3, 10, 3, 10, 3, 10, 5, 10, 121, 10, 10, 3, 11, 3, 11, 3,
-	11, 3, 11, 3, 12, 3, 12, 3, 13, 3, 13, 3, 14, 3, 14, 3, 15, 3, 15, 3, 15,
-	3, 15, 3, 15, 3, 15, 5, 15, 139, 10, 15, 7, 15, 141, 10, 15, 12, 15, 14,
-	15, 144, 11, 15, 3, 16, 3, 16, 3, 16, 3, 17, 3, 17, 5, 17, 151, 10, 17,
-	3, 17, 3, 17, 7, 17, 155, 10, 17, 12, 17, 14, 17, 158, 11, 17, 3, 17, 3,
-	17, 3, 18, 3, 18, 3, 19, 3, 19, 5, 19, 166, 10, 19, 3, 20, 3, 20, 3, 20,
-	3, 21, 3, 21, 3, 21, 3, 21, 3, 21, 7, 21, 176, 10, 21, 12, 21, 14, 21,
-	179, 11, 21, 3, 22, 3, 22, 3, 22, 3, 23, 3, 23, 3, 23, 3, 23, 3, 23, 7,
-	23, 189, 10, 23, 12, 23, 14, 23, 192, 11, 23, 3, 24, 3, 24, 3, 24, 3, 25,
-	3, 25, 3, 25, 3, 25, 3, 25, 7, 25, 202, 10, 25, 12, 25, 14, 25, 205, 11,
-	25, 3, 26, 3, 26, 3, 26, 3, 27, 3, 27, 3, 27, 3, 27, 3, 27, 7, 27, 215,
-	10, 27, 12, 27, 14, 27, 218, 11, 27, 3, 28, 3, 28, 3, 28, 3, 29, 3, 29,
-	3, 29, 3, 29, 5, 29, 227, 10, 29, 3, 29, 3, 29, 3, 29, 5, 29, 232, 10,
-	29, 3, 30, 3, 30, 3, 30, 3, 30, 2, 7, 28, 40, 44, 48, 52, 31, 2, 4, 6,
-	8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42,
-	44, 46, 48, 50, 52, 54, 56, 58, 2, 6, 4, 3, 11, 11, 28, 28, 4, 2, 10, 10,
-	16, 19, 4, 2, 10, 10, 20, 21, 3, 2, 16, 17, 2, 233, 2, 61, 3, 2, 2, 2,
-	4, 66, 3, 2, 2, 2, 6, 73, 3, 2, 2, 2, 8, 79, 3, 2, 2, 2, 10, 99, 3, 2,
-	2, 2, 12, 110, 3, 2, 2, 2, 14, 112, 3, 2, 2, 2, 16, 114, 3, 2, 2, 2, 18,
-	120, 3, 2, 2, 2, 20, 122, 3, 2, 2, 2, 22, 126, 3, 2, 2, 2, 24, 128, 3,
-	2, 2, 2, 26, 130, 3, 2, 2, 2, 28, 132, 3, 2, 2, 2, 30, 145, 3, 2, 2, 2,
-	32, 148, 3, 2, 2, 2, 34, 161, 3, 2, 2, 2, 36, 165, 3, 2, 2, 2, 38, 167,
-	3, 2, 2, 2, 40, 170, 3, 2, 2, 2, 42, 180, 3, 2, 2, 2, 44, 183, 3, 2, 2,
-	2, 46, 193, 3, 2, 2, 2, 48, 196, 3, 2, 2, 2, 50, 206, 3, 2, 2, 2, 52, 209,
-	3, 2, 2, 2, 54, 219, 3, 2, 2, 2, 56, 231, 3, 2, 2, 2, 58, 233, 3, 2, 2,
-	2, 60, 62, 5, 4, 3, 2, 61, 60, 3, 2, 2, 2, 61, 62, 3, 2, 2, 2, 62, 64,
-	3, 2, 2, 2, 63, 65, 7, 2, 2, 3, 64, 63, 3, 2, 2, 2, 64, 65, 3, 2, 2, 2,
-	65, 3, 3, 2, 2, 2, 66, 70, 5, 12, 7, 2, 67, 69, 5, 12, 7, 2, 68, 67, 3,
-	2, 2, 2, 69, 72, 3, 2, 2, 2, 70, 68, 3, 2, 2, 2, 70, 71, 3, 2, 2, 2, 71,
-	5, 3, 2, 2, 2, 72, 70, 3, 2, 2, 2, 73, 75, 7, 3, 2, 2, 74, 76, 5, 4, 3,
-	2, 75, 74, 3, 2, 2, 2, 75, 76, 3, 2, 2, 2, 76, 77, 3, 2, 2, 2, 77, 78,
-	7, 4, 2, 2, 78, 7, 3, 2, 2, 2, 79, 81, 7, 5, 2, 2, 80, 82, 7, 6, 2, 2,
-	81, 80, 3, 2, 2, 2, 81, 82, 3, 2, 2, 2, 82, 83, 3, 2, 2, 2, 83, 84, 7,
-	26, 2, 2, 84, 92, 7, 7, 2, 2, 85, 87, 7, 26, 2, 2, 86, 88, 5, 10, 6, 2,
-	87, 86, 3, 2, 2, 2, 87, 88, 3, 2, 2, 2, 88, 90, 3, 2, 2, 2, 89, 91, 7,
-	8, 2, 2, 90, 89, 3, 2, 2, 2, 90, 91, 3, 2, 2, 2, 91, 93, 3, 2, 2, 2, 92,
-	85, 3, 2, 2, 2, 92, 93, 3, 2, 2, 2, 93, 96, 3, 2, 2, 2, 94, 95, 7, 9, 2,
-	2, 95, 97, 5, 16, 9, 2, 96, 94, 3, 2, 2, 2, 96, 97, 3, 2, 2, 2, 97, 9,
-	3, 2, 2, 2, 98, 100, 7, 10, 2, 2, 99, 98, 3, 2, 2, 2, 100, 101, 3, 2, 2,
-	2, 101, 99, 3, 2, 2, 2, 101, 102, 3, 2, 2, 2, 102, 11, 3, 2, 2, 2, 103,
-	106, 5, 8, 5, 2, 104, 106, 5, 14, 8, 2, 105, 103, 3, 2, 2, 2, 105, 104,
-	3, 2, 2, 2, 106, 107, 3, 2, 2, 2, 107, 108, 9, 2, 2, 2, 108, 111, 3, 2,
-	2, 2, 109, 111, 5, 6, 4, 2, 110, 105, 3, 2, 2, 2, 110, 109, 3, 2, 2, 2,
-	111, 13, 3, 2, 2, 2, 112, 113, 5, 16, 9, 2, 113, 15, 3, 2, 2, 2, 114, 115,
-	5, 56, 29, 2, 115, 17, 3, 2, 2, 2, 116, 121, 5, 20, 11, 2, 117, 121, 5,
-	22, 12, 2, 118, 121, 5, 26, 14, 2, 119, 121, 5, 24, 13, 2, 120, 116, 3,
-	2, 2, 2, 120, 117, 3, 2, 2, 2, 120, 118, 3, 2, 2, 2, 120, 119, 3, 2, 2,
-	2, 121, 19, 3, 2, 2, 2, 122, 123, 7, 12, 2, 2, 123, 124, 5, 16, 9, 2, 124,
-	125, 7, 13, 2, 2, 125, 21, 3, 2, 2, 2, 126, 127, 7, 25, 2, 2, 127, 23,
-	3, 2, 2, 2, 128, 129, 7, 26, 2, 2, 129, 25, 3, 2, 2, 2, 130, 131, 7, 24,
-	2, 2, 131, 27, 3, 2, 2, 2, 132, 133, 8, 15, 1, 2, 133, 134, 5, 18, 10,
-	2, 134, 142, 3, 2, 2, 2, 135, 138, 12, 4, 2, 2, 136, 139, 5, 30, 16, 2,
-	137, 139, 5, 32, 17, 2, 138, 136, 3, 2, 2, 2, 138, 137, 3, 2, 2, 2, 139,
-	141, 3, 2, 2, 2, 140, 135, 3, 2, 2, 2, 141, 144, 3, 2, 2, 2, 142, 140,
-	3, 2, 2, 2, 142, 143, 3, 2, 2, 2, 143, 29, 3, 2, 2, 2, 144, 142, 3, 2,
-	2, 2, 145, 146, 7, 14, 2, 2, 146, 147, 7, 26, 2, 2, 147, 31, 3, 2, 2, 2,
-	148, 150, 7, 12, 2, 2, 149, 151, 5, 34, 18, 2, 150, 149, 3, 2, 2, 2, 150,
-	151, 3, 2, 2, 2, 151, 156, 3, 2, 2, 2, 152, 153, 7, 15, 2, 2, 153, 155,
-	5, 34, 18, 2, 154, 152, 3, 2, 2, 2, 155, 158, 3, 2, 2, 2, 156, 154, 3,
-	2, 2, 2, 156, 157, 3, 2, 2, 2, 157, 159, 3, 2, 2, 2, 158, 156, 3, 2, 2,
-	2, 159, 160, 7, 13, 2, 2, 160, 33, 3, 2, 2, 2, 161, 162, 5, 16, 9, 2, 162,
-	35, 3, 2, 2, 2, 163, 166, 5, 38, 20, 2, 164, 166, 5, 28, 15, 2, 165, 163,
-	3, 2, 2, 2, 165, 164, 3, 2, 2, 2, 166, 37, 3, 2, 2, 2, 167, 168, 9, 3,
-	2, 2, 168, 169, 5, 16, 9, 2, 169, 39, 3, 2, 2, 2, 170, 171, 8, 21, 1, 2,
-	171, 172, 5, 36, 19, 2, 172, 177, 3, 2, 2, 2, 173, 174, 12, 4, 2, 2, 174,
-	176, 5, 42, 22, 2, 175, 173, 3, 2, 2, 2, 176, 179, 3, 2, 2, 2, 177, 175,
-	3, 2, 2, 2, 177, 178, 3, 2, 2, 2, 178, 41, 3, 2, 2, 2, 179, 177, 3, 2,
-	2, 2, 180, 181, 9, 4, 2, 2, 181, 182, 5, 40, 21, 2, 182, 43, 3, 2, 2, 2,
-	183, 184, 8, 23, 1, 2, 184, 185, 5, 40, 21, 2, 185, 190, 3, 2, 2, 2, 186,
-	187, 12, 4, 2, 2, 187, 189, 5, 46, 24, 2, 188, 186, 3, 2, 2, 2, 189, 192,
-	3, 2, 2, 2, 190, 188, 3, 2, 2, 2, 190, 191, 3, 2, 2, 2, 191, 45, 3, 2,
-	2, 2, 192, 190, 3, 2, 2, 2, 193, 194, 9, 5, 2, 2, 194, 195, 5, 44, 23,
-	2, 195, 47, 3, 2, 2, 2, 196, 197, 8, 25, 1, 2, 197, 198, 5, 44, 23, 2,
-	198, 203, 3, 2, 2, 2, 199, 200, 12, 4, 2, 2, 200, 202, 5, 50, 26, 2, 201,
-	199, 3, 2, 2, 2, 202, 205, 3, 2, 2, 2, 203, 201, 3, 2, 2, 2, 203, 204,
-	3, 2, 2, 2, 204, 49, 3, 2, 2, 2, 205, 203, 3, 2, 2, 2, 206, 207, 7, 22,
-	2, 2, 207, 208, 5, 48, 25, 2, 208, 51, 3, 2, 2, 2, 209, 210, 8, 27, 1,
-	2, 210, 211, 5, 48, 25, 2, 211, 216, 3, 2, 2, 2, 212, 213, 12, 4, 2, 2,
-	213, 215, 5, 54, 28, 2, 214, 212, 3, 2, 2, 2, 215, 218, 3, 2, 2, 2, 216,
-	214, 3, 2, 2, 2, 216, 217, 3, 2, 2, 2, 217, 53, 3, 2, 2, 2, 218, 216, 3,
-	2, 2, 2, 219, 220, 7, 23, 2, 2, 220, 221, 5, 52, 27, 2, 221, 55, 3, 2,
-	2, 2, 222, 223, 5, 28, 15, 2, 223, 224, 5, 30, 16, 2, 224, 227, 3, 2, 2,
-	2, 225, 227, 5, 24, 13, 2, 226, 222, 3, 2, 2, 2, 226, 225, 3, 2, 2, 2,
-	227, 228, 3, 2, 2, 2, 228, 229, 5, 58, 30, 2, 229, 232, 3, 2, 2, 2, 230,
-	232, 5, 52, 27, 2, 231, 226, 3, 2, 2, 2, 231, 230, 3, 2, 2, 2, 232, 57,
-	3, 2, 2, 2, 233, 234, 7, 9, 2, 2, 234, 235, 5, 16, 9, 2, 235, 59, 3, 2,
-	2, 2, 26, 61, 64, 70, 75, 81, 87, 90, 92, 96, 101, 105, 110, 120, 138,
-	142, 150, 156, 165, 177, 190, 203, 216, 226, 231,
+	29, 9, 29, 4, 30, 9, 30, 4, 31, 9, 31, 4, 32, 9, 32, 4, 33, 9, 33, 4, 34,
+	9, 34, 4, 35, 9, 35, 4, 36, 9, 36, 3, 2, 5, 2, 74, 10, 2, 3, 2, 5, 2, 77,
+	10, 2, 3, 3, 3, 3, 7, 3, 81, 10, 3, 12, 3, 14, 3, 84, 11, 3, 3, 4, 3, 4,
+	5, 4, 88, 10, 4, 3, 5, 3, 5, 7, 5, 92, 10, 5, 12, 5, 14, 5, 95, 11, 5,
+	3, 6, 3, 6, 5, 6, 99, 10, 6, 3, 6, 3, 6, 3, 7, 3, 7, 3, 8, 3, 8, 5, 8,
+	107, 10, 8, 3, 8, 5, 8, 110, 10, 8, 3, 8, 3, 8, 3, 8, 3, 8, 5, 8, 116,
+	10, 8, 3, 8, 5, 8, 119, 10, 8, 5, 8, 121, 10, 8, 3, 8, 3, 8, 5, 8, 125,
+	10, 8, 3, 9, 3, 9, 5, 9, 129, 10, 9, 3, 9, 5, 9, 132, 10, 9, 3, 9, 3, 9,
+	3, 9, 3, 9, 3, 9, 3, 9, 3, 10, 3, 10, 3, 10, 3, 10, 5, 10, 144, 10, 10,
+	3, 10, 5, 10, 147, 10, 10, 3, 10, 5, 10, 150, 10, 10, 3, 11, 3, 11, 3,
+	11, 7, 11, 155, 10, 11, 12, 11, 14, 11, 158, 11, 11, 3, 12, 6, 12, 161,
+	10, 12, 13, 12, 14, 12, 162, 3, 13, 3, 13, 5, 13, 167, 10, 13, 3, 13, 3,
+	13, 3, 13, 5, 13, 172, 10, 13, 3, 14, 3, 14, 3, 15, 3, 15, 3, 16, 3, 16,
+	3, 16, 3, 16, 5, 16, 182, 10, 16, 3, 17, 3, 17, 3, 17, 3, 17, 3, 18, 3,
+	18, 3, 19, 3, 19, 3, 20, 3, 20, 3, 21, 3, 21, 3, 21, 3, 21, 3, 21, 3, 21,
+	5, 21, 200, 10, 21, 7, 21, 202, 10, 21, 12, 21, 14, 21, 205, 11, 21, 3,
+	22, 3, 22, 3, 22, 3, 23, 3, 23, 5, 23, 212, 10, 23, 3, 23, 3, 23, 7, 23,
+	216, 10, 23, 12, 23, 14, 23, 219, 11, 23, 3, 23, 3, 23, 3, 24, 3, 24, 3,
+	25, 3, 25, 5, 25, 227, 10, 25, 3, 26, 3, 26, 3, 26, 3, 27, 3, 27, 3, 27,
+	3, 27, 3, 27, 7, 27, 237, 10, 27, 12, 27, 14, 27, 240, 11, 27, 3, 28, 3,
+	28, 3, 28, 3, 29, 3, 29, 3, 29, 3, 29, 3, 29, 7, 29, 250, 10, 29, 12, 29,
+	14, 29, 253, 11, 29, 3, 30, 3, 30, 3, 30, 3, 31, 3, 31, 3, 31, 3, 31, 3,
+	31, 7, 31, 263, 10, 31, 12, 31, 14, 31, 266, 11, 31, 3, 32, 3, 32, 3, 32,
+	3, 33, 3, 33, 3, 33, 3, 33, 3, 33, 7, 33, 276, 10, 33, 12, 33, 14, 33,
+	279, 11, 33, 3, 34, 3, 34, 3, 34, 3, 35, 3, 35, 3, 35, 3, 35, 5, 35, 288,
+	10, 35, 3, 35, 3, 35, 3, 35, 5, 35, 293, 10, 35, 3, 36, 3, 36, 3, 36, 3,
+	36, 2, 7, 40, 52, 56, 60, 64, 37, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22,
+	24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58,
+	60, 62, 64, 66, 68, 70, 2, 6, 4, 3, 18, 18, 31, 31, 5, 2, 15, 15, 17, 17,
+	20, 22, 4, 2, 17, 17, 23, 24, 3, 2, 20, 21, 2, 297, 2, 73, 3, 2, 2, 2,
+	4, 78, 3, 2, 2, 2, 6, 87, 3, 2, 2, 2, 8, 89, 3, 2, 2, 2, 10, 96, 3, 2,
+	2, 2, 12, 102, 3, 2, 2, 2, 14, 104, 3, 2, 2, 2, 16, 126, 3, 2, 2, 2, 18,
+	149, 3, 2, 2, 2, 20, 151, 3, 2, 2, 2, 22, 160, 3, 2, 2, 2, 24, 171, 3,
+	2, 2, 2, 26, 173, 3, 2, 2, 2, 28, 175, 3, 2, 2, 2, 30, 181, 3, 2, 2, 2,
+	32, 183, 3, 2, 2, 2, 34, 187, 3, 2, 2, 2, 36, 189, 3, 2, 2, 2, 38, 191,
+	3, 2, 2, 2, 40, 193, 3, 2, 2, 2, 42, 206, 3, 2, 2, 2, 44, 209, 3, 2, 2,
+	2, 46, 222, 3, 2, 2, 2, 48, 226, 3, 2, 2, 2, 50, 228, 3, 2, 2, 2, 52, 231,
+	3, 2, 2, 2, 54, 241, 3, 2, 2, 2, 56, 244, 3, 2, 2, 2, 58, 254, 3, 2, 2,
+	2, 60, 257, 3, 2, 2, 2, 62, 267, 3, 2, 2, 2, 64, 270, 3, 2, 2, 2, 66, 280,
+	3, 2, 2, 2, 68, 292, 3, 2, 2, 2, 70, 294, 3, 2, 2, 2, 72, 74, 5, 4, 3,
+	2, 73, 72, 3, 2, 2, 2, 73, 74, 3, 2, 2, 2, 74, 76, 3, 2, 2, 2, 75, 77,
+	7, 2, 2, 3, 76, 75, 3, 2, 2, 2, 76, 77, 3, 2, 2, 2, 77, 3, 3, 2, 2, 2,
+	78, 82, 5, 6, 4, 2, 79, 81, 5, 6, 4, 2, 80, 79, 3, 2, 2, 2, 81, 84, 3,
+	2, 2, 2, 82, 80, 3, 2, 2, 2, 82, 83, 3, 2, 2, 2, 83, 5, 3, 2, 2, 2, 84,
+	82, 3, 2, 2, 2, 85, 88, 5, 12, 7, 2, 86, 88, 5, 16, 9, 2, 87, 85, 3, 2,
+	2, 2, 87, 86, 3, 2, 2, 2, 88, 7, 3, 2, 2, 2, 89, 93, 5, 24, 13, 2, 90,
+	92, 5, 24, 13, 2, 91, 90, 3, 2, 2, 2, 92, 95, 3, 2, 2, 2, 93, 91, 3, 2,
+	2, 2, 93, 94, 3, 2, 2, 2, 94, 9, 3, 2, 2, 2, 95, 93, 3, 2, 2, 2, 96, 98,
+	7, 3, 2, 2, 97, 99, 5, 8, 5, 2, 98, 97, 3, 2, 2, 2, 98, 99, 3, 2, 2, 2,
+	99, 100, 3, 2, 2, 2, 100, 101, 7, 4, 2, 2, 101, 11, 3, 2, 2, 2, 102, 103,
+	5, 14, 8, 2, 103, 13, 3, 2, 2, 2, 104, 106, 7, 5, 2, 2, 105, 107, 7, 6,
+	2, 2, 106, 105, 3, 2, 2, 2, 106, 107, 3, 2, 2, 2, 107, 109, 3, 2, 2, 2,
+	108, 110, 7, 7, 2, 2, 109, 108, 3, 2, 2, 2, 109, 110, 3, 2, 2, 2, 110,
+	111, 3, 2, 2, 2, 111, 112, 7, 29, 2, 2, 112, 120, 7, 8, 2, 2, 113, 115,
+	7, 29, 2, 2, 114, 116, 5, 22, 12, 2, 115, 114, 3, 2, 2, 2, 115, 116, 3,
+	2, 2, 2, 116, 118, 3, 2, 2, 2, 117, 119, 7, 9, 2, 2, 118, 117, 3, 2, 2,
+	2, 118, 119, 3, 2, 2, 2, 119, 121, 3, 2, 2, 2, 120, 113, 3, 2, 2, 2, 120,
+	121, 3, 2, 2, 2, 121, 124, 3, 2, 2, 2, 122, 123, 7, 10, 2, 2, 123, 125,
+	5, 28, 15, 2, 124, 122, 3, 2, 2, 2, 124, 125, 3, 2, 2, 2, 125, 15, 3, 2,
+	2, 2, 126, 128, 7, 11, 2, 2, 127, 129, 7, 6, 2, 2, 128, 127, 3, 2, 2, 2,
+	128, 129, 3, 2, 2, 2, 129, 131, 3, 2, 2, 2, 130, 132, 7, 12, 2, 2, 131,
+	130, 3, 2, 2, 2, 131, 132, 3, 2, 2, 2, 132, 133, 3, 2, 2, 2, 133, 134,
+	7, 29, 2, 2, 134, 135, 7, 13, 2, 2, 135, 136, 5, 20, 11, 2, 136, 137, 7,
+	14, 2, 2, 137, 138, 5, 10, 6, 2, 138, 17, 3, 2, 2, 2, 139, 140, 7, 29,
+	2, 2, 140, 141, 7, 8, 2, 2, 141, 143, 7, 29, 2, 2, 142, 144, 5, 22, 12,
+	2, 143, 142, 3, 2, 2, 2, 143, 144, 3, 2, 2, 2, 144, 146, 3, 2, 2, 2, 145,
+	147, 7, 9, 2, 2, 146, 145, 3, 2, 2, 2, 146, 147, 3, 2, 2, 2, 147, 150,
+	3, 2, 2, 2, 148, 150, 7, 15, 2, 2, 149, 139, 3, 2, 2, 2, 149, 148, 3, 2,
+	2, 2, 150, 19, 3, 2, 2, 2, 151, 156, 5, 18, 10, 2, 152, 153, 7, 16, 2,
+	2, 153, 155, 5, 18, 10, 2, 154, 152, 3, 2, 2, 2, 155, 158, 3, 2, 2, 2,
+	156, 154, 3, 2, 2, 2, 156, 157, 3, 2, 2, 2, 157, 21, 3, 2, 2, 2, 158, 156,
+	3, 2, 2, 2, 159, 161, 7, 17, 2, 2, 160, 159, 3, 2, 2, 2, 161, 162, 3, 2,
+	2, 2, 162, 160, 3, 2, 2, 2, 162, 163, 3, 2, 2, 2, 163, 23, 3, 2, 2, 2,
+	164, 167, 5, 14, 8, 2, 165, 167, 5, 26, 14, 2, 166, 164, 3, 2, 2, 2, 166,
+	165, 3, 2, 2, 2, 167, 168, 3, 2, 2, 2, 168, 169, 9, 2, 2, 2, 169, 172,
+	3, 2, 2, 2, 170, 172, 5, 10, 6, 2, 171, 166, 3, 2, 2, 2, 171, 170, 3, 2,
+	2, 2, 172, 25, 3, 2, 2, 2, 173, 174, 5, 28, 15, 2, 174, 27, 3, 2, 2, 2,
+	175, 176, 5, 68, 35, 2, 176, 29, 3, 2, 2, 2, 177, 182, 5, 32, 17, 2, 178,
+	182, 5, 34, 18, 2, 179, 182, 5, 38, 20, 2, 180, 182, 5, 36, 19, 2, 181,
+	177, 3, 2, 2, 2, 181, 178, 3, 2, 2, 2, 181, 179, 3, 2, 2, 2, 181, 180,
+	3, 2, 2, 2, 182, 31, 3, 2, 2, 2, 183, 184, 7, 13, 2, 2, 184, 185, 5, 28,
+	15, 2, 185, 186, 7, 14, 2, 2, 186, 33, 3, 2, 2, 2, 187, 188, 7, 28, 2,
+	2, 188, 35, 3, 2, 2, 2, 189, 190, 7, 29, 2, 2, 190, 37, 3, 2, 2, 2, 191,
+	192, 7, 27, 2, 2, 192, 39, 3, 2, 2, 2, 193, 194, 8, 21, 1, 2, 194, 195,
+	5, 30, 16, 2, 195, 203, 3, 2, 2, 2, 196, 199, 12, 4, 2, 2, 197, 200, 5,
+	42, 22, 2, 198, 200, 5, 44, 23, 2, 199, 197, 3, 2, 2, 2, 199, 198, 3, 2,
+	2, 2, 200, 202, 3, 2, 2, 2, 201, 196, 3, 2, 2, 2, 202, 205, 3, 2, 2, 2,
+	203, 201, 3, 2, 2, 2, 203, 204, 3, 2, 2, 2, 204, 41, 3, 2, 2, 2, 205, 203,
+	3, 2, 2, 2, 206, 207, 7, 19, 2, 2, 207, 208, 7, 29, 2, 2, 208, 43, 3, 2,
+	2, 2, 209, 211, 7, 13, 2, 2, 210, 212, 5, 46, 24, 2, 211, 210, 3, 2, 2,
+	2, 211, 212, 3, 2, 2, 2, 212, 217, 3, 2, 2, 2, 213, 214, 7, 16, 2, 2, 214,
+	216, 5, 46, 24, 2, 215, 213, 3, 2, 2, 2, 216, 219, 3, 2, 2, 2, 217, 215,
+	3, 2, 2, 2, 217, 218, 3, 2, 2, 2, 218, 220, 3, 2, 2, 2, 219, 217, 3, 2,
+	2, 2, 220, 221, 7, 14, 2, 2, 221, 45, 3, 2, 2, 2, 222, 223, 5, 28, 15,
+	2, 223, 47, 3, 2, 2, 2, 224, 227, 5, 50, 26, 2, 225, 227, 5, 40, 21, 2,
+	226, 224, 3, 2, 2, 2, 226, 225, 3, 2, 2, 2, 227, 49, 3, 2, 2, 2, 228, 229,
+	9, 3, 2, 2, 229, 230, 5, 28, 15, 2, 230, 51, 3, 2, 2, 2, 231, 232, 8, 27,
+	1, 2, 232, 233, 5, 48, 25, 2, 233, 238, 3, 2, 2, 2, 234, 235, 12, 4, 2,
+	2, 235, 237, 5, 54, 28, 2, 236, 234, 3, 2, 2, 2, 237, 240, 3, 2, 2, 2,
+	238, 236, 3, 2, 2, 2, 238, 239, 3, 2, 2, 2, 239, 53, 3, 2, 2, 2, 240, 238,
+	3, 2, 2, 2, 241, 242, 9, 4, 2, 2, 242, 243, 5, 52, 27, 2, 243, 55, 3, 2,
+	2, 2, 244, 245, 8, 29, 1, 2, 245, 246, 5, 52, 27, 2, 246, 251, 3, 2, 2,
+	2, 247, 248, 12, 4, 2, 2, 248, 250, 5, 58, 30, 2, 249, 247, 3, 2, 2, 2,
+	250, 253, 3, 2, 2, 2, 251, 249, 3, 2, 2, 2, 251, 252, 3, 2, 2, 2, 252,
+	57, 3, 2, 2, 2, 253, 251, 3, 2, 2, 2, 254, 255, 9, 5, 2, 2, 255, 256, 5,
+	56, 29, 2, 256, 59, 3, 2, 2, 2, 257, 258, 8, 31, 1, 2, 258, 259, 5, 56,
+	29, 2, 259, 264, 3, 2, 2, 2, 260, 261, 12, 4, 2, 2, 261, 263, 5, 62, 32,
+	2, 262, 260, 3, 2, 2, 2, 263, 266, 3, 2, 2, 2, 264, 262, 3, 2, 2, 2, 264,
+	265, 3, 2, 2, 2, 265, 61, 3, 2, 2, 2, 266, 264, 3, 2, 2, 2, 267, 268, 7,
+	25, 2, 2, 268, 269, 5, 60, 31, 2, 269, 63, 3, 2, 2, 2, 270, 271, 8, 33,
+	1, 2, 271, 272, 5, 60, 31, 2, 272, 277, 3, 2, 2, 2, 273, 274, 12, 4, 2,
+	2, 274, 276, 5, 66, 34, 2, 275, 273, 3, 2, 2, 2, 276, 279, 3, 2, 2, 2,
+	277, 275, 3, 2, 2, 2, 277, 278, 3, 2, 2, 2, 278, 65, 3, 2, 2, 2, 279, 277,
+	3, 2, 2, 2, 280, 281, 7, 26, 2, 2, 281, 282, 5, 64, 33, 2, 282, 67, 3,
+	2, 2, 2, 283, 284, 5, 40, 21, 2, 284, 285, 5, 42, 22, 2, 285, 288, 3, 2,
+	2, 2, 286, 288, 5, 36, 19, 2, 287, 283, 3, 2, 2, 2, 287, 286, 3, 2, 2,
+	2, 288, 289, 3, 2, 2, 2, 289, 290, 5, 70, 36, 2, 290, 293, 3, 2, 2, 2,
+	291, 293, 5, 64, 33, 2, 292, 287, 3, 2, 2, 2, 292, 291, 3, 2, 2, 2, 293,
+	69, 3, 2, 2, 2, 294, 295, 7, 10, 2, 2, 295, 296, 5, 28, 15, 2, 296, 71,
+	3, 2, 2, 2, 35, 73, 76, 82, 87, 93, 98, 106, 109, 115, 118, 120, 124, 128,
+	131, 143, 146, 149, 156, 162, 166, 171, 181, 199, 203, 211, 217, 226, 238,
+	251, 264, 277, 287, 292,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
 
 var literalNames = []string{
-	"", "'{'", "'}'", "'var'", "'optional'", "':'", "'^'", "'='", "'*'", "';'",
-	"'('", "')'", "'.'", "','", "'-'", "'+'", "'!'", "'&'", "'/'", "'%'", "'&&'",
-	"'||'",
+	"", "'{'", "'}'", "'var'", "'export'", "'optional'", "':'", "'^'", "'='",
+	"'func'", "'native'", "'('", "')'", "'&'", "','", "'*'", "';'", "'.'",
+	"'-'", "'+'", "'!'", "'/'", "'%'", "'&&'", "'||'",
 }
 var symbolicNames = []string{
 	"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-	"", "", "", "", "IntegerLiteral", "StringLiteral", "Identifier", "Whitespace",
-	"Newline", "BlockComment", "LineComment",
+	"", "", "", "", "", "", "", "IntegerLiteral", "StringLiteral", "Identifier",
+	"Whitespace", "Newline", "BlockComment", "LineComment",
 }
 
 var ruleNames = []string{
-	"program", "statementList", "codeBlock", "variableStmt", "pointer", "stmt",
-	"expressionStmt", "expr", "expr0", "brackets", "stringImmidiate", "identifierImmidiate",
-	"integerImmidiate", "expr1", "memberAccess", "functionCall", "functionCallParam",
-	"expr2", "lhsOperator", "expr3", "mulDivMod", "expr4", "addSub", "expr5",
-	"logicalAnd", "expr6", "logicalOr", "expr7", "assign",
+	"program", "declarationList", "declaration", "statementList", "codeBlock",
+	"variableDeclaration", "variableStmt", "functionDeclaration", "functionParameter",
+	"functionParameterList", "pointer", "stmt", "expressionStmt", "expr", "expr0",
+	"brackets", "stringImmidiate", "identifierImmidiate", "integerImmidiate",
+	"expr1", "memberAccess", "functionCall", "functionCallParam", "expr2",
+	"lhsOperator", "expr3", "mulDivMod", "expr4", "addSub", "expr5", "logicalAnd",
+	"expr6", "logicalOr", "expr7", "assign",
 }
 var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
 
@@ -188,46 +218,55 @@ const (
 	AuroraParserT__18          = 19
 	AuroraParserT__19          = 20
 	AuroraParserT__20          = 21
-	AuroraParserIntegerLiteral = 22
-	AuroraParserStringLiteral  = 23
-	AuroraParserIdentifier     = 24
-	AuroraParserWhitespace     = 25
-	AuroraParserNewline        = 26
-	AuroraParserBlockComment   = 27
-	AuroraParserLineComment    = 28
+	AuroraParserT__21          = 22
+	AuroraParserT__22          = 23
+	AuroraParserT__23          = 24
+	AuroraParserIntegerLiteral = 25
+	AuroraParserStringLiteral  = 26
+	AuroraParserIdentifier     = 27
+	AuroraParserWhitespace     = 28
+	AuroraParserNewline        = 29
+	AuroraParserBlockComment   = 30
+	AuroraParserLineComment    = 31
 )
 
 // AuroraParser rules.
 const (
-	AuroraParserRULE_program             = 0
-	AuroraParserRULE_statementList       = 1
-	AuroraParserRULE_codeBlock           = 2
-	AuroraParserRULE_variableStmt        = 3
-	AuroraParserRULE_pointer             = 4
-	AuroraParserRULE_stmt                = 5
-	AuroraParserRULE_expressionStmt      = 6
-	AuroraParserRULE_expr                = 7
-	AuroraParserRULE_expr0               = 8
-	AuroraParserRULE_brackets            = 9
-	AuroraParserRULE_stringImmidiate     = 10
-	AuroraParserRULE_identifierImmidiate = 11
-	AuroraParserRULE_integerImmidiate    = 12
-	AuroraParserRULE_expr1               = 13
-	AuroraParserRULE_memberAccess        = 14
-	AuroraParserRULE_functionCall        = 15
-	AuroraParserRULE_functionCallParam   = 16
-	AuroraParserRULE_expr2               = 17
-	AuroraParserRULE_lhsOperator         = 18
-	AuroraParserRULE_expr3               = 19
-	AuroraParserRULE_mulDivMod           = 20
-	AuroraParserRULE_expr4               = 21
-	AuroraParserRULE_addSub              = 22
-	AuroraParserRULE_expr5               = 23
-	AuroraParserRULE_logicalAnd          = 24
-	AuroraParserRULE_expr6               = 25
-	AuroraParserRULE_logicalOr           = 26
-	AuroraParserRULE_expr7               = 27
-	AuroraParserRULE_assign              = 28
+	AuroraParserRULE_program               = 0
+	AuroraParserRULE_declarationList       = 1
+	AuroraParserRULE_declaration           = 2
+	AuroraParserRULE_statementList         = 3
+	AuroraParserRULE_codeBlock             = 4
+	AuroraParserRULE_variableDeclaration   = 5
+	AuroraParserRULE_variableStmt          = 6
+	AuroraParserRULE_functionDeclaration   = 7
+	AuroraParserRULE_functionParameter     = 8
+	AuroraParserRULE_functionParameterList = 9
+	AuroraParserRULE_pointer               = 10
+	AuroraParserRULE_stmt                  = 11
+	AuroraParserRULE_expressionStmt        = 12
+	AuroraParserRULE_expr                  = 13
+	AuroraParserRULE_expr0                 = 14
+	AuroraParserRULE_brackets              = 15
+	AuroraParserRULE_stringImmidiate       = 16
+	AuroraParserRULE_identifierImmidiate   = 17
+	AuroraParserRULE_integerImmidiate      = 18
+	AuroraParserRULE_expr1                 = 19
+	AuroraParserRULE_memberAccess          = 20
+	AuroraParserRULE_functionCall          = 21
+	AuroraParserRULE_functionCallParam     = 22
+	AuroraParserRULE_expr2                 = 23
+	AuroraParserRULE_lhsOperator           = 24
+	AuroraParserRULE_expr3                 = 25
+	AuroraParserRULE_mulDivMod             = 26
+	AuroraParserRULE_expr4                 = 27
+	AuroraParserRULE_addSub                = 28
+	AuroraParserRULE_expr5                 = 29
+	AuroraParserRULE_logicalAnd            = 30
+	AuroraParserRULE_expr6                 = 31
+	AuroraParserRULE_logicalOr             = 32
+	AuroraParserRULE_expr7                 = 33
+	AuroraParserRULE_assign                = 34
 )
 
 // IProgramContext is an interface to support dynamic dispatch.
@@ -268,14 +307,14 @@ func NewProgramContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 
 func (s *ProgramContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ProgramContext) StatementList() IStatementListContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IStatementListContext)(nil)).Elem(), 0)
+func (s *ProgramContext) DeclarationList() IDeclarationListContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IDeclarationListContext)(nil)).Elem(), 0)
 
 	if t == nil {
 		return nil
 	}
 
-	return t.(IStatementListContext)
+	return t.(IDeclarationListContext)
 }
 
 func (s *ProgramContext) EOF() antlr.TerminalNode {
@@ -324,26 +363,274 @@ func (p *AuroraParser) Program() (localctx IProgramContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(59)
+	p.SetState(71)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	if ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__0)|(1<<AuroraParserT__2)|(1<<AuroraParserT__7)|(1<<AuroraParserT__9)|(1<<AuroraParserT__13)|(1<<AuroraParserT__14)|(1<<AuroraParserT__15)|(1<<AuroraParserT__16)|(1<<AuroraParserIntegerLiteral)|(1<<AuroraParserStringLiteral)|(1<<AuroraParserIdentifier))) != 0 {
+	if _la == AuroraParserT__2 || _la == AuroraParserT__8 {
 		{
-			p.SetState(58)
-			p.StatementList()
+			p.SetState(70)
+			p.DeclarationList()
 		}
 
 	}
-	p.SetState(62)
+	p.SetState(74)
 	p.GetErrorHandler().Sync(p)
 
 	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 1, p.GetParserRuleContext()) == 1 {
 		{
-			p.SetState(61)
+			p.SetState(73)
 			p.Match(AuroraParserEOF)
 		}
 
+	}
+
+	return localctx
+}
+
+// IDeclarationListContext is an interface to support dynamic dispatch.
+type IDeclarationListContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsDeclarationListContext differentiates from other interfaces.
+	IsDeclarationListContext()
+}
+
+type DeclarationListContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyDeclarationListContext() *DeclarationListContext {
+	var p = new(DeclarationListContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = AuroraParserRULE_declarationList
+	return p
+}
+
+func (*DeclarationListContext) IsDeclarationListContext() {}
+
+func NewDeclarationListContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DeclarationListContext {
+	var p = new(DeclarationListContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = AuroraParserRULE_declarationList
+
+	return p
+}
+
+func (s *DeclarationListContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *DeclarationListContext) AllDeclaration() []IDeclarationContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IDeclarationContext)(nil)).Elem())
+	var tst = make([]IDeclarationContext, len(ts))
+
+	for i, t := range ts {
+		if t != nil {
+			tst[i] = t.(IDeclarationContext)
+		}
+	}
+
+	return tst
+}
+
+func (s *DeclarationListContext) Declaration(i int) IDeclarationContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IDeclarationContext)(nil)).Elem(), i)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IDeclarationContext)
+}
+
+func (s *DeclarationListContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *DeclarationListContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *DeclarationListContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.EnterDeclarationList(s)
+	}
+}
+
+func (s *DeclarationListContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.ExitDeclarationList(s)
+	}
+}
+
+func (p *AuroraParser) DeclarationList() (localctx IDeclarationListContext) {
+	localctx = NewDeclarationListContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 2, AuroraParserRULE_declarationList)
+	var _la int
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(76)
+		p.Declaration()
+	}
+	p.SetState(80)
+	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
+
+	for _la == AuroraParserT__2 || _la == AuroraParserT__8 {
+		{
+			p.SetState(77)
+			p.Declaration()
+		}
+
+		p.SetState(82)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
+	}
+
+	return localctx
+}
+
+// IDeclarationContext is an interface to support dynamic dispatch.
+type IDeclarationContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsDeclarationContext differentiates from other interfaces.
+	IsDeclarationContext()
+}
+
+type DeclarationContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyDeclarationContext() *DeclarationContext {
+	var p = new(DeclarationContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = AuroraParserRULE_declaration
+	return p
+}
+
+func (*DeclarationContext) IsDeclarationContext() {}
+
+func NewDeclarationContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DeclarationContext {
+	var p = new(DeclarationContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = AuroraParserRULE_declaration
+
+	return p
+}
+
+func (s *DeclarationContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *DeclarationContext) VariableDeclaration() IVariableDeclarationContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IVariableDeclarationContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IVariableDeclarationContext)
+}
+
+func (s *DeclarationContext) FunctionDeclaration() IFunctionDeclarationContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IFunctionDeclarationContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IFunctionDeclarationContext)
+}
+
+func (s *DeclarationContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *DeclarationContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *DeclarationContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.EnterDeclaration(s)
+	}
+}
+
+func (s *DeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.ExitDeclaration(s)
+	}
+}
+
+func (p *AuroraParser) Declaration() (localctx IDeclarationContext) {
+	localctx = NewDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 4, AuroraParserRULE_declaration)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.SetState(85)
+	p.GetErrorHandler().Sync(p)
+
+	switch p.GetTokenStream().LA(1) {
+	case AuroraParserT__2:
+		p.EnterOuterAlt(localctx, 1)
+		{
+			p.SetState(83)
+			p.VariableDeclaration()
+		}
+
+	case AuroraParserT__8:
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(84)
+			p.FunctionDeclaration()
+		}
+
+	default:
+		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 	}
 
 	return localctx
@@ -432,7 +719,7 @@ func (s *StatementListContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) StatementList() (localctx IStatementListContext) {
 	localctx = NewStatementListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 2, AuroraParserRULE_statementList)
+	p.EnterRule(localctx, 6, AuroraParserRULE_statementList)
 	var _la int
 
 	defer func() {
@@ -453,20 +740,20 @@ func (p *AuroraParser) StatementList() (localctx IStatementListContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(64)
+		p.SetState(87)
 		p.Stmt()
 	}
-	p.SetState(68)
+	p.SetState(91)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	for ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__0)|(1<<AuroraParserT__2)|(1<<AuroraParserT__7)|(1<<AuroraParserT__9)|(1<<AuroraParserT__13)|(1<<AuroraParserT__14)|(1<<AuroraParserT__15)|(1<<AuroraParserT__16)|(1<<AuroraParserIntegerLiteral)|(1<<AuroraParserStringLiteral)|(1<<AuroraParserIdentifier))) != 0 {
+	for ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__0)|(1<<AuroraParserT__2)|(1<<AuroraParserT__10)|(1<<AuroraParserT__12)|(1<<AuroraParserT__14)|(1<<AuroraParserT__17)|(1<<AuroraParserT__18)|(1<<AuroraParserT__19)|(1<<AuroraParserIntegerLiteral)|(1<<AuroraParserStringLiteral)|(1<<AuroraParserIdentifier))) != 0 {
 		{
-			p.SetState(65)
+			p.SetState(88)
 			p.Stmt()
 		}
 
-		p.SetState(70)
+		p.SetState(93)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -544,7 +831,7 @@ func (s *CodeBlockContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) CodeBlock() (localctx ICodeBlockContext) {
 	localctx = NewCodeBlockContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 4, AuroraParserRULE_codeBlock)
+	p.EnterRule(localctx, 8, AuroraParserRULE_codeBlock)
 	var _la int
 
 	defer func() {
@@ -565,23 +852,120 @@ func (p *AuroraParser) CodeBlock() (localctx ICodeBlockContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(71)
+		p.SetState(94)
 		p.Match(AuroraParserT__0)
 	}
-	p.SetState(73)
+	p.SetState(96)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	if ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__0)|(1<<AuroraParserT__2)|(1<<AuroraParserT__7)|(1<<AuroraParserT__9)|(1<<AuroraParserT__13)|(1<<AuroraParserT__14)|(1<<AuroraParserT__15)|(1<<AuroraParserT__16)|(1<<AuroraParserIntegerLiteral)|(1<<AuroraParserStringLiteral)|(1<<AuroraParserIdentifier))) != 0 {
+	if ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__0)|(1<<AuroraParserT__2)|(1<<AuroraParserT__10)|(1<<AuroraParserT__12)|(1<<AuroraParserT__14)|(1<<AuroraParserT__17)|(1<<AuroraParserT__18)|(1<<AuroraParserT__19)|(1<<AuroraParserIntegerLiteral)|(1<<AuroraParserStringLiteral)|(1<<AuroraParserIdentifier))) != 0 {
 		{
-			p.SetState(72)
+			p.SetState(95)
 			p.StatementList()
 		}
 
 	}
 	{
-		p.SetState(75)
+		p.SetState(98)
 		p.Match(AuroraParserT__1)
+	}
+
+	return localctx
+}
+
+// IVariableDeclarationContext is an interface to support dynamic dispatch.
+type IVariableDeclarationContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsVariableDeclarationContext differentiates from other interfaces.
+	IsVariableDeclarationContext()
+}
+
+type VariableDeclarationContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyVariableDeclarationContext() *VariableDeclarationContext {
+	var p = new(VariableDeclarationContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = AuroraParserRULE_variableDeclaration
+	return p
+}
+
+func (*VariableDeclarationContext) IsVariableDeclarationContext() {}
+
+func NewVariableDeclarationContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *VariableDeclarationContext {
+	var p = new(VariableDeclarationContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = AuroraParserRULE_variableDeclaration
+
+	return p
+}
+
+func (s *VariableDeclarationContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *VariableDeclarationContext) VariableStmt() IVariableStmtContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IVariableStmtContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IVariableStmtContext)
+}
+
+func (s *VariableDeclarationContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *VariableDeclarationContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *VariableDeclarationContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.EnterVariableDeclaration(s)
+	}
+}
+
+func (s *VariableDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.ExitVariableDeclaration(s)
+	}
+}
+
+func (p *AuroraParser) VariableDeclaration() (localctx IVariableDeclarationContext) {
+	localctx = NewVariableDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 10, AuroraParserRULE_variableDeclaration)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(100)
+		p.VariableStmt()
 	}
 
 	return localctx
@@ -594,6 +978,9 @@ type IVariableStmtContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// GetExport returns the export token.
+	GetExport() antlr.Token
+
 	// GetOptional returns the optional token.
 	GetOptional() antlr.Token
 
@@ -605,6 +992,9 @@ type IVariableStmtContext interface {
 
 	// GetGcptr returns the gcptr token.
 	GetGcptr() antlr.Token
+
+	// SetExport sets the export token.
+	SetExport(antlr.Token)
 
 	// SetOptional sets the optional token.
 	SetOptional(antlr.Token)
@@ -631,6 +1021,7 @@ type IVariableStmtContext interface {
 type VariableStmtContext struct {
 	*antlr.BaseParserRuleContext
 	parser       antlr.Parser
+	export       antlr.Token
 	optional     antlr.Token
 	name         antlr.Token
 	variableType antlr.Token
@@ -660,6 +1051,8 @@ func NewVariableStmtContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 
 func (s *VariableStmtContext) GetParser() antlr.Parser { return s.parser }
 
+func (s *VariableStmtContext) GetExport() antlr.Token { return s.export }
+
 func (s *VariableStmtContext) GetOptional() antlr.Token { return s.optional }
 
 func (s *VariableStmtContext) GetName() antlr.Token { return s.name }
@@ -667,6 +1060,8 @@ func (s *VariableStmtContext) GetName() antlr.Token { return s.name }
 func (s *VariableStmtContext) GetVariableType() antlr.Token { return s.variableType }
 
 func (s *VariableStmtContext) GetGcptr() antlr.Token { return s.gcptr }
+
+func (s *VariableStmtContext) SetExport(v antlr.Token) { s.export = v }
 
 func (s *VariableStmtContext) SetOptional(v antlr.Token) { s.optional = v }
 
@@ -730,7 +1125,7 @@ func (s *VariableStmtContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) VariableStmt() (localctx IVariableStmtContext) {
 	localctx = NewVariableStmtContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 6, AuroraParserRULE_variableStmt)
+	p.EnterRule(localctx, 12, AuroraParserRULE_variableStmt)
 	var _la int
 
 	defer func() {
@@ -751,53 +1146,67 @@ func (p *AuroraParser) VariableStmt() (localctx IVariableStmtContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(77)
+		p.SetState(102)
 		p.Match(AuroraParserT__2)
 	}
-	p.SetState(79)
+	p.SetState(104)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == AuroraParserT__3 {
 		{
-			p.SetState(78)
+			p.SetState(103)
 
 			var _m = p.Match(AuroraParserT__3)
+
+			localctx.(*VariableStmtContext).export = _m
+		}
+
+	}
+	p.SetState(107)
+	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
+
+	if _la == AuroraParserT__4 {
+		{
+			p.SetState(106)
+
+			var _m = p.Match(AuroraParserT__4)
 
 			localctx.(*VariableStmtContext).optional = _m
 		}
 
 	}
 	{
-		p.SetState(81)
+		p.SetState(109)
 
 		var _m = p.Match(AuroraParserIdentifier)
 
 		localctx.(*VariableStmtContext).name = _m
 	}
 	{
-		p.SetState(82)
-		p.Match(AuroraParserT__4)
+		p.SetState(110)
+		p.Match(AuroraParserT__5)
 	}
-	p.SetState(90)
+	p.SetState(118)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == AuroraParserIdentifier {
 		{
-			p.SetState(83)
+			p.SetState(111)
 
 			var _m = p.Match(AuroraParserIdentifier)
 
 			localctx.(*VariableStmtContext).variableType = _m
 		}
-		p.SetState(85)
+		p.SetState(113)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
-		if _la == AuroraParserT__7 {
+		if _la == AuroraParserT__14 {
 			{
-				p.SetState(84)
+				p.SetState(112)
 
 				var _x = p.Pointer()
 
@@ -805,15 +1214,15 @@ func (p *AuroraParser) VariableStmt() (localctx IVariableStmtContext) {
 			}
 
 		}
-		p.SetState(88)
+		p.SetState(116)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
-		if _la == AuroraParserT__5 {
+		if _la == AuroraParserT__6 {
 			{
-				p.SetState(87)
+				p.SetState(115)
 
-				var _m = p.Match(AuroraParserT__5)
+				var _m = p.Match(AuroraParserT__6)
 
 				localctx.(*VariableStmtContext).gcptr = _m
 			}
@@ -821,20 +1230,582 @@ func (p *AuroraParser) VariableStmt() (localctx IVariableStmtContext) {
 		}
 
 	}
-	p.SetState(94)
+	p.SetState(122)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == AuroraParserT__6 {
+	if _la == AuroraParserT__7 {
 		{
-			p.SetState(92)
-			p.Match(AuroraParserT__6)
+			p.SetState(120)
+			p.Match(AuroraParserT__7)
 		}
 		{
-			p.SetState(93)
+			p.SetState(121)
 			p.Expr()
 		}
 
+	}
+
+	return localctx
+}
+
+// IFunctionDeclarationContext is an interface to support dynamic dispatch.
+type IFunctionDeclarationContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// GetExport returns the export token.
+	GetExport() antlr.Token
+
+	// GetNative returns the native token.
+	GetNative() antlr.Token
+
+	// GetName returns the name token.
+	GetName() antlr.Token
+
+	// SetExport sets the export token.
+	SetExport(antlr.Token)
+
+	// SetNative sets the native token.
+	SetNative(antlr.Token)
+
+	// SetName sets the name token.
+	SetName(antlr.Token)
+
+	// GetCode returns the code rule contexts.
+	GetCode() ICodeBlockContext
+
+	// SetCode sets the code rule contexts.
+	SetCode(ICodeBlockContext)
+
+	// IsFunctionDeclarationContext differentiates from other interfaces.
+	IsFunctionDeclarationContext()
+}
+
+type FunctionDeclarationContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+	export antlr.Token
+	native antlr.Token
+	name   antlr.Token
+	code   ICodeBlockContext
+}
+
+func NewEmptyFunctionDeclarationContext() *FunctionDeclarationContext {
+	var p = new(FunctionDeclarationContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = AuroraParserRULE_functionDeclaration
+	return p
+}
+
+func (*FunctionDeclarationContext) IsFunctionDeclarationContext() {}
+
+func NewFunctionDeclarationContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FunctionDeclarationContext {
+	var p = new(FunctionDeclarationContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = AuroraParserRULE_functionDeclaration
+
+	return p
+}
+
+func (s *FunctionDeclarationContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *FunctionDeclarationContext) GetExport() antlr.Token { return s.export }
+
+func (s *FunctionDeclarationContext) GetNative() antlr.Token { return s.native }
+
+func (s *FunctionDeclarationContext) GetName() antlr.Token { return s.name }
+
+func (s *FunctionDeclarationContext) SetExport(v antlr.Token) { s.export = v }
+
+func (s *FunctionDeclarationContext) SetNative(v antlr.Token) { s.native = v }
+
+func (s *FunctionDeclarationContext) SetName(v antlr.Token) { s.name = v }
+
+func (s *FunctionDeclarationContext) GetCode() ICodeBlockContext { return s.code }
+
+func (s *FunctionDeclarationContext) SetCode(v ICodeBlockContext) { s.code = v }
+
+func (s *FunctionDeclarationContext) FunctionParameterList() IFunctionParameterListContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IFunctionParameterListContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IFunctionParameterListContext)
+}
+
+func (s *FunctionDeclarationContext) Identifier() antlr.TerminalNode {
+	return s.GetToken(AuroraParserIdentifier, 0)
+}
+
+func (s *FunctionDeclarationContext) CodeBlock() ICodeBlockContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*ICodeBlockContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ICodeBlockContext)
+}
+
+func (s *FunctionDeclarationContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *FunctionDeclarationContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *FunctionDeclarationContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.EnterFunctionDeclaration(s)
+	}
+}
+
+func (s *FunctionDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.ExitFunctionDeclaration(s)
+	}
+}
+
+func (p *AuroraParser) FunctionDeclaration() (localctx IFunctionDeclarationContext) {
+	localctx = NewFunctionDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 14, AuroraParserRULE_functionDeclaration)
+	var _la int
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(124)
+		p.Match(AuroraParserT__8)
+	}
+	p.SetState(126)
+	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
+
+	if _la == AuroraParserT__3 {
+		{
+			p.SetState(125)
+
+			var _m = p.Match(AuroraParserT__3)
+
+			localctx.(*FunctionDeclarationContext).export = _m
+		}
+
+	}
+	p.SetState(129)
+	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
+
+	if _la == AuroraParserT__9 {
+		{
+			p.SetState(128)
+
+			var _m = p.Match(AuroraParserT__9)
+
+			localctx.(*FunctionDeclarationContext).native = _m
+		}
+
+	}
+	{
+		p.SetState(131)
+
+		var _m = p.Match(AuroraParserIdentifier)
+
+		localctx.(*FunctionDeclarationContext).name = _m
+	}
+	{
+		p.SetState(132)
+		p.Match(AuroraParserT__10)
+	}
+	{
+		p.SetState(133)
+		p.FunctionParameterList()
+	}
+	{
+		p.SetState(134)
+		p.Match(AuroraParserT__11)
+	}
+	{
+		p.SetState(135)
+
+		var _x = p.CodeBlock()
+
+		localctx.(*FunctionDeclarationContext).code = _x
+	}
+
+	return localctx
+}
+
+// IFunctionParameterContext is an interface to support dynamic dispatch.
+type IFunctionParameterContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// GetParameterName returns the parameterName token.
+	GetParameterName() antlr.Token
+
+	// GetParameterType returns the parameterType token.
+	GetParameterType() antlr.Token
+
+	// GetGcptr returns the gcptr token.
+	GetGcptr() antlr.Token
+
+	// GetRef returns the ref token.
+	GetRef() antlr.Token
+
+	// SetParameterName sets the parameterName token.
+	SetParameterName(antlr.Token)
+
+	// SetParameterType sets the parameterType token.
+	SetParameterType(antlr.Token)
+
+	// SetGcptr sets the gcptr token.
+	SetGcptr(antlr.Token)
+
+	// SetRef sets the ref token.
+	SetRef(antlr.Token)
+
+	// GetPtr returns the ptr rule contexts.
+	GetPtr() IPointerContext
+
+	// SetPtr sets the ptr rule contexts.
+	SetPtr(IPointerContext)
+
+	// IsFunctionParameterContext differentiates from other interfaces.
+	IsFunctionParameterContext()
+}
+
+type FunctionParameterContext struct {
+	*antlr.BaseParserRuleContext
+	parser        antlr.Parser
+	parameterName antlr.Token
+	parameterType antlr.Token
+	ptr           IPointerContext
+	gcptr         antlr.Token
+	ref           antlr.Token
+}
+
+func NewEmptyFunctionParameterContext() *FunctionParameterContext {
+	var p = new(FunctionParameterContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = AuroraParserRULE_functionParameter
+	return p
+}
+
+func (*FunctionParameterContext) IsFunctionParameterContext() {}
+
+func NewFunctionParameterContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FunctionParameterContext {
+	var p = new(FunctionParameterContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = AuroraParserRULE_functionParameter
+
+	return p
+}
+
+func (s *FunctionParameterContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *FunctionParameterContext) GetParameterName() antlr.Token { return s.parameterName }
+
+func (s *FunctionParameterContext) GetParameterType() antlr.Token { return s.parameterType }
+
+func (s *FunctionParameterContext) GetGcptr() antlr.Token { return s.gcptr }
+
+func (s *FunctionParameterContext) GetRef() antlr.Token { return s.ref }
+
+func (s *FunctionParameterContext) SetParameterName(v antlr.Token) { s.parameterName = v }
+
+func (s *FunctionParameterContext) SetParameterType(v antlr.Token) { s.parameterType = v }
+
+func (s *FunctionParameterContext) SetGcptr(v antlr.Token) { s.gcptr = v }
+
+func (s *FunctionParameterContext) SetRef(v antlr.Token) { s.ref = v }
+
+func (s *FunctionParameterContext) GetPtr() IPointerContext { return s.ptr }
+
+func (s *FunctionParameterContext) SetPtr(v IPointerContext) { s.ptr = v }
+
+func (s *FunctionParameterContext) AllIdentifier() []antlr.TerminalNode {
+	return s.GetTokens(AuroraParserIdentifier)
+}
+
+func (s *FunctionParameterContext) Identifier(i int) antlr.TerminalNode {
+	return s.GetToken(AuroraParserIdentifier, i)
+}
+
+func (s *FunctionParameterContext) Pointer() IPointerContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IPointerContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IPointerContext)
+}
+
+func (s *FunctionParameterContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *FunctionParameterContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *FunctionParameterContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.EnterFunctionParameter(s)
+	}
+}
+
+func (s *FunctionParameterContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.ExitFunctionParameter(s)
+	}
+}
+
+func (p *AuroraParser) FunctionParameter() (localctx IFunctionParameterContext) {
+	localctx = NewFunctionParameterContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 16, AuroraParserRULE_functionParameter)
+	var _la int
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.SetState(147)
+	p.GetErrorHandler().Sync(p)
+
+	switch p.GetTokenStream().LA(1) {
+	case AuroraParserIdentifier:
+		p.EnterOuterAlt(localctx, 1)
+		{
+			p.SetState(137)
+
+			var _m = p.Match(AuroraParserIdentifier)
+
+			localctx.(*FunctionParameterContext).parameterName = _m
+		}
+		{
+			p.SetState(138)
+			p.Match(AuroraParserT__5)
+		}
+		{
+			p.SetState(139)
+
+			var _m = p.Match(AuroraParserIdentifier)
+
+			localctx.(*FunctionParameterContext).parameterType = _m
+		}
+
+		p.SetState(141)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
+
+		if _la == AuroraParserT__14 {
+			{
+				p.SetState(140)
+
+				var _x = p.Pointer()
+
+				localctx.(*FunctionParameterContext).ptr = _x
+			}
+
+		}
+		p.SetState(144)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
+
+		if _la == AuroraParserT__6 {
+			{
+				p.SetState(143)
+
+				var _m = p.Match(AuroraParserT__6)
+
+				localctx.(*FunctionParameterContext).gcptr = _m
+			}
+
+		}
+
+	case AuroraParserT__12:
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(146)
+
+			var _m = p.Match(AuroraParserT__12)
+
+			localctx.(*FunctionParameterContext).ref = _m
+		}
+
+	default:
+		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+	}
+
+	return localctx
+}
+
+// IFunctionParameterListContext is an interface to support dynamic dispatch.
+type IFunctionParameterListContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsFunctionParameterListContext differentiates from other interfaces.
+	IsFunctionParameterListContext()
+}
+
+type FunctionParameterListContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyFunctionParameterListContext() *FunctionParameterListContext {
+	var p = new(FunctionParameterListContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = AuroraParserRULE_functionParameterList
+	return p
+}
+
+func (*FunctionParameterListContext) IsFunctionParameterListContext() {}
+
+func NewFunctionParameterListContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FunctionParameterListContext {
+	var p = new(FunctionParameterListContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = AuroraParserRULE_functionParameterList
+
+	return p
+}
+
+func (s *FunctionParameterListContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *FunctionParameterListContext) AllFunctionParameter() []IFunctionParameterContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IFunctionParameterContext)(nil)).Elem())
+	var tst = make([]IFunctionParameterContext, len(ts))
+
+	for i, t := range ts {
+		if t != nil {
+			tst[i] = t.(IFunctionParameterContext)
+		}
+	}
+
+	return tst
+}
+
+func (s *FunctionParameterListContext) FunctionParameter(i int) IFunctionParameterContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IFunctionParameterContext)(nil)).Elem(), i)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IFunctionParameterContext)
+}
+
+func (s *FunctionParameterListContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *FunctionParameterListContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *FunctionParameterListContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.EnterFunctionParameterList(s)
+	}
+}
+
+func (s *FunctionParameterListContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AuroraListener); ok {
+		listenerT.ExitFunctionParameterList(s)
+	}
+}
+
+func (p *AuroraParser) FunctionParameterList() (localctx IFunctionParameterListContext) {
+	localctx = NewFunctionParameterListContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 18, AuroraParserRULE_functionParameterList)
+	var _la int
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(149)
+		p.FunctionParameter()
+	}
+	p.SetState(154)
+	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
+
+	for _la == AuroraParserT__13 {
+		{
+			p.SetState(150)
+			p.Match(AuroraParserT__13)
+		}
+		{
+			p.SetState(151)
+			p.FunctionParameter()
+		}
+
+		p.SetState(156)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
 	}
 
 	return localctx
@@ -899,7 +1870,7 @@ func (s *PointerContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) Pointer() (localctx IPointerContext) {
 	localctx = NewPointerContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 8, AuroraParserRULE_pointer)
+	p.EnterRule(localctx, 20, AuroraParserRULE_pointer)
 	var _la int
 
 	defer func() {
@@ -919,17 +1890,17 @@ func (p *AuroraParser) Pointer() (localctx IPointerContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(97)
+	p.SetState(158)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	for ok := true; ok; ok = _la == AuroraParserT__7 {
+	for ok := true; ok; ok = _la == AuroraParserT__14 {
 		{
-			p.SetState(96)
-			p.Match(AuroraParserT__7)
+			p.SetState(157)
+			p.Match(AuroraParserT__14)
 		}
 
-		p.SetState(99)
+		p.SetState(160)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -1035,7 +2006,7 @@ func (s *StmtContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) Stmt() (localctx IStmtContext) {
 	localctx = NewStmtContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 10, AuroraParserRULE_stmt)
+	p.EnterRule(localctx, 22, AuroraParserRULE_stmt)
 	var _la int
 
 	defer func() {
@@ -1055,34 +2026,34 @@ func (p *AuroraParser) Stmt() (localctx IStmtContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(108)
+	p.SetState(169)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
-	case AuroraParserT__2, AuroraParserT__7, AuroraParserT__9, AuroraParserT__13, AuroraParserT__14, AuroraParserT__15, AuroraParserT__16, AuroraParserIntegerLiteral, AuroraParserStringLiteral, AuroraParserIdentifier:
-		p.SetState(103)
+	case AuroraParserT__2, AuroraParserT__10, AuroraParserT__12, AuroraParserT__14, AuroraParserT__17, AuroraParserT__18, AuroraParserT__19, AuroraParserIntegerLiteral, AuroraParserStringLiteral, AuroraParserIdentifier:
+		p.SetState(164)
 		p.GetErrorHandler().Sync(p)
 
 		switch p.GetTokenStream().LA(1) {
 		case AuroraParserT__2:
 			{
-				p.SetState(101)
+				p.SetState(162)
 				p.VariableStmt()
 			}
 
-		case AuroraParserT__7, AuroraParserT__9, AuroraParserT__13, AuroraParserT__14, AuroraParserT__15, AuroraParserT__16, AuroraParserIntegerLiteral, AuroraParserStringLiteral, AuroraParserIdentifier:
+		case AuroraParserT__10, AuroraParserT__12, AuroraParserT__14, AuroraParserT__17, AuroraParserT__18, AuroraParserT__19, AuroraParserIntegerLiteral, AuroraParserStringLiteral, AuroraParserIdentifier:
 			{
-				p.SetState(102)
+				p.SetState(163)
 				p.ExpressionStmt()
 			}
 
 		default:
 			panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 		}
-		p.SetState(105)
+		p.SetState(166)
 		_la = p.GetTokenStream().LA(1)
 
-		if !(((_la - -1)&-(0x1f+1)) == 0 && ((1<<uint((_la - -1)))&((1<<(AuroraParserEOF - -1))|(1<<(AuroraParserT__8 - -1))|(1<<(AuroraParserNewline - -1)))) != 0) {
+		if !(((_la - -1)&-(0x1f+1)) == 0 && ((1<<uint((_la - -1)))&((1<<(AuroraParserEOF - -1))|(1<<(AuroraParserT__15 - -1))|(1<<(AuroraParserNewline - -1)))) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -1091,7 +2062,7 @@ func (p *AuroraParser) Stmt() (localctx IStmtContext) {
 
 	case AuroraParserT__0:
 		{
-			p.SetState(107)
+			p.SetState(168)
 			p.CodeBlock()
 		}
 
@@ -1172,7 +2143,7 @@ func (s *ExpressionStmtContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) ExpressionStmt() (localctx IExpressionStmtContext) {
 	localctx = NewExpressionStmtContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 12, AuroraParserRULE_expressionStmt)
+	p.EnterRule(localctx, 24, AuroraParserRULE_expressionStmt)
 
 	defer func() {
 		p.ExitRule()
@@ -1192,7 +2163,7 @@ func (p *AuroraParser) ExpressionStmt() (localctx IExpressionStmtContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(110)
+		p.SetState(171)
 		p.Expr()
 	}
 
@@ -1269,7 +2240,7 @@ func (s *ExprContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) Expr() (localctx IExprContext) {
 	localctx = NewExprContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 14, AuroraParserRULE_expr)
+	p.EnterRule(localctx, 26, AuroraParserRULE_expr)
 
 	defer func() {
 		p.ExitRule()
@@ -1289,7 +2260,7 @@ func (p *AuroraParser) Expr() (localctx IExprContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(112)
+		p.SetState(173)
 		p.Expr7()
 	}
 
@@ -1396,7 +2367,7 @@ func (s *Expr0Context) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) Expr0() (localctx IExpr0Context) {
 	localctx = NewExpr0Context(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 16, AuroraParserRULE_expr0)
+	p.EnterRule(localctx, 28, AuroraParserRULE_expr0)
 
 	defer func() {
 		p.ExitRule()
@@ -1415,31 +2386,31 @@ func (p *AuroraParser) Expr0() (localctx IExpr0Context) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(118)
+	p.SetState(179)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
-	case AuroraParserT__9:
+	case AuroraParserT__10:
 		{
-			p.SetState(114)
+			p.SetState(175)
 			p.Brackets()
 		}
 
 	case AuroraParserStringLiteral:
 		{
-			p.SetState(115)
+			p.SetState(176)
 			p.StringImmidiate()
 		}
 
 	case AuroraParserIntegerLiteral:
 		{
-			p.SetState(116)
+			p.SetState(177)
 			p.IntegerImmidiate()
 		}
 
 	case AuroraParserIdentifier:
 		{
-			p.SetState(117)
+			p.SetState(178)
 			p.IdentifierImmidiate()
 		}
 
@@ -1531,7 +2502,7 @@ func (s *BracketsContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) Brackets() (localctx IBracketsContext) {
 	localctx = NewBracketsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 18, AuroraParserRULE_brackets)
+	p.EnterRule(localctx, 30, AuroraParserRULE_brackets)
 
 	defer func() {
 		p.ExitRule()
@@ -1551,19 +2522,19 @@ func (p *AuroraParser) Brackets() (localctx IBracketsContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(120)
-		p.Match(AuroraParserT__9)
+		p.SetState(181)
+		p.Match(AuroraParserT__10)
 	}
 	{
-		p.SetState(121)
+		p.SetState(182)
 
 		var _x = p.Expr()
 
 		localctx.(*BracketsContext).paramExpr = _x
 	}
 	{
-		p.SetState(122)
-		p.Match(AuroraParserT__10)
+		p.SetState(183)
+		p.Match(AuroraParserT__11)
 	}
 
 	return localctx
@@ -1644,7 +2615,7 @@ func (s *StringImmidiateContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) StringImmidiate() (localctx IStringImmidiateContext) {
 	localctx = NewStringImmidiateContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 20, AuroraParserRULE_stringImmidiate)
+	p.EnterRule(localctx, 32, AuroraParserRULE_stringImmidiate)
 
 	defer func() {
 		p.ExitRule()
@@ -1664,7 +2635,7 @@ func (p *AuroraParser) StringImmidiate() (localctx IStringImmidiateContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(124)
+		p.SetState(185)
 
 		var _m = p.Match(AuroraParserStringLiteral)
 
@@ -1749,7 +2720,7 @@ func (s *IdentifierImmidiateContext) ExitRule(listener antlr.ParseTreeListener) 
 
 func (p *AuroraParser) IdentifierImmidiate() (localctx IIdentifierImmidiateContext) {
 	localctx = NewIdentifierImmidiateContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 22, AuroraParserRULE_identifierImmidiate)
+	p.EnterRule(localctx, 34, AuroraParserRULE_identifierImmidiate)
 
 	defer func() {
 		p.ExitRule()
@@ -1769,7 +2740,7 @@ func (p *AuroraParser) IdentifierImmidiate() (localctx IIdentifierImmidiateConte
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(126)
+		p.SetState(187)
 
 		var _m = p.Match(AuroraParserIdentifier)
 
@@ -1854,7 +2825,7 @@ func (s *IntegerImmidiateContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) IntegerImmidiate() (localctx IIntegerImmidiateContext) {
 	localctx = NewIntegerImmidiateContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 24, AuroraParserRULE_integerImmidiate)
+	p.EnterRule(localctx, 36, AuroraParserRULE_integerImmidiate)
 
 	defer func() {
 		p.ExitRule()
@@ -1874,7 +2845,7 @@ func (p *AuroraParser) IntegerImmidiate() (localctx IIntegerImmidiateContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(128)
+		p.SetState(189)
 
 		var _m = p.Match(AuroraParserIntegerLiteral)
 
@@ -1992,8 +2963,8 @@ func (p *AuroraParser) expr1(_p int) (localctx IExpr1Context) {
 	localctx = NewExpr1Context(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IExpr1Context = localctx
 	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
-	_startState := 26
-	p.EnterRecursionRule(localctx, 26, AuroraParserRULE_expr1, _p)
+	_startState := 38
+	p.EnterRecursionRule(localctx, 38, AuroraParserRULE_expr1, _p)
 
 	defer func() {
 		p.UnrollRecursionContexts(_parentctx)
@@ -2015,14 +2986,14 @@ func (p *AuroraParser) expr1(_p int) (localctx IExpr1Context) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(131)
+		p.SetState(192)
 		p.Expr0()
 	}
 
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(140)
+	p.SetState(201)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 14, p.GetParserRuleContext())
+	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 23, p.GetParserRuleContext())
 
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
@@ -2032,24 +3003,24 @@ func (p *AuroraParser) expr1(_p int) (localctx IExpr1Context) {
 			_prevctx = localctx
 			localctx = NewExpr1Context(p, _parentctx, _parentState)
 			p.PushNewRecursionContext(localctx, _startState, AuroraParserRULE_expr1)
-			p.SetState(133)
+			p.SetState(194)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 2)) {
 				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
 			}
-			p.SetState(136)
+			p.SetState(197)
 			p.GetErrorHandler().Sync(p)
 
 			switch p.GetTokenStream().LA(1) {
-			case AuroraParserT__11:
+			case AuroraParserT__16:
 				{
-					p.SetState(134)
+					p.SetState(195)
 					p.MemberAccess()
 				}
 
-			case AuroraParserT__9:
+			case AuroraParserT__10:
 				{
-					p.SetState(135)
+					p.SetState(196)
 					p.FunctionCall()
 				}
 
@@ -2058,9 +3029,9 @@ func (p *AuroraParser) expr1(_p int) (localctx IExpr1Context) {
 			}
 
 		}
-		p.SetState(142)
+		p.SetState(203)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 14, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 23, p.GetParserRuleContext())
 	}
 
 	return localctx
@@ -2141,7 +3112,7 @@ func (s *MemberAccessContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) MemberAccess() (localctx IMemberAccessContext) {
 	localctx = NewMemberAccessContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 28, AuroraParserRULE_memberAccess)
+	p.EnterRule(localctx, 40, AuroraParserRULE_memberAccess)
 
 	defer func() {
 		p.ExitRule()
@@ -2161,11 +3132,11 @@ func (p *AuroraParser) MemberAccess() (localctx IMemberAccessContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(143)
-		p.Match(AuroraParserT__11)
+		p.SetState(204)
+		p.Match(AuroraParserT__16)
 	}
 	{
-		p.SetState(144)
+		p.SetState(205)
 
 		var _m = p.Match(AuroraParserIdentifier)
 
@@ -2258,7 +3229,7 @@ func (s *FunctionCallContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) FunctionCall() (localctx IFunctionCallContext) {
 	localctx = NewFunctionCallContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 30, AuroraParserRULE_functionCall)
+	p.EnterRule(localctx, 42, AuroraParserRULE_functionCall)
 	var _la int
 
 	defer func() {
@@ -2279,41 +3250,41 @@ func (p *AuroraParser) FunctionCall() (localctx IFunctionCallContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(146)
-		p.Match(AuroraParserT__9)
+		p.SetState(207)
+		p.Match(AuroraParserT__10)
 	}
-	p.SetState(148)
+	p.SetState(209)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	if ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__7)|(1<<AuroraParserT__9)|(1<<AuroraParserT__13)|(1<<AuroraParserT__14)|(1<<AuroraParserT__15)|(1<<AuroraParserT__16)|(1<<AuroraParserIntegerLiteral)|(1<<AuroraParserStringLiteral)|(1<<AuroraParserIdentifier))) != 0 {
+	if ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__10)|(1<<AuroraParserT__12)|(1<<AuroraParserT__14)|(1<<AuroraParserT__17)|(1<<AuroraParserT__18)|(1<<AuroraParserT__19)|(1<<AuroraParserIntegerLiteral)|(1<<AuroraParserStringLiteral)|(1<<AuroraParserIdentifier))) != 0 {
 		{
-			p.SetState(147)
+			p.SetState(208)
 			p.FunctionCallParam()
 		}
 
 	}
-	p.SetState(154)
+	p.SetState(215)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == AuroraParserT__12 {
+	for _la == AuroraParserT__13 {
 		{
-			p.SetState(150)
-			p.Match(AuroraParserT__12)
+			p.SetState(211)
+			p.Match(AuroraParserT__13)
 		}
 		{
-			p.SetState(151)
+			p.SetState(212)
 			p.FunctionCallParam()
 		}
 
-		p.SetState(156)
+		p.SetState(217)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(157)
-		p.Match(AuroraParserT__10)
+		p.SetState(218)
+		p.Match(AuroraParserT__11)
 	}
 
 	return localctx
@@ -2400,7 +3371,7 @@ func (s *FunctionCallParamContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) FunctionCallParam() (localctx IFunctionCallParamContext) {
 	localctx = NewFunctionCallParamContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 32, AuroraParserRULE_functionCallParam)
+	p.EnterRule(localctx, 44, AuroraParserRULE_functionCallParam)
 
 	defer func() {
 		p.ExitRule()
@@ -2420,7 +3391,7 @@ func (p *AuroraParser) FunctionCallParam() (localctx IFunctionCallParamContext) 
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(159)
+		p.SetState(220)
 
 		var _x = p.Expr()
 
@@ -2510,7 +3481,7 @@ func (s *Expr2Context) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) Expr2() (localctx IExpr2Context) {
 	localctx = NewExpr2Context(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 34, AuroraParserRULE_expr2)
+	p.EnterRule(localctx, 46, AuroraParserRULE_expr2)
 
 	defer func() {
 		p.ExitRule()
@@ -2528,21 +3499,21 @@ func (p *AuroraParser) Expr2() (localctx IExpr2Context) {
 		}
 	}()
 
-	p.SetState(163)
+	p.SetState(224)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
-	case AuroraParserT__7, AuroraParserT__13, AuroraParserT__14, AuroraParserT__15, AuroraParserT__16:
+	case AuroraParserT__12, AuroraParserT__14, AuroraParserT__17, AuroraParserT__18, AuroraParserT__19:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(161)
+			p.SetState(222)
 			p.LhsOperator()
 		}
 
-	case AuroraParserT__9, AuroraParserIntegerLiteral, AuroraParserStringLiteral, AuroraParserIdentifier:
+	case AuroraParserT__10, AuroraParserIntegerLiteral, AuroraParserStringLiteral, AuroraParserIdentifier:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(162)
+			p.SetState(223)
 			p.expr1(0)
 		}
 
@@ -2645,7 +3616,7 @@ func (s *LhsOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) LhsOperator() (localctx ILhsOperatorContext) {
 	localctx = NewLhsOperatorContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 36, AuroraParserRULE_lhsOperator)
+	p.EnterRule(localctx, 48, AuroraParserRULE_lhsOperator)
 	var _la int
 
 	defer func() {
@@ -2665,7 +3636,7 @@ func (p *AuroraParser) LhsOperator() (localctx ILhsOperatorContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(165)
+	p.SetState(226)
 
 	var _lt = p.GetTokenStream().LT(1)
 
@@ -2673,7 +3644,7 @@ func (p *AuroraParser) LhsOperator() (localctx ILhsOperatorContext) {
 
 	_la = p.GetTokenStream().LA(1)
 
-	if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__7)|(1<<AuroraParserT__13)|(1<<AuroraParserT__14)|(1<<AuroraParserT__15)|(1<<AuroraParserT__16))) != 0) {
+	if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__12)|(1<<AuroraParserT__14)|(1<<AuroraParserT__17)|(1<<AuroraParserT__18)|(1<<AuroraParserT__19))) != 0) {
 		var _ri = p.GetErrorHandler().RecoverInline(p)
 
 		localctx.(*LhsOperatorContext).op = _ri
@@ -2682,7 +3653,7 @@ func (p *AuroraParser) LhsOperator() (localctx ILhsOperatorContext) {
 		p.Consume()
 	}
 	{
-		p.SetState(166)
+		p.SetState(227)
 
 		var _x = p.Expr()
 
@@ -2801,8 +3772,8 @@ func (p *AuroraParser) expr3(_p int) (localctx IExpr3Context) {
 	localctx = NewExpr3Context(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IExpr3Context = localctx
 	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
-	_startState := 38
-	p.EnterRecursionRule(localctx, 38, AuroraParserRULE_expr3, _p)
+	_startState := 50
+	p.EnterRecursionRule(localctx, 50, AuroraParserRULE_expr3, _p)
 
 	defer func() {
 		p.UnrollRecursionContexts(_parentctx)
@@ -2824,14 +3795,14 @@ func (p *AuroraParser) expr3(_p int) (localctx IExpr3Context) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(169)
+		p.SetState(230)
 		p.Expr2()
 	}
 
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(175)
+	p.SetState(236)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 18, p.GetParserRuleContext())
+	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 27, p.GetParserRuleContext())
 
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
@@ -2842,20 +3813,20 @@ func (p *AuroraParser) expr3(_p int) (localctx IExpr3Context) {
 			localctx = NewExpr3Context(p, _parentctx, _parentState)
 			localctx.(*Expr3Context).left = _prevctx
 			p.PushNewRecursionContext(localctx, _startState, AuroraParserRULE_expr3)
-			p.SetState(171)
+			p.SetState(232)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 2)) {
 				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
 			}
 			{
-				p.SetState(172)
+				p.SetState(233)
 				p.MulDivMod()
 			}
 
 		}
-		p.SetState(177)
+		p.SetState(238)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 18, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 27, p.GetParserRuleContext())
 	}
 
 	return localctx
@@ -2953,7 +3924,7 @@ func (s *MulDivModContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) MulDivMod() (localctx IMulDivModContext) {
 	localctx = NewMulDivModContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 40, AuroraParserRULE_mulDivMod)
+	p.EnterRule(localctx, 52, AuroraParserRULE_mulDivMod)
 	var _la int
 
 	defer func() {
@@ -2973,7 +3944,7 @@ func (p *AuroraParser) MulDivMod() (localctx IMulDivModContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(178)
+	p.SetState(239)
 
 	var _lt = p.GetTokenStream().LT(1)
 
@@ -2981,7 +3952,7 @@ func (p *AuroraParser) MulDivMod() (localctx IMulDivModContext) {
 
 	_la = p.GetTokenStream().LA(1)
 
-	if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__7)|(1<<AuroraParserT__17)|(1<<AuroraParserT__18))) != 0) {
+	if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<AuroraParserT__14)|(1<<AuroraParserT__20)|(1<<AuroraParserT__21))) != 0) {
 		var _ri = p.GetErrorHandler().RecoverInline(p)
 
 		localctx.(*MulDivModContext).op = _ri
@@ -2990,7 +3961,7 @@ func (p *AuroraParser) MulDivMod() (localctx IMulDivModContext) {
 		p.Consume()
 	}
 	{
-		p.SetState(179)
+		p.SetState(240)
 
 		var _x = p.expr3(0)
 
@@ -3109,8 +4080,8 @@ func (p *AuroraParser) expr4(_p int) (localctx IExpr4Context) {
 	localctx = NewExpr4Context(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IExpr4Context = localctx
 	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
-	_startState := 42
-	p.EnterRecursionRule(localctx, 42, AuroraParserRULE_expr4, _p)
+	_startState := 54
+	p.EnterRecursionRule(localctx, 54, AuroraParserRULE_expr4, _p)
 
 	defer func() {
 		p.UnrollRecursionContexts(_parentctx)
@@ -3132,14 +4103,14 @@ func (p *AuroraParser) expr4(_p int) (localctx IExpr4Context) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(182)
+		p.SetState(243)
 		p.expr3(0)
 	}
 
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(188)
+	p.SetState(249)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 19, p.GetParserRuleContext())
+	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 28, p.GetParserRuleContext())
 
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
@@ -3150,20 +4121,20 @@ func (p *AuroraParser) expr4(_p int) (localctx IExpr4Context) {
 			localctx = NewExpr4Context(p, _parentctx, _parentState)
 			localctx.(*Expr4Context).left = _prevctx
 			p.PushNewRecursionContext(localctx, _startState, AuroraParserRULE_expr4)
-			p.SetState(184)
+			p.SetState(245)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 2)) {
 				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
 			}
 			{
-				p.SetState(185)
+				p.SetState(246)
 				p.AddSub()
 			}
 
 		}
-		p.SetState(190)
+		p.SetState(251)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 19, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 28, p.GetParserRuleContext())
 	}
 
 	return localctx
@@ -3261,7 +4232,7 @@ func (s *AddSubContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) AddSub() (localctx IAddSubContext) {
 	localctx = NewAddSubContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 44, AuroraParserRULE_addSub)
+	p.EnterRule(localctx, 56, AuroraParserRULE_addSub)
 	var _la int
 
 	defer func() {
@@ -3281,7 +4252,7 @@ func (p *AuroraParser) AddSub() (localctx IAddSubContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(191)
+	p.SetState(252)
 
 	var _lt = p.GetTokenStream().LT(1)
 
@@ -3289,7 +4260,7 @@ func (p *AuroraParser) AddSub() (localctx IAddSubContext) {
 
 	_la = p.GetTokenStream().LA(1)
 
-	if !(_la == AuroraParserT__13 || _la == AuroraParserT__14) {
+	if !(_la == AuroraParserT__17 || _la == AuroraParserT__18) {
 		var _ri = p.GetErrorHandler().RecoverInline(p)
 
 		localctx.(*AddSubContext).op = _ri
@@ -3298,7 +4269,7 @@ func (p *AuroraParser) AddSub() (localctx IAddSubContext) {
 		p.Consume()
 	}
 	{
-		p.SetState(192)
+		p.SetState(253)
 
 		var _x = p.expr4(0)
 
@@ -3417,8 +4388,8 @@ func (p *AuroraParser) expr5(_p int) (localctx IExpr5Context) {
 	localctx = NewExpr5Context(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IExpr5Context = localctx
 	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
-	_startState := 46
-	p.EnterRecursionRule(localctx, 46, AuroraParserRULE_expr5, _p)
+	_startState := 58
+	p.EnterRecursionRule(localctx, 58, AuroraParserRULE_expr5, _p)
 
 	defer func() {
 		p.UnrollRecursionContexts(_parentctx)
@@ -3440,14 +4411,14 @@ func (p *AuroraParser) expr5(_p int) (localctx IExpr5Context) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(195)
+		p.SetState(256)
 		p.expr4(0)
 	}
 
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(201)
+	p.SetState(262)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 20, p.GetParserRuleContext())
+	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 29, p.GetParserRuleContext())
 
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
@@ -3458,20 +4429,20 @@ func (p *AuroraParser) expr5(_p int) (localctx IExpr5Context) {
 			localctx = NewExpr5Context(p, _parentctx, _parentState)
 			localctx.(*Expr5Context).left = _prevctx
 			p.PushNewRecursionContext(localctx, _startState, AuroraParserRULE_expr5)
-			p.SetState(197)
+			p.SetState(258)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 2)) {
 				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
 			}
 			{
-				p.SetState(198)
+				p.SetState(259)
 				p.LogicalAnd()
 			}
 
 		}
-		p.SetState(203)
+		p.SetState(264)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 20, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 29, p.GetParserRuleContext())
 	}
 
 	return localctx
@@ -3558,7 +4529,7 @@ func (s *LogicalAndContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) LogicalAnd() (localctx ILogicalAndContext) {
 	localctx = NewLogicalAndContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 48, AuroraParserRULE_logicalAnd)
+	p.EnterRule(localctx, 60, AuroraParserRULE_logicalAnd)
 
 	defer func() {
 		p.ExitRule()
@@ -3578,11 +4549,11 @@ func (p *AuroraParser) LogicalAnd() (localctx ILogicalAndContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(204)
-		p.Match(AuroraParserT__19)
+		p.SetState(265)
+		p.Match(AuroraParserT__22)
 	}
 	{
-		p.SetState(205)
+		p.SetState(266)
 
 		var _x = p.expr5(0)
 
@@ -3701,8 +4672,8 @@ func (p *AuroraParser) expr6(_p int) (localctx IExpr6Context) {
 	localctx = NewExpr6Context(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IExpr6Context = localctx
 	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
-	_startState := 50
-	p.EnterRecursionRule(localctx, 50, AuroraParserRULE_expr6, _p)
+	_startState := 62
+	p.EnterRecursionRule(localctx, 62, AuroraParserRULE_expr6, _p)
 
 	defer func() {
 		p.UnrollRecursionContexts(_parentctx)
@@ -3724,14 +4695,14 @@ func (p *AuroraParser) expr6(_p int) (localctx IExpr6Context) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(208)
+		p.SetState(269)
 		p.expr5(0)
 	}
 
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(214)
+	p.SetState(275)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 21, p.GetParserRuleContext())
+	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 30, p.GetParserRuleContext())
 
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
@@ -3742,20 +4713,20 @@ func (p *AuroraParser) expr6(_p int) (localctx IExpr6Context) {
 			localctx = NewExpr6Context(p, _parentctx, _parentState)
 			localctx.(*Expr6Context).left = _prevctx
 			p.PushNewRecursionContext(localctx, _startState, AuroraParserRULE_expr6)
-			p.SetState(210)
+			p.SetState(271)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 2)) {
 				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
 			}
 			{
-				p.SetState(211)
+				p.SetState(272)
 				p.LogicalOr()
 			}
 
 		}
-		p.SetState(216)
+		p.SetState(277)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 21, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 30, p.GetParserRuleContext())
 	}
 
 	return localctx
@@ -3842,7 +4813,7 @@ func (s *LogicalOrContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) LogicalOr() (localctx ILogicalOrContext) {
 	localctx = NewLogicalOrContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 52, AuroraParserRULE_logicalOr)
+	p.EnterRule(localctx, 64, AuroraParserRULE_logicalOr)
 
 	defer func() {
 		p.ExitRule()
@@ -3862,11 +4833,11 @@ func (p *AuroraParser) LogicalOr() (localctx ILogicalOrContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(217)
-		p.Match(AuroraParserT__20)
+		p.SetState(278)
+		p.Match(AuroraParserT__23)
 	}
 	{
-		p.SetState(218)
+		p.SetState(279)
 
 		var _x = p.expr6(0)
 
@@ -3986,7 +4957,7 @@ func (s *Expr7Context) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) Expr7() (localctx IExpr7Context) {
 	localctx = NewExpr7Context(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 54, AuroraParserRULE_expr7)
+	p.EnterRule(localctx, 66, AuroraParserRULE_expr7)
 
 	defer func() {
 		p.ExitRule()
@@ -4004,40 +4975,40 @@ func (p *AuroraParser) Expr7() (localctx IExpr7Context) {
 		}
 	}()
 
-	p.SetState(229)
+	p.SetState(290)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 23, p.GetParserRuleContext()) {
+	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 32, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
-		p.SetState(224)
+		p.SetState(285)
 		p.GetErrorHandler().Sync(p)
-		switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 22, p.GetParserRuleContext()) {
+		switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 31, p.GetParserRuleContext()) {
 		case 1:
 			{
-				p.SetState(220)
+				p.SetState(281)
 				p.expr1(0)
 			}
 			{
-				p.SetState(221)
+				p.SetState(282)
 				p.MemberAccess()
 			}
 
 		case 2:
 			{
-				p.SetState(223)
+				p.SetState(284)
 				p.IdentifierImmidiate()
 			}
 
 		}
 		{
-			p.SetState(226)
+			p.SetState(287)
 			p.Assign()
 		}
 
 	case 2:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(228)
+			p.SetState(289)
 			p.expr6(0)
 		}
 
@@ -4127,7 +5098,7 @@ func (s *AssignContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *AuroraParser) Assign() (localctx IAssignContext) {
 	localctx = NewAssignContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 56, AuroraParserRULE_assign)
+	p.EnterRule(localctx, 68, AuroraParserRULE_assign)
 
 	defer func() {
 		p.ExitRule()
@@ -4147,11 +5118,11 @@ func (p *AuroraParser) Assign() (localctx IAssignContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(231)
-		p.Match(AuroraParserT__6)
+		p.SetState(292)
+		p.Match(AuroraParserT__7)
 	}
 	{
-		p.SetState(232)
+		p.SetState(293)
 
 		var _x = p.Expr()
 
@@ -4163,35 +5134,35 @@ func (p *AuroraParser) Assign() (localctx IAssignContext) {
 
 func (p *AuroraParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex int) bool {
 	switch ruleIndex {
-	case 13:
+	case 19:
 		var t *Expr1Context = nil
 		if localctx != nil {
 			t = localctx.(*Expr1Context)
 		}
 		return p.Expr1_Sempred(t, predIndex)
 
-	case 19:
+	case 25:
 		var t *Expr3Context = nil
 		if localctx != nil {
 			t = localctx.(*Expr3Context)
 		}
 		return p.Expr3_Sempred(t, predIndex)
 
-	case 21:
+	case 27:
 		var t *Expr4Context = nil
 		if localctx != nil {
 			t = localctx.(*Expr4Context)
 		}
 		return p.Expr4_Sempred(t, predIndex)
 
-	case 23:
+	case 29:
 		var t *Expr5Context = nil
 		if localctx != nil {
 			t = localctx.(*Expr5Context)
 		}
 		return p.Expr5_Sempred(t, predIndex)
 
-	case 25:
+	case 31:
 		var t *Expr6Context = nil
 		if localctx != nil {
 			t = localctx.(*Expr6Context)

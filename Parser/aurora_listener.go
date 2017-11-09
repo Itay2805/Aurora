@@ -11,14 +11,32 @@ type AuroraListener interface {
 	// EnterProgram is called when entering the program production.
 	EnterProgram(c *ProgramContext)
 
+	// EnterDeclarationList is called when entering the declarationList production.
+	EnterDeclarationList(c *DeclarationListContext)
+
+	// EnterDeclaration is called when entering the declaration production.
+	EnterDeclaration(c *DeclarationContext)
+
 	// EnterStatementList is called when entering the statementList production.
 	EnterStatementList(c *StatementListContext)
 
 	// EnterCodeBlock is called when entering the codeBlock production.
 	EnterCodeBlock(c *CodeBlockContext)
 
+	// EnterVariableDeclaration is called when entering the variableDeclaration production.
+	EnterVariableDeclaration(c *VariableDeclarationContext)
+
 	// EnterVariableStmt is called when entering the variableStmt production.
 	EnterVariableStmt(c *VariableStmtContext)
+
+	// EnterFunctionDeclaration is called when entering the functionDeclaration production.
+	EnterFunctionDeclaration(c *FunctionDeclarationContext)
+
+	// EnterFunctionParameter is called when entering the functionParameter production.
+	EnterFunctionParameter(c *FunctionParameterContext)
+
+	// EnterFunctionParameterList is called when entering the functionParameterList production.
+	EnterFunctionParameterList(c *FunctionParameterListContext)
 
 	// EnterPointer is called when entering the pointer production.
 	EnterPointer(c *PointerContext)
@@ -98,14 +116,32 @@ type AuroraListener interface {
 	// ExitProgram is called when exiting the program production.
 	ExitProgram(c *ProgramContext)
 
+	// ExitDeclarationList is called when exiting the declarationList production.
+	ExitDeclarationList(c *DeclarationListContext)
+
+	// ExitDeclaration is called when exiting the declaration production.
+	ExitDeclaration(c *DeclarationContext)
+
 	// ExitStatementList is called when exiting the statementList production.
 	ExitStatementList(c *StatementListContext)
 
 	// ExitCodeBlock is called when exiting the codeBlock production.
 	ExitCodeBlock(c *CodeBlockContext)
 
+	// ExitVariableDeclaration is called when exiting the variableDeclaration production.
+	ExitVariableDeclaration(c *VariableDeclarationContext)
+
 	// ExitVariableStmt is called when exiting the variableStmt production.
 	ExitVariableStmt(c *VariableStmtContext)
+
+	// ExitFunctionDeclaration is called when exiting the functionDeclaration production.
+	ExitFunctionDeclaration(c *FunctionDeclarationContext)
+
+	// ExitFunctionParameter is called when exiting the functionParameter production.
+	ExitFunctionParameter(c *FunctionParameterContext)
+
+	// ExitFunctionParameterList is called when exiting the functionParameterList production.
+	ExitFunctionParameterList(c *FunctionParameterListContext)
 
 	// ExitPointer is called when exiting the pointer production.
 	ExitPointer(c *PointerContext)

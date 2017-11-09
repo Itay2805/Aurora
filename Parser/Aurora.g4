@@ -1,7 +1,16 @@
 grammar Aurora;
 
 program
-    : statementList? EOF?
+    : declarationList? EOF?
+    ;
+
+declarationList
+    : declaration declaration*
+    ;
+
+declaration
+    : variableDeclaration
+    | functionDeclaration
     ;
 
 statementList
@@ -12,8 +21,24 @@ codeBlock
     : '{' statementList? '}'
     ;
 
+variableDeclaration
+    : variableStmt
+    ;
+
 variableStmt
-    : 'var' optional='optional'?  name=Identifier ':' (variableType=Identifier ptr=pointer? gcptr='^'?)? ('=' expr)?
+    : 'var' export='export'? optional='optional'?  name=Identifier ':' (variableType=Identifier ptr=pointer? gcptr='^'?)? ('=' expr)?
+    ;
+
+functionDeclaration
+    : 'func' export='export'? native='native'? name=Identifier '(' functionParameterList ')' code=codeBlock
+    ;
+
+functionParameter
+    : parameterName=Identifier ':' parameterType=Identifier (ptr=pointer? gcptr='^'?) | ref='&'
+    ;
+
+functionParameterList
+    : functionParameter (',' functionParameter)*
     ;
 
 pointer

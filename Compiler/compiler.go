@@ -17,6 +17,10 @@ type Stmt interface {
 	stmt()
 }
 
+type Block interface {
+	block()
+}
+
 // IntImmidiateExpr is AST node for immidiate int value
 type IntImmidiateExpr struct {
 	Value int
@@ -75,10 +79,15 @@ type VariableStmt struct {
 	Optional bool
 	Ptr      int
 	GCPtr    bool
+	Export   bool
 }
 
 type CodeBlockStmt struct {
 	Statements []Stmt
+}
+
+type FunctionDeclaration struct {
+	CodeBlock CodeBlockStmt
 }
 
 func (f IntImmidiateExpr) expr()   {}
@@ -94,11 +103,16 @@ func (f ExprStmt) stmt()      {}
 func (f VariableStmt) stmt()  {}
 func (f CodeBlockStmt) stmt() {}
 
+func (f VariableStmt) block()        {}
+func (f FunctionDeclaration) block() {}
+
 // CompilerContext contains the AST
 type CompilerContext struct {
 	*parser.BaseAuroraListener
 
+	Blocks       []Block
 	Statements   []Stmt
+	CurrentBlock Block
 	CurrentStmt  Stmt
 	CurrentExpr  Expr
 	ChildContext *CompilerContext
@@ -129,11 +143,25 @@ func (s *CompilerContext) ExitStmt(ctx *parser.StmtContext) {
 	GetLast(s).CurrentExpr = nil
 }
 
+// ExitDeclaration is called when production declaration is exited.
+func (s *CompilerContext) ExitDeclaration(ctx *parser.DeclarationContext) {
+	GetLast(s).Blocks = append(GetLast(s).Blocks, GetLast(s).CurrentBlock)
+	GetLast(s).CurrentBlock = nil
+	println("ExitDeclaration")
+}
+
 // ExitExpressionStmt is called when production expressionStmt is exited.
 func (s *CompilerContext) ExitExpressionStmt(ctx *parser.ExpressionStmtContext) {
 	GetLast(s).CurrentStmt = ExprStmt{
 		Expr: GetLast(s).CurrentExpr,
 	}
+}
+
+// ExitVariableDeclaration is called when production variableDeclaration is exited.
+func (s *CompilerContext) ExitVariableDeclaration(ctx *parser.VariableDeclarationContext) {
+	GetLast(s).CurrentBlock = GetLast(s).CurrentStmt.(VariableStmt)
+	GetLast(s).CurrentExpr = nil
+	println("ExitVariableDeclaration")
 }
 
 // ExitVariableStmt is called when production variableStmt is exited.
@@ -153,7 +181,9 @@ func (s *CompilerContext) ExitVariableStmt(ctx *parser.VariableStmtContext) {
 		Optional: ctx.GetOptional() != nil,
 		Ptr:      ptrCount,
 		GCPtr:    ctx.GetGcptr() != nil,
+		Export:   ctx.GetExport() != nil,
 	}
+	println("ExitVariableStmt")
 }
 
 // EnterCodeBlock is called when production codeBlock is entered.

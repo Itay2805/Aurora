@@ -18,6 +18,6 @@ func main() {
 		if strings.HasPrefix(strings.Trim(text, " 	"), "exit") {
 			return
 		}
-		fmt.Printf("%+v\n", compiler.BuildAST(text).Statements)
+		fmt.Printf("%+v\n", compiler.BuildAST(text).Blocks)
 	}
 }

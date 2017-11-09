@@ -74,7 +74,7 @@ type ExprStmt struct {
 
 type VariableStmt struct {
 	Name     string
-	Type     string
+	Type     Type
 	Value    Expr
 	Optional bool
 	Ptr      int
@@ -86,8 +86,23 @@ type CodeBlockStmt struct {
 	Statements []Stmt
 }
 
+type Parameter struct {
+	Name     string
+	Type     Type
+	Optional bool
+}
+
+type Type struct {
+	Name  string
+	Ptr   int
+	GCPtr bool
+	Ref   bool
+}
+
 type FunctionDeclaration struct {
-	CodeBlock CodeBlockStmt
+	Name       string
+	Parameters []Parameter
+	CodeBlock  CodeBlockStmt
 }
 
 func (f IntImmidiateExpr) expr()   {}
@@ -147,7 +162,6 @@ func (s *CompilerContext) ExitStmt(ctx *parser.StmtContext) {
 func (s *CompilerContext) ExitDeclaration(ctx *parser.DeclarationContext) {
 	GetLast(s).Blocks = append(GetLast(s).Blocks, GetLast(s).CurrentBlock)
 	GetLast(s).CurrentBlock = nil
-	println("ExitDeclaration")
 }
 
 // ExitExpressionStmt is called when production expressionStmt is exited.
@@ -157,11 +171,24 @@ func (s *CompilerContext) ExitExpressionStmt(ctx *parser.ExpressionStmtContext) 
 	}
 }
 
+// EnterFunctionDeclaration is called when production functionDeclaration is entered.
+func (s *CompilerContext) EnterFunctionDeclaration(ctx *parser.FunctionDeclarationContext) {
+	GetLast(s).CurrentBlock = FunctionDeclaration{
+		Name: ctx.GetName().GetText(),
+	}
+}
+
+// ExitFunctionDeclaration is called when production functionDeclaration is exited.
+func (s *CompilerContext) ExitFunctionDeclaration(ctx *parser.FunctionDeclarationContext) {
+	fd := GetLast(s).CurrentBlock.(FunctionDeclaration)
+	fd.CodeBlock = GetLast(s).CurrentStmt.(CodeBlockStmt)
+	GetLast(s).CurrentBlock = fd
+}
+
 // ExitVariableDeclaration is called when production variableDeclaration is exited.
 func (s *CompilerContext) ExitVariableDeclaration(ctx *parser.VariableDeclarationContext) {
 	GetLast(s).CurrentBlock = GetLast(s).CurrentStmt.(VariableStmt)
 	GetLast(s).CurrentExpr = nil
-	println("ExitVariableDeclaration")
 }
 
 // ExitVariableStmt is called when production variableStmt is exited.
@@ -170,20 +197,21 @@ func (s *CompilerContext) ExitVariableStmt(ctx *parser.VariableStmtContext) {
 	if ctx.GetPtr() != nil {
 		ptrCount = len(ctx.GetPtr().GetText())
 	}
-	xtype := ""
+	xtype := Type{
+		Ptr:   ptrCount,
+		GCPtr: ctx.GetGcptr() != nil,
+		Ref:   false,
+	}
 	if ctx.GetVariableType() != nil {
-		xtype = ctx.GetVariableType().GetText()
+		xtype.Name = ctx.GetVariableType().GetText()
 	}
 	GetLast(s).CurrentStmt = VariableStmt{
 		Name:     ctx.GetName().GetText(),
 		Type:     xtype,
 		Value:    GetLast(s).CurrentExpr,
 		Optional: ctx.GetOptional() != nil,
-		Ptr:      ptrCount,
-		GCPtr:    ctx.GetGcptr() != nil,
 		Export:   ctx.GetExport() != nil,
 	}
-	println("ExitVariableStmt")
 }
 
 // EnterCodeBlock is called when production codeBlock is entered.

@@ -9,7 +9,7 @@ declarationList
     ;
 
 declaration
-    : variableDeclaration
+    : variableDeclaration ';'
     | functionDeclaration
     ;
 
@@ -30,11 +30,11 @@ variableStmt
     ;
 
 functionDeclaration
-    : 'func' export='export'? native='native'? name=Identifier '(' functionParameterList ')' code=codeBlock
+    : 'func' export='export'? native='native'? name=Identifier '(' functionParameterList? ')' code=codeBlock
     ;
 
 functionParameter
-    : parameterName=Identifier ':' parameterType=Identifier (ptr=pointer? gcptr='^'?) | ref='&'
+    : parameterName=Identifier ':' parameterType=Identifier ((ptr=pointer? gcptr='^'?) | ref='&')
     ;
 
 functionParameterList

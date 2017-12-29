@@ -77,8 +77,6 @@ type VariableStmt struct {
 	Type     Type
 	Value    Expr
 	Optional bool
-	Ptr      int
-	GCPtr    bool
 	Export   bool
 }
 
@@ -176,6 +174,27 @@ func (s *CompilerContext) EnterFunctionDeclaration(ctx *parser.FunctionDeclarati
 	GetLast(s).CurrentBlock = FunctionDeclaration{
 		Name: ctx.GetName().GetText(),
 	}
+}
+
+// ExitFunctionParameter is called when production functionParameter is exited.
+func (s *CompilerContext) ExitFunctionParameter(ctx *parser.FunctionParameterContext) {
+	ptrCount := 0
+	if ctx.GetPtr() != nil {
+		ptrCount = len(ctx.GetPtr().GetText())
+	}
+	xtype := Type{
+		Ptr:   ptrCount,
+		GCPtr: ctx.GetGcptr() != nil,
+		Ref:   ctx.GetRef() != nil,
+		Name:  ctx.GetParameterType().GetText(),
+	}
+	funcDef := GetLast(s).CurrentBlock.(FunctionDeclaration)
+	funcDef.Parameters = append(funcDef.Parameters, Parameter{
+		Type:     xtype,
+		Name:     ctx.GetParameterName().GetText(),
+		Optional: ctx.GetOptional() != nil,
+	})
+	GetLast(s).CurrentBlock = funcDef
 }
 
 // ExitFunctionDeclaration is called when production functionDeclaration is exited.

@@ -34,7 +34,7 @@ functionDeclaration
     ;
 
 functionParameter
-    : parameterName=Identifier ':' parameterType=Identifier ((ptr=pointer? gcptr='^'?) | ref='&')
+    : optional='optional'? parameterName=Identifier ':' parameterType=Identifier ((ptr=pointer? gcptr='^'?) | ref='&')
     ;
 
 functionParameterList

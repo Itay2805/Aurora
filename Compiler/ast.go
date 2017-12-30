@@ -73,11 +73,10 @@ type ExprStmt struct {
 }
 
 type VariableStmt struct {
-	Name     string
-	Type     Type
-	Value    Expr
-	Optional bool
-	Export   bool
+	Name   string
+	Type   Type
+	Value  Expr
+	Export bool
 }
 
 type CodeBlockStmt struct {
@@ -85,16 +84,16 @@ type CodeBlockStmt struct {
 }
 
 type Parameter struct {
-	Name     string
-	Type     Type
-	Optional bool
+	Name string
+	Type Type
 }
 
 type Type struct {
-	Name  string
-	Ptr   int
-	GCPtr bool
-	Ref   bool
+	Name     string
+	Ptr      int
+	GCPtr    bool
+	Ref      bool
+	Optional bool
 }
 
 type FunctionDeclaration struct {
@@ -119,8 +118,8 @@ func (f CodeBlockStmt) stmt() {}
 func (f VariableStmt) block()        {}
 func (f FunctionDeclaration) block() {}
 
-// CompilerContext contains the AST
-type CompilerContext struct {
+// ASTContext contains the AST
+type ASTContext struct {
 	*parser.BaseAuroraListener
 
 	Blocks       []Block
@@ -128,17 +127,17 @@ type CompilerContext struct {
 	CurrentBlock Block
 	CurrentStmt  Stmt
 	CurrentExpr  Expr
-	ChildContext *CompilerContext
+	ChildContext *ASTContext
 }
 
-func GetLast(ctx *CompilerContext) *CompilerContext {
+func GetLast(ctx *ASTContext) *ASTContext {
 	for ctx.ChildContext != nil {
 		ctx = ctx.ChildContext
 	}
 	return ctx
 }
 
-func GetBeforLast(ctx *CompilerContext) *CompilerContext {
+func GetBeforLast(ctx *ASTContext) *ASTContext {
 	temp := ctx
 	for ctx.ChildContext != nil {
 		temp = ctx
@@ -150,91 +149,91 @@ func GetBeforLast(ctx *CompilerContext) *CompilerContext {
 /* Statements */
 
 // ExitStmt is called when production stmt is exited.
-func (s *CompilerContext) ExitStmt(ctx *parser.StmtContext) {
+func (s *ASTContext) ExitStmt(ctx *parser.StmtContext) {
 	GetLast(s).Statements = append(GetLast(s).Statements, GetLast(s).CurrentStmt)
 	GetLast(s).CurrentStmt = nil
 	GetLast(s).CurrentExpr = nil
 }
 
 // ExitDeclaration is called when production declaration is exited.
-func (s *CompilerContext) ExitDeclaration(ctx *parser.DeclarationContext) {
+func (s *ASTContext) ExitDeclaration(ctx *parser.DeclarationContext) {
 	GetLast(s).Blocks = append(GetLast(s).Blocks, GetLast(s).CurrentBlock)
 	GetLast(s).CurrentBlock = nil
 }
 
 // ExitExpressionStmt is called when production expressionStmt is exited.
-func (s *CompilerContext) ExitExpressionStmt(ctx *parser.ExpressionStmtContext) {
+func (s *ASTContext) ExitExpressionStmt(ctx *parser.ExpressionStmtContext) {
 	GetLast(s).CurrentStmt = ExprStmt{
 		Expr: GetLast(s).CurrentExpr,
 	}
 }
 
 // EnterFunctionDeclaration is called when production functionDeclaration is entered.
-func (s *CompilerContext) EnterFunctionDeclaration(ctx *parser.FunctionDeclarationContext) {
+func (s *ASTContext) EnterFunctionDeclaration(ctx *parser.FunctionDeclarationContext) {
 	GetLast(s).CurrentBlock = FunctionDeclaration{
 		Name: ctx.GetName().GetText(),
 	}
 }
 
 // ExitFunctionParameter is called when production functionParameter is exited.
-func (s *CompilerContext) ExitFunctionParameter(ctx *parser.FunctionParameterContext) {
+func (s *ASTContext) ExitFunctionParameter(ctx *parser.FunctionParameterContext) {
 	ptrCount := 0
 	if ctx.GetPtr() != nil {
 		ptrCount = len(ctx.GetPtr().GetText())
 	}
 	xtype := Type{
-		Ptr:   ptrCount,
-		GCPtr: ctx.GetGcptr() != nil,
-		Ref:   ctx.GetRef() != nil,
-		Name:  ctx.GetParameterType().GetText(),
+		Ptr:      ptrCount,
+		GCPtr:    ctx.GetGcptr() != nil,
+		Ref:      ctx.GetRef() != nil,
+		Name:     ctx.GetParameterType().GetText(),
+		Optional: ctx.GetOptional() != nil,
 	}
 	funcDef := GetLast(s).CurrentBlock.(FunctionDeclaration)
 	funcDef.Parameters = append(funcDef.Parameters, Parameter{
-		Type:     xtype,
-		Name:     ctx.GetParameterName().GetText(),
-		Optional: ctx.GetOptional() != nil,
+		Type: xtype,
+		Name: ctx.GetParameterName().GetText(),
 	})
 	GetLast(s).CurrentBlock = funcDef
 }
 
 // ExitFunctionDeclaration is called when production functionDeclaration is exited.
-func (s *CompilerContext) ExitFunctionDeclaration(ctx *parser.FunctionDeclarationContext) {
+func (s *ASTContext) ExitFunctionDeclaration(ctx *parser.FunctionDeclarationContext) {
 	fd := GetLast(s).CurrentBlock.(FunctionDeclaration)
 	fd.CodeBlock = GetLast(s).CurrentStmt.(CodeBlockStmt)
 	GetLast(s).CurrentBlock = fd
 }
 
 // ExitVariableDeclaration is called when production variableDeclaration is exited.
-func (s *CompilerContext) ExitVariableDeclaration(ctx *parser.VariableDeclarationContext) {
+func (s *ASTContext) ExitVariableDeclaration(ctx *parser.VariableDeclarationContext) {
 	GetLast(s).CurrentBlock = GetLast(s).CurrentStmt.(VariableStmt)
 	GetLast(s).CurrentExpr = nil
 }
 
 // ExitVariableStmt is called when production variableStmt is exited.
-func (s *CompilerContext) ExitVariableStmt(ctx *parser.VariableStmtContext) {
+func (s *ASTContext) ExitVariableStmt(ctx *parser.VariableStmtContext) {
 	ptrCount := 0
 	if ctx.GetPtr() != nil {
 		ptrCount = len(ctx.GetPtr().GetText())
 	}
 	xtype := Type{
-		Ptr:   ptrCount,
-		GCPtr: ctx.GetGcptr() != nil,
-		Ref:   false,
+		Ptr:      ptrCount,
+		GCPtr:    ctx.GetGcptr() != nil,
+		Ref:      false,
+		Optional: ctx.GetOptional() != nil,
 	}
 	if ctx.GetVariableType() != nil {
 		xtype.Name = ctx.GetVariableType().GetText()
 	}
 	GetLast(s).CurrentStmt = VariableStmt{
-		Name:     ctx.GetName().GetText(),
-		Type:     xtype,
-		Value:    GetLast(s).CurrentExpr,
-		Optional: ctx.GetOptional() != nil,
-		Export:   ctx.GetExport() != nil,
+		Name:   ctx.GetName().GetText(),
+		Type:   xtype,
+		Value:  GetLast(s).CurrentExpr,
+		Export: ctx.GetExport() != nil,
 	}
 }
 
 // EnterCodeBlock is called when production codeBlock is entered.
-func (s *CompilerContext) EnterCodeBlock(ctx *parser.CodeBlockContext) {
+func (s *ASTContext) EnterCodeBlock(ctx *parser.CodeBlockContext) {
 	GetLast(s).CurrentStmt = CodeBlockStmt{
 		Statements: nil,
 	}
@@ -242,7 +241,7 @@ func (s *CompilerContext) EnterCodeBlock(ctx *parser.CodeBlockContext) {
 }
 
 // ExitCodeBlock is called when production codeBlock is exited.
-func (s *CompilerContext) ExitCodeBlock(ctx *parser.CodeBlockContext) {
+func (s *ASTContext) ExitCodeBlock(ctx *parser.CodeBlockContext) {
 	cb := GetBeforLast(s).CurrentStmt.(CodeBlockStmt)
 	cb.Statements = GetLast(s).Statements
 	GetBeforLast(s).CurrentStmt = cb
@@ -253,7 +252,7 @@ func (s *CompilerContext) ExitCodeBlock(ctx *parser.CodeBlockContext) {
 /* Precedence 0 */
 
 // EnterIntegerImmidiate is called when production integerImmidiate is entered.
-func (s *CompilerContext) EnterIntegerImmidiate(ctx *parser.IntegerImmidiateContext) {
+func (s *ASTContext) EnterIntegerImmidiate(ctx *parser.IntegerImmidiateContext) {
 	num, _ := strconv.Atoi(ctx.GetNumberVal().GetText())
 	GetLast(s).CurrentExpr = IntImmidiateExpr{
 		Value: num,
@@ -261,14 +260,14 @@ func (s *CompilerContext) EnterIntegerImmidiate(ctx *parser.IntegerImmidiateCont
 }
 
 // EnterIdentifierImmidiate is called when production identifierImmidiate is entered.
-func (s *CompilerContext) EnterIdentifierImmidiate(ctx *parser.IdentifierImmidiateContext) {
+func (s *ASTContext) EnterIdentifierImmidiate(ctx *parser.IdentifierImmidiateContext) {
 	GetLast(s).CurrentExpr = IdentImmidiateExpr{
 		Identifier: ctx.GetName().GetText(),
 	}
 }
 
 // EnterStringImmidiate is called when production stringImmidiate is entered.
-func (s *CompilerContext) EnterStringImmidiate(ctx *parser.StringImmidiateContext) {
+func (s *ASTContext) EnterStringImmidiate(ctx *parser.StringImmidiateContext) {
 	GetLast(s).CurrentExpr = StringImmidateExpr{
 		Value: ctx.GetStringVal().GetText()[1 : len(ctx.GetStringVal().GetText())-1],
 	}
@@ -277,7 +276,7 @@ func (s *CompilerContext) EnterStringImmidiate(ctx *parser.StringImmidiateContex
 /* Precedence 1 */
 
 // EnterMemberAccess is called when production memberAccess is entered.
-func (s *CompilerContext) EnterMemberAccess(ctx *parser.MemberAccessContext) {
+func (s *ASTContext) EnterMemberAccess(ctx *parser.MemberAccessContext) {
 	GetLast(s).CurrentExpr = MemberAccessExpr{
 		AccessFrom: GetLast(s).CurrentExpr,
 		MemberName: ctx.GetMember().GetText(),
@@ -285,7 +284,7 @@ func (s *CompilerContext) EnterMemberAccess(ctx *parser.MemberAccessContext) {
 }
 
 // EnterFunctionCall is called when production functionCall is entered.
-func (s *CompilerContext) EnterFunctionCall(ctx *parser.FunctionCallContext) {
+func (s *ASTContext) EnterFunctionCall(ctx *parser.FunctionCallContext) {
 	GetLast(s).CurrentExpr = FunctionCallExpr{
 		Function:   GetLast(s).CurrentExpr,
 		Parameters: make([]Expr, 0),
@@ -294,12 +293,12 @@ func (s *CompilerContext) EnterFunctionCall(ctx *parser.FunctionCallContext) {
 }
 
 // ExitFunctionCall is called when production functionCall is exited.
-func (s *CompilerContext) ExitFunctionCall(ctx *parser.FunctionCallContext) {
+func (s *ASTContext) ExitFunctionCall(ctx *parser.FunctionCallContext) {
 	GetBeforLast(s).ChildContext = nil
 }
 
 // ExitFunctionCallParam is called when production functionCallParam is exited.
-func (s *CompilerContext) ExitFunctionCallParam(ctx *parser.FunctionCallParamContext) {
+func (s *ASTContext) ExitFunctionCallParam(ctx *parser.FunctionCallParamContext) {
 	fc := GetBeforLast(s).CurrentExpr.(FunctionCallExpr)
 	fc.Parameters = append(fc.Parameters, GetLast(s).CurrentExpr)
 	GetBeforLast(s).CurrentExpr = fc
@@ -309,7 +308,7 @@ func (s *CompilerContext) ExitFunctionCallParam(ctx *parser.FunctionCallParamCon
 // /* Precedence 2 */
 
 // EnterLhsOperator is called when production lhsOperator is entered.
-func (s *CompilerContext) EnterLhsOperator(ctx *parser.LhsOperatorContext) {
+func (s *ASTContext) EnterLhsOperator(ctx *parser.LhsOperatorContext) {
 	GetLast(s).CurrentExpr = LHSOperatorExpr{
 		Operator: ctx.GetOp().GetText(),
 	}
@@ -317,7 +316,7 @@ func (s *CompilerContext) EnterLhsOperator(ctx *parser.LhsOperatorContext) {
 }
 
 // ExitLhsOperator is called when production lhsOperator is exited.
-func (s *CompilerContext) ExitLhsOperator(ctx *parser.LhsOperatorContext) {
+func (s *ASTContext) ExitLhsOperator(ctx *parser.LhsOperatorContext) {
 	lhso := GetBeforLast(s).CurrentExpr.(LHSOperatorExpr)
 	lhso.On = GetLast(s).CurrentExpr
 	GetBeforLast(s).CurrentExpr = lhso
@@ -327,7 +326,7 @@ func (s *CompilerContext) ExitLhsOperator(ctx *parser.LhsOperatorContext) {
 // /* Precedence 3 */
 
 // EnterMulDivMod is called when production mulDivMod is entered.
-func (s *CompilerContext) EnterMulDivMod(ctx *parser.MulDivModContext) {
+func (s *ASTContext) EnterMulDivMod(ctx *parser.MulDivModContext) {
 	GetLast(s).CurrentExpr = LROperatorExpr{
 		Left:     GetLast(s).CurrentExpr,
 		Operator: ctx.GetOp().GetText(),
@@ -336,7 +335,7 @@ func (s *CompilerContext) EnterMulDivMod(ctx *parser.MulDivModContext) {
 }
 
 // ExitMulDivMod is called when production mulDivMod is exited.
-func (s *CompilerContext) ExitMulDivMod(ctx *parser.MulDivModContext) {
+func (s *ASTContext) ExitMulDivMod(ctx *parser.MulDivModContext) {
 	lr := GetBeforLast(s).CurrentExpr.(LROperatorExpr)
 	lr.Right = GetLast(s).CurrentExpr
 	GetBeforLast(s).CurrentExpr = lr
@@ -346,7 +345,7 @@ func (s *CompilerContext) ExitMulDivMod(ctx *parser.MulDivModContext) {
 /* Precedence 4 */
 
 // EnterAddSub is called when production addSub is entered.
-func (s *CompilerContext) EnterAddSub(ctx *parser.AddSubContext) {
+func (s *ASTContext) EnterAddSub(ctx *parser.AddSubContext) {
 	GetLast(s).CurrentExpr = LROperatorExpr{
 		Left:     GetLast(s).CurrentExpr,
 		Operator: ctx.GetOp().GetText(),
@@ -355,7 +354,7 @@ func (s *CompilerContext) EnterAddSub(ctx *parser.AddSubContext) {
 }
 
 // ExitAddSub is called when production addSub is exited.
-func (s *CompilerContext) ExitAddSub(ctx *parser.AddSubContext) {
+func (s *ASTContext) ExitAddSub(ctx *parser.AddSubContext) {
 	lr := GetBeforLast(s).CurrentExpr.(LROperatorExpr)
 	lr.Right = GetLast(s).CurrentExpr
 	GetBeforLast(s).CurrentExpr = lr
@@ -365,7 +364,7 @@ func (s *CompilerContext) ExitAddSub(ctx *parser.AddSubContext) {
 /* Precedence 5 */
 
 // EnterLogicalAnd is called when production logicalAnd is entered.
-func (s *CompilerContext) EnterLogicalAnd(ctx *parser.LogicalAndContext) {
+func (s *ASTContext) EnterLogicalAnd(ctx *parser.LogicalAndContext) {
 	GetLast(s).CurrentExpr = LROperatorExpr{
 		Left:     GetLast(s).CurrentExpr,
 		Operator: "&&",
@@ -374,7 +373,7 @@ func (s *CompilerContext) EnterLogicalAnd(ctx *parser.LogicalAndContext) {
 }
 
 // ExitLogicalAnd is called when production logicalAnd is exited.
-func (s *CompilerContext) ExitLogicalAnd(ctx *parser.LogicalAndContext) {
+func (s *ASTContext) ExitLogicalAnd(ctx *parser.LogicalAndContext) {
 	lr := GetBeforLast(s).CurrentExpr.(LROperatorExpr)
 	lr.Right = GetLast(s).CurrentExpr
 	GetBeforLast(s).CurrentExpr = lr
@@ -384,7 +383,7 @@ func (s *CompilerContext) ExitLogicalAnd(ctx *parser.LogicalAndContext) {
 /* Precedence 6 */
 
 // EnterLogicalOr is called when production logicalOr is entered.
-func (s *CompilerContext) EnterLogicalOr(ctx *parser.LogicalOrContext) {
+func (s *ASTContext) EnterLogicalOr(ctx *parser.LogicalOrContext) {
 	GetLast(s).CurrentExpr = LROperatorExpr{
 		Left:     GetLast(s).CurrentExpr,
 		Operator: "||",
@@ -393,7 +392,7 @@ func (s *CompilerContext) EnterLogicalOr(ctx *parser.LogicalOrContext) {
 }
 
 // ExitLogicalOr is called when production logicalOr is exited.
-func (s *CompilerContext) ExitLogicalOr(ctx *parser.LogicalOrContext) {
+func (s *ASTContext) ExitLogicalOr(ctx *parser.LogicalOrContext) {
 	lr := GetBeforLast(s).CurrentExpr.(LROperatorExpr)
 	lr.Right = GetLast(s).CurrentExpr
 	GetBeforLast(s).CurrentExpr = lr
@@ -403,7 +402,7 @@ func (s *CompilerContext) ExitLogicalOr(ctx *parser.LogicalOrContext) {
 /* Precedence 7 */
 
 // EnterAssign is called when production assign is entered.
-func (s *CompilerContext) EnterAssign(ctx *parser.AssignContext) {
+func (s *ASTContext) EnterAssign(ctx *parser.AssignContext) {
 	GetLast(s).CurrentExpr = AssignExpr{
 		Target: GetLast(s).CurrentExpr,
 	}
@@ -411,7 +410,7 @@ func (s *CompilerContext) EnterAssign(ctx *parser.AssignContext) {
 }
 
 // ExitAssign is called when production assign is exited.
-func (s *CompilerContext) ExitAssign(ctx *parser.AssignContext) {
+func (s *ASTContext) ExitAssign(ctx *parser.AssignContext) {
 	assign := GetBeforLast(s).CurrentExpr.(AssignExpr)
 	assign.Source = GetLast(s).CurrentExpr
 	GetBeforLast(s).CurrentExpr = assign
@@ -419,8 +418,8 @@ func (s *CompilerContext) ExitAssign(ctx *parser.AssignContext) {
 }
 
 // NewCompilerContext ...
-func NewCompilerContext() *CompilerContext {
-	return &CompilerContext{
+func NewCompilerContext() *ASTContext {
+	return &ASTContext{
 		Statements:   make([]Stmt, 0),
 		CurrentStmt:  nil,
 		CurrentExpr:  nil,
@@ -428,7 +427,7 @@ func NewCompilerContext() *CompilerContext {
 	}
 }
 
-func BuildAST(source string) *CompilerContext {
+func BuildAST(source string) *ASTContext {
 	input := antlr.NewInputStream(source)
 	lexer := parser.NewAuroraLexer(input)
 	stream := antlr.NewCommonTokenStream(lexer, 0)

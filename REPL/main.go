@@ -18,6 +18,18 @@ func main() {
 		if strings.HasPrefix(strings.Trim(text, " 	"), "exit") {
 			return
 		}
-		fmt.Printf("%+v\n", compiler.BuildAST(text).Blocks)
+		ast := compiler.BuildAST(text)
+		program := compiler.SetupProgram(ast)
+		if program == nil {
+			fmt.Println("Could not compile!")
+		} else {
+			for _, mod := range program.Modules {
+				fmt.Println(mod.Name + ":")
+				fmt.Println("\tVariables:")
+				for _, v := range mod.Variables {
+					fmt.Printf("\t\t%+v\n", v)
+				}
+			}
+		}
 	}
 }
